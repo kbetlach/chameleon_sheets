@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kbetlach/chameleon_sheets/issues"
   },
-  "homepage": "https://github.com/kbetlach/chameleon_sheets#readme"
+  "homepage": "https://github.com/kbetlach/chameleon_sheets#readme",
+  "dependencies": {
+    "react-router-dom": "^5.1.2"
+  }
 }

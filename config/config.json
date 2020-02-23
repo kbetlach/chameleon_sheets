@@ -1,0 +1,21 @@
+{
+    "development": {
+        "username": "root",
+        "password": null,
+        "database": "chameleondb",
+        "host": "localhost",
+        "dialect": "mongoose"
+    },
+    "test": {
+        "username": "root",
+        "password": null,
+        "database": "chameleondb",
+        "host": "localhost",
+        "dialect": "mongoose",
+        "logging": false
+    },
+    "production": {
+        "use_env_variable": "MLAB_URL",
+        "dialect": "mongoose"
+    }
+}

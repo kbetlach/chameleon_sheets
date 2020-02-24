@@ -1,9 +1,15 @@
 import React from 'react';
-import Index from "../src/components/pages/Index";
+import Login from "../src/components/pages/Login";
+import Footer from "../src/components/Footer";
 
 function App() {
   return (
-    <Index />
+    <div>
+
+      <Login />
+      <Footer />
+
+    </div>
   );
 }
 

@@ -5,7 +5,11 @@ function Login() {
     return (
     <div className = "container">
         <div className = "jumbotron">
-            <h1>Welcome to Chameleon Sheets</h1>
+
+        <div id = "chameleon">
+            CHAMELEON SHEETS
+        </div>
+            {/* <h1>Welcome to Chameleon Sheets</h1>
 
             <br />
 
@@ -17,7 +21,7 @@ function Login() {
 
             <br />
 
-            <p>(Perhaps a quick 3-4 sentance plug about who we are and what we do would go here, and a picture up here ^)</p>
+            <p>(Perhaps a quick 3-4 sentance plug about who we are and what we do would go here, and a picture up here ^)</p> */}
         </div>
     </div>
     )

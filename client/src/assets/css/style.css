@@ -1,10 +1,12 @@
 html, body {
     height: 100%;
+    font-family: 'Barlow Condensed';
 }
 
 body {
     display: flex;
     flex-direction: column;
+    background-image: url(../images/image7.jpg);
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat
@@ -23,7 +25,7 @@ body {
     flex-shrink: 0;
     width: 100%;
     text-align: center;
-    border-top: 8px solid darkgray;
+    border-top: 8px solid white;
     background-color: darkslategray;
     color: #ffffff;
     position: fixed;
@@ -37,4 +39,15 @@ h1 {
 
 .jumbotron{
     opacity: .9;
+    border-radius: 25px; 
+    background-color: darkslategrey;
+    margin-top: 50px; 
+    
+}
+
+#chameleon{
+    font-size: 85px; 
+    text-align: center; 
+    color: white;
+    opacity: 1;
 }

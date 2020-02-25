@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Login() {
     return (
         <div>
-            <div className = "container">
+            <div className = "container w3-container w3-center w3-animate-opacity">
                 <div className = "jumbotron">
                     <div id = "chameleon">
                         CHAMELEON SHEETS

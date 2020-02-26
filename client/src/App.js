@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from "../src/components/pages/Login";
 import Footer from "../src/components/Footer";
-import AddUser from './components/pages/AddUser';
+import Admin from './components/pages/Admin';
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <Router>
         <div>
         <Route exact path="/" component={Login} />
-        <Route exact path="/adduser" component={AddUser} />
+        <Route exact path="/admin" component={Admin} />
         </div>
     </Router>
    

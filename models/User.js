@@ -12,19 +12,28 @@ const userSchema = new Schema(
     },
     email: {
         type: String,
-        allowNull: false },
+        allowNull: false
+    },
     password: {
         type: String,
-        allowNull: false },
+        allowNull: false
+    },
     first_name: {
         type: String,
-        allowNull: false },
+        allowNull: false
+    },
     last_name: {
         type: String,
-        allowNull: false },
+        allowNull: false
+    },
     school: {
         type: String,
-        allowNull: false },
+        allowNull: false
+    },
+    students: {
+        type: String,
+        allowNull: false
+    }
     },
   {
     toJSON: {

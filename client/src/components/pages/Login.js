@@ -1,25 +1,30 @@
 import React from 'react';
-import '../../assets/style.css';
+import '../../assets/css/style.css';
+import { Link } from "react-router-dom";
+
 
 function Login() {
     return (
-    <div className = "container">
-        <div className = "jumbotron">
-            <h1>Welcome to Chameleon Sheets</h1>
-
-            <br />
-
-            <p>Returning user? Please login here (Button)</p>
-
-            <br />
-
-            <p>New to working with us? Signup here (Button)</p>
-
-            <br />
-
-            <p>(Perhaps a quick 3-4 sentance plug about who we are and what we do would go here, and a picture up here ^)</p>
+        <div>
+            <div className = "container w3-container w3-center w3-animate-opacity">
+                <div className = "jumbotron">
+                    <div id = "chameleon">
+                        CHAMELEON SHEETS
+                    </div>
+                    <br />
+                    <Link to="/admin" className={window.location.pathname === "/admin"}>
+                        <button style={{marginRight: "50px", marginTop: "20px", backgroundColor:"white" , color: "darkslategray", borderRadius: "6px", border: ".5px solid white", padding: 5}}>
+                        Add User
+                        </button>
+                    </Link>
+                    <Link to="/main" className={window.location.pathname === "/main"}>
+                        <button style={{marginTop: "20px", backgroundColor:"white" , color: "darkslategray", borderRadius: "6px", border: ".5px solid white", padding: 5}}>
+                        Login
+                        </button>
+                    </Link>    
+                </div>
+            </div>
         </div>
-    </div>
     )
 }
 

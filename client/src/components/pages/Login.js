@@ -13,7 +13,7 @@ function Login() {
                         CHAMELEON SHEETS
                     </div>
                     <br />
-                    <Link to="/adduser" className={window.location.pathname === "/adduser"}>
+                    <Link to="/admin" className={window.location.pathname === "/admin"}>
                         <button style={{marginLeft: "360px", marginTop: "20px", backgroundColor:"white" , color: "darkslategray", borderRadius: "6px", border: ".5px solid white"}}>
                         Add User
                         </button>

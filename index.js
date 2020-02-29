@@ -19,6 +19,7 @@ app.use(logger('dev'));
 
 app.use(bodyParser.json());
 app.use('/api', routes);
+app.use('/api-james')
 app.use((err, req, res, next) => {
     console.log(err);
     res.header("Access-Control-Allow-Origin", "*");

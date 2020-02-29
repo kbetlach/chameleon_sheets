@@ -24,6 +24,8 @@ const studentSchema = new Schema({
         default: "0800"
     },
     day: [{
+        //Exporting this to another collection//
+        // 24 entries//
         date: {
             type: Date,
             Default: Date.Now

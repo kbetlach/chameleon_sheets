@@ -1,3 +1,5 @@
 module.exports = {
-  User: require('./user')
+  User: require('./user'),
+  Student: require("./Student"),
+  Log: require("./Log")
 };

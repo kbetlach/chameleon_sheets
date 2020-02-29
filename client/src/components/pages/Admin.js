@@ -5,7 +5,7 @@ import StudentCard from '../Cards/StudentCard';
 import GuardianCard from '../Cards/GuardianCard';
 import Header from "../Header"
 
-function AddUser() {
+function Admin() {
     return (
         <div>
             <Header />
@@ -18,4 +18,4 @@ function AddUser() {
     )
 }
 
-export default AddUser;
+export default Admin;

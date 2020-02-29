@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
 
-
 function StaffCard() {
   const [firstName, setFirstname] = useState();
   const [email, setEmail] = useState();

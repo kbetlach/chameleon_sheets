@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../assets/css/style.css';
-import Footer from "../Footer"
 import { Link } from "react-router-dom";
 
 
@@ -14,13 +13,17 @@ function Login() {
                     </div>
                     <br />
                     <Link to="/admin" className={window.location.pathname === "/admin"}>
-                        <button style={{marginLeft: "360px", marginTop: "20px", backgroundColor:"white" , color: "darkslategray", borderRadius: "6px", border: ".5px solid white"}}>
+                        <button style={{marginRight: "50px", marginTop: "20px", backgroundColor:"white" , color: "darkslategray", borderRadius: "6px", border: ".5px solid white", padding: 5}}>
                         Add User
                         </button>
-                    </Link>  
+                    </Link>
+                    <Link to="/main" className={window.location.pathname === "/main"}>
+                        <button style={{marginTop: "20px", backgroundColor:"white" , color: "darkslategray", borderRadius: "6px", border: ".5px solid white", padding: 5}}>
+                        Login
+                        </button>
+                    </Link>    
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }

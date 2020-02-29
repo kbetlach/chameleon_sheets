@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 
-function AddUser() {
+function Admin() {
     return (
     <div>
         <Header />
@@ -23,4 +23,4 @@ function AddUser() {
     )
 }
 
-export default AddUser;
+export default Admin;

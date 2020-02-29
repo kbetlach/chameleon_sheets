@@ -49,9 +49,9 @@ function Login() {
 
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="loginModal">Login to Chameleon Sheets:</h5>
-                                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                <div class="modal-header" style = {{textAlign: 'center', backgroundColor: "darkslategray"}}>
+                                    <h5 style = {{color: 'white'}} class="modal-title" id="loginModal">Login to Chameleon Sheets:</h5>
+                                    <button style = {{color: 'white'}} aria-label="Close" class="close" data-dismiss="modal" type="button">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -68,7 +68,7 @@ function Login() {
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
-                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                        <button style = {{color: 'white', backgroundColor: "darkslategray", border: '.5 px solid white'}} class = "btn" type="submit">Submit</button>
                                     </div>
                                 </form>
                             </div>

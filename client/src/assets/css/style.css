@@ -49,3 +49,8 @@ h1 {
     color: white;
     opacity: 1;
 }
+
+.modal{
+    position: fixed;
+    top: 75px; 
+}

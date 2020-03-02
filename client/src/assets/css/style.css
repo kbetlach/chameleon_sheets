@@ -37,9 +37,8 @@ h1 {
 }
 
 .jumbotron{
-    opacity: .9;
     border-radius: 25px; 
-    background-color: darkslategrey;
+    background-color: rgba(47, 79, 79, .9);
     margin-top: 50px; 
     
 }
@@ -49,4 +48,9 @@ h1 {
     text-align: center; 
     color: white;
     opacity: 1;
+}
+
+.modal{
+    position: fixed;
+    top: 75px; 
 }

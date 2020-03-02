@@ -1,4 +1,4 @@
-const mongoose = requrie("mongoose");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
@@ -23,28 +23,6 @@ const studentSchema = new Schema({
         type: String,
         default: "0800"
     },
-    day: [{
-        //Exporting this to another collection//
-        // 24 entries//
-        date: {
-            type: Date,
-            Default: Date.Now
-        },
-        scores: [{
-            time: {
-                type: string
-            },
-            score: {
-                type: Number,
-                min: 1,
-                max: 5
-            },
-            recoredBy: Schema.types.ObjectId, ref: "User"
-        }],
-        comments: {
-            type: String
-        }
-    }],
     createdAt: {
         type: Date,
         default: Date.Now

@@ -1,4 +1,4 @@
-const mongoose = requrie("mongoose");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const logSchema = new Schema({
@@ -28,10 +28,6 @@ const logSchema = new Schema({
     }],
     comment: {
         type: String
-    },
-    recordedBy: {
-        type: Schema.types.ObjectId,
-        ref: "User"
     }
 })
 

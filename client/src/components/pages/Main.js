@@ -1,10 +1,20 @@
 import React from 'react';
 import '../../assets/css/style.css';
-import Header from "../Header"
+import Header from "../Header";
+import Wrapper from '../Columns/Wrapper.js';
+import Footer from "../Footer";
+import '../Columns/style.css';
+
 
 function Main() {
     return (
-        <Header />
+        <div>
+            <Header />
+            <div className="main">
+            <Wrapper className="bigWrap" />
+            </div>
+            <Footer />
+        </div>
     )
 }
 

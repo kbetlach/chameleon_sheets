@@ -7,17 +7,17 @@ export default {
   },
   // Gets the user with the given id
   getUser: function(id) {
-    return axios.get("/api/users/" + id);
+    return axios.get("/api/user/" + id);
   },
   // Deletes the user with the given id
   deleteUser: function(id) {
-    return axios.delete("/api/users/" + id);
+    return axios.delete("/api/user/" + id);
   },
   // Saves a user to the database
   saveUser: function(userData) {
-    return axios.post("/api/users/", userData);
+    return axios.post("/api/user/", userData);
   }, 
   updateUser: function(id, userData) {
-    return axios.update("/api/users/" + id, userData);
+    return axios.update("/api/user/" + id, userData);
   }
 };

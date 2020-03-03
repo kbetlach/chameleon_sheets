@@ -30,7 +30,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/chameleonsheets"
+  process.env.MONGODB_URI || "mongodb://localhost/chameleondb"
 );
 
 app.use((err, req, res, next) => {

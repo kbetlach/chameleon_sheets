@@ -65,7 +65,7 @@ function GridCol({startTime, index}){
     return (<table className="floaTable">
                 <tbody >
                     <tr className="timeRow">
-                        <th><Moment parse="HH:mm" format="h:mm" add={{ minutes: (15*index) }}>{startTime}</Moment></th>
+                        <th><Moment parse="HH:mm" format="H:mm" add={{ minutes: (15*index) }}>{startTime}</Moment></th>
                     </tr>
                     <tr>
                         <td className="fiveRow" style={{background: rating === 5 ? "red" : "inherit"}} onClick={handleFive}></td>

@@ -39,10 +39,10 @@ margin: 0 auto;
 margin-top: 10px;
 }
 
-/* body {
+body {
 background-image: url("../../assets/images/image2.jpg");
 background-size: cover;
-} */
+}
 
 td {
 width: calc(100vw / 26) !important;
@@ -89,6 +89,8 @@ border-radius: 5px 0px 0px 5px;
 button {
     min-width: 60px;
 }
+
+.nav-student {}
 
 @media screen and (max-width: 1200px) {
 th {

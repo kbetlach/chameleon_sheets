@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const routes = require('./routes/api');
+const routes = require('./routes/API');
 const path = require('path');
 // var router = express.Router('/api', routes);
 var nodemailer = require('nodemailer');
@@ -21,6 +21,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+// Add API routes
+app.use(routes);
+
+// Connect to the Mongo DB
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/chameleonsheets"
+);
 
 app.use((err, req, res, next) => {
   console.log(err);

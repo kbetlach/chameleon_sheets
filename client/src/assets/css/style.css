@@ -54,3 +54,13 @@ h1 {
     position: fixed;
     top: 75px; 
 }
+
+li {
+    color: white;
+    background-color: darkslategray;
+    padding: 5px;
+    border: 1px solid white;
+    margin-right: 10px;
+    border-radius: 15px;
+    font-size: 20px;
+}

@@ -31,6 +31,25 @@ function Login() {
                         </button>
                     </Link>
 
+                    <Link to="/main"
+                        className={
+                            window.location.pathname === "/main"
+                    }>
+                        <button style={
+                            {
+                                marginRight: "50px",
+                                marginTop: "20px",
+                                backgroundColor: "white",
+                                color: "darkslategray",
+                                borderRadius: "6px",
+                                border: ".5px solid white",
+                                padding: 5
+                            }
+                        }>
+                            Data
+                        </button>
+                    </Link>
+
                     <button type="button" data-target="#loginModal" data-toggle="modal"
                         style={
                             {

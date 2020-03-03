@@ -55,12 +55,13 @@ h1 {
     top: 75px; 
 }
 
-li {
+.nav-student {
     color: white;
     background-color: darkslategray;
     padding: 5px;
-    border: 1px solid white;
+    /* border: 2px solid black;
+    border-bottom: none; */
     margin-right: 10px;
-    border-radius: 15px;
+    border-radius: 5px 5px 0 0;
     font-size: 20px;
 }

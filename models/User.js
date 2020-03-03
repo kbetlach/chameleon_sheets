@@ -15,8 +15,7 @@ const userSchema = new Schema(
         allowNull: false
     },
     password: {
-        type: String,
-        allowNull: false
+        type: String
     },
     first_name: {
         type: String,
@@ -31,8 +30,7 @@ const userSchema = new Schema(
         allowNull: false
     },
     students: {
-        type: String,
-        allowNull: false
+        type: String
     }
     },
   {

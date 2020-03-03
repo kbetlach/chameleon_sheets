@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import API from "../../utils/API";
 
@@ -22,7 +22,7 @@ function GuardianCard() {
       email: email,
       first_name: firstName,
       last_name: lastName,
-      school: req.user.school,
+      //school: req.user.school,
     })
   }
   return (

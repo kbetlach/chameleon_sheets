@@ -9,12 +9,12 @@ const logSchema = new Schema({
         Default: Date.Now
     },
     student: {
-        type: Schema.types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "Student"
     },
     scores: [{
         time: {
-            type: string
+            type: String
         },
         score: {
             type: Number,
@@ -22,7 +22,7 @@ const logSchema = new Schema({
             max: 5
         },
         recordedBy: {
-            type: Schema.types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "User"
         }
     }],

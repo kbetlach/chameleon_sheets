@@ -76,6 +76,6 @@ function emailOptions(firstName, lastName, email) {
   emailOptions.from = 'chameleon.sheets@gmail.com';
   emailOptions.to = email;
   emailOptions.subject = 'Sign up with Chameleon Sheets';
-  emailOptions.html = `<h1> Hello ${firstName} ${lastName} </h1>`;
+  emailOptions.html = `<h1> Hello ${firstName} ${lastName}, please go to <a>localhost:3000/signup/<a> to complete your profile! </h1>`;
   return emailOptions
 };

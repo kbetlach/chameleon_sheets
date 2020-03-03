@@ -12,10 +12,10 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3001;
 
-// mongoose.connect(process.env.DB, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// }).then(() => console.log('Database connected successfully')).catch(err => console.log(err));
+ //mongoose.connect(process.env.DB, {
+ //    useNewUrlParser: true,
+ //    useUnifiedTopology: true
+ // }).then(() => console.log('Database connected successfully')).catch(err => console.log(err));
 app.use(logger('dev'));
 
 app.use(bodyParser.json());

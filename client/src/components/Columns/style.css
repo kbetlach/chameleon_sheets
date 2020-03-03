@@ -90,8 +90,6 @@ button {
     min-width: 60px;
 }
 
-.nav-student {}
-
 @media screen and (max-width: 1200px) {
 th {
     font-size: .8em;

@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../assets/css/style.css';
 import Header from "../Header";
-import StudentTabs from "../Columns/StudentTabs";
 import Wrapper from '../Columns/Wrapper.js';
 import Footer from "../Footer";
 import '../Columns/style.css';

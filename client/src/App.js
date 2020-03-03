@@ -5,6 +5,7 @@ import Main from "../src/components/pages/Main";
 import History from "../src/components/pages/History";
 import Footer from "../src/components/Footer";
 import Admin from './components/pages/Admin';
+import Signup from './components/pages/Signup';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/main" component={Main} />
         <Route exact path="/history" component={History} />
+        <Route exact path="/signup" component={Signup} />
         </div>
       <Footer />
     </Router>

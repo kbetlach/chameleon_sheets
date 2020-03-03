@@ -6,7 +6,7 @@ module.exports = function(app) {
         res.json(req.user)
     });
 
-    app.post("/api/signup", function(req, res) {
+    app.post("/api/user/", function(req, res) {
         db.Users.create(req.body)
             .then(function() {
                 res.redirect(307, "/api/login");

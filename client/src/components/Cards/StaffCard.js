@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import API from "../../utils/API";
 
 function StaffCard() {
   const [firstName, setFirstname] = useState();
@@ -16,6 +17,13 @@ function StaffCard() {
         console.log(res);
         console.log(res.data);
       })
+      API.saveUser({
+      role: "Teacher",
+      email: email,
+      first_name: firstName,
+      last_name: lastName,
+      school: req.user.school,
+    })
   }
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>

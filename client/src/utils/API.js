@@ -19,5 +19,8 @@ export default {
   }, 
   updateUser: function(id, userData) {
     return axios.update("/api/user/" + id, userData);
+  },
+  email: (userData) => {
+    return axios.post("/api/email", userData); 
   }
 };

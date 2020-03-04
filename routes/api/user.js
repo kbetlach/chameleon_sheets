@@ -13,6 +13,4 @@ router.route("/")
             res.status(401).json(err);
         });
     });
-
-
     module.exports = router;

@@ -26,4 +26,7 @@ export default {
   createPassword: function(userData) {
     return axios.update("/api/update_password/", userData);
   },
+  createStudent: (data) => {
+    return axios.post("/api/student/new", data);
+  }
 };

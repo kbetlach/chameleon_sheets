@@ -1,10 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const routes = require('./routes/API');
 const path = require('path');
-// var router = express.Router('/api', routes);
 var nodemailer = require('nodemailer');
 
 require('dotenv').config();
@@ -12,26 +9,26 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3001;
 
- //mongoose.connect(process.env.DB, {
- //    useNewUrlParser: true,
- //    useUnifiedTopology: true
- // }).then(() => console.log('Database connected successfully')).catch(err => console.log(err));
 app.use(logger('dev'));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add API routes
-app.use(routes);
+require("./routes/API")(app);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/chameleondb"
-);
+  process.env.MONGODB_URI || "mongodb://localhost/chameleondb", {
+      useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+  }
+).then(() => console.log('Database connected successfully')).catch(err => console.log(err));
 
 app.use((err, req, res, next) => {
   console.log(err);

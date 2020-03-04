@@ -7,6 +7,7 @@ module.exports = function(app) {
     });
 
     app.post("/api/user/", function(req, res) {
+        console.log("Made it")
         db.Users.create(req.body)
             .then(function() {
                 res.redirect(307, "/api/login");

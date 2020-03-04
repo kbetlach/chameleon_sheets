@@ -7,16 +7,9 @@ module.exports = function(app) {
     });
 
     app.post("/api/user/", function(req, res) {
-<<<<<<< HEAD:routes/api/API.js
-        console.log("heeeeeeeeeeeeere")
-        db.Users.create(req.body)
-            .then(function() {
-                res.redirect(307, "/api/login");
-=======
         db.User.create(req.body)
             .then(function(user) {
                 res.json(user);
->>>>>>> 96dfa4bc566894b9b6de84b5f9e314345a9ccc15:routes/API.js
             })
             .catch(function(err) {
                 res.status(401).json(err);

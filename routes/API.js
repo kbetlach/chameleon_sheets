@@ -61,8 +61,12 @@ app.post("/api/new_log", function(req, res) {
     });
 });
 app.put("/api/update_password/", function(req, res) {
-    db.User.findOneAndUpdate({email: req.body.email, password: { $exists: false}}, {password: req.body.password}).then(function(result) {
-        return res.json(result);
+    db.User.findOneAndUpdate({email: req.body.email, password: { $exists: false}}, {password: req.body.password})
+    .then(function() {
+        res.redirect(307, "/api/login");
+    })
+    .catch(function(err) {
+        res.status(401).json(err);
     });
 })
 app.put("/api/update_user/", function(req, res) {

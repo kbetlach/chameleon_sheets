@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add API routes
 require("./routes/API")(app);
+require("./routes/api-james")(app);
 
 // Connect to the Mongo DB
 mongoose.connect(

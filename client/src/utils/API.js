@@ -22,5 +22,8 @@ export default {
   },
   email: (userData) => {
     return axios.post("/api/email", userData); 
-  }
+  },
+  createPassword: function(userData) {
+    return axios.update("/api/update_password/", userData);
+  },
 };

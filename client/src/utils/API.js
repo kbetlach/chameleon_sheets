@@ -20,7 +20,13 @@ export default {
   updateUser: function(id, userData) {
     return axios.update("/api/user/" + id, userData);
   },
+  email: (userData) => {
+    return axios.post("/api/email", userData); 
+  },
   createPassword: function(userData) {
     return axios.update("/api/update_password/", userData);
   },
+  createStudent: (data) => {
+    return axios.post("/api/student/new", data);
+  }
 };

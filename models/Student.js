@@ -30,6 +30,10 @@ const studentSchema = new Schema({
     updatedAt: {
         type: Date,
         default: Date.Now
+    },
+    recordedBy: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }
 });
 

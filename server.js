@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
+const routes = require('./routes')
 require('dotenv').config();
 
 const app = express();
@@ -16,8 +17,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Add API routes
-require("./routes/API")(app);
-require("./routes/api-james")(app);
+app.use(routes)
 
 // Connect to the Mongo DB
 mongoose.connect(

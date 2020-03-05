@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import API from "../../utils/API";
+import API from "../../../utils/API";
+import "../CardStyle/cards.css";
 
 function GuardianCard() {
   const [firstName, setFirstname] = useState();

@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../assets/css/style.css';
-import Header from "../Header"
+import './pages.css';
+import Header from "../Header/Header";
 
 function History() {
     return (

@@ -1,8 +1,7 @@
 import React from 'react';
-import '../../assets/css/style.css';
-import Header from "../Header";
+import './pages.css';
+import Header from "../Header/Header";
 import Wrapper from '../Columns/Wrapper.js';
-import Footer from "../Footer";
 import '../Columns/style.css';
 
 function Main() {
@@ -12,7 +11,6 @@ function Main() {
             <div className="main">            
             <Wrapper className="bigWrap" />
             </div>
-            <Footer />
         </div>
     )
 }

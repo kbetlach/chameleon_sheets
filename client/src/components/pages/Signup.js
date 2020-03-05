@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../../assets/css/style.css';
+import './pages.css';
 import API from '../../utils/API';
 
 function Signup() {

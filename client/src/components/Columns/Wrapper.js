@@ -1,7 +1,7 @@
 import React from "react";
 import GridCol from "./GridCol"
 import Submit from "./Submit"
-import StudentTabs from "./StudentTabs"
+import TabWrapper from "./TabWrapper";
 import 'moment-timezone';
 import './style.css'
 
@@ -20,7 +20,7 @@ function Wrapper() {
     return(
         <div class="flexbox">
             <div class="table-container">
-                <StudentTabs />
+                <TabWrapper />
                     {columnArray.map((column, index) => (
                         <GridCol 
                             key={column}

@@ -1,5 +1,6 @@
 import React from "react";
 import './style.css';
+import DateTab from "./DateTab";
 
 function StudentTabs(props) {
   return (
@@ -24,6 +25,7 @@ function StudentTabs(props) {
         Student 4
         </a>
       </li>
+      <DateTab className="date-tab"/>
     </ul>
   );
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../assets/css/style.css';
-import StaffCard from '../Cards/StaffCard';
-import StudentCard from '../Cards/StudentCard';
-import GuardianCard from '../Cards/GuardianCard';
-import Header from "../Header"
+import './pages.css';
+import StaffCard from '../Cards/StaffCard/StaffCard';
+import StudentCard from '../Cards/StudentCard/StudentCard';
+import GuardianCard from '../Cards/GuardianCard/GuardianCard';
+import Header from "../Header/Header";
 
 function Admin() {
     return (

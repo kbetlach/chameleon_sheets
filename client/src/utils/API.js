@@ -1,9 +1,15 @@
 import axios from "axios";
 
 export default {
+  login: function(userData) {
+    return axios.post("/api/user/login", userData);
+  },
+  logout: function(userData) {
+    return axios.post("/api/user/logout");
+  },
   // Gets all users
   getUsers: function() {
-    return axios.get("/api/users");
+    return axios.get("/api/user");
   },
   // Gets the user with the given id
   getUser: function(id) {
@@ -17,14 +23,14 @@ export default {
   saveUser: function(userData) {
     return axios.post("/api/user/", userData);
   }, 
-  updateUser: function(id, userData) {
-    return axios.update("/api/user/" + id, userData);
+  updateUser: function(userData) {
+    return axios.put("/api/user/", userData);
   },
   email: (userData) => {
     return axios.post("/api/email", userData); 
   },
   createPassword: function(userData) {
-    return axios.update("/api/update_password/", userData);
+    return axios.put("/api/user/update_password", userData);
   },
   createStudent: (data) => {
     return axios.post("/api/student/new", data);

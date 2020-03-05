@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from "react";
 import './pages.css';
-import {Link} from "react-router-dom";
-
+import API from '../../utils/API';
 
 function Login() {
+
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    const handleSubmit = e => {
+
+        API.login({
+            email: email,
+            password: password
+          })
+         .then(window.location.redirect('/main'))
+         .catch(function(err){
+              console.log(err)
+          })
+    }
+
     return (
         <div>
             <div className="container w3-container w3-center w3-animate-opacity">
@@ -12,47 +27,13 @@ function Login() {
                         CHAMELEON SHEETS
                     </div>
                     <br/>
-                    <Link to="/admin"
-                        className={
-                            window.location.pathname === "/admin"
-                    }>
-                        <button style={
-                            {
-                                marginRight: "50px",
-                                marginTop: "20px",
-                                backgroundColor: "white",
-                                color: "darkslategray",
-                                borderRadius: "6px",
-                                border: ".5px solid white",
-                                padding: 5
-                            }
-                        }>
-                            Add User
-                        </button>
-                    </Link>
-
-                    <Link to="/main"
-                        className={
-                            window.location.pathname === "/main"
-                    }>
-                        <button style={
-                            {
-                                marginRight: "50px",
-                                marginTop: "20px",
-                                backgroundColor: "white",
-                                color: "darkslategray",
-                                borderRadius: "6px",
-                                border: ".5px solid white",
-                                padding: 5
-                            }
-                        }>
-                            Data
-                        </button>
-                    </Link>
 
                     <button type="button" data-target="#loginModal" data-toggle="modal"
                         style={
                             {
+                                width: "150px",
+                                height: "50px",
+                                fontSize: "24px",
                                 marginTop: "20px",
                                 backgroundColor: "white",
                                 color: "darkslategray",
@@ -68,7 +49,7 @@ function Login() {
 
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <div class="modal-header" style = {{textAlign: 'center', backgroundColor: "darkslategray"}}>
+                                <div class="modal-header" style = {{backgroundColor: "darkslategray"}}>
                                     <h5 style = {{color: 'white'}} class="modal-title" id="loginModal">Login to Chameleon Sheets:</h5>
                                     <button style = {{color: 'white'}} aria-label="Close" class="close" data-dismiss="modal" type="button">
                                         <span aria-hidden="true">&times;</span>
@@ -76,13 +57,13 @@ function Login() {
                                 </div>
                                 <form id="login">
                                     <div class="modal-body">
-                                        <div class="form-group">
+                                        <div class="form-group" style={{textAlign: "left", fontSize: "20px"}}>
                                             <label for="emailInput">Email Address</label>
-                                            <input class="form-control" id="email-login" placeholder="Email" type="email"></input>
+                                            <input onChange={e => setEmail(e.target.value)} class="form-control" id="email-login" placeholder="Email" type="email"></input>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" onSubmit={handleSubmit} style={{textAlign: "left", fontSize: "20px"}}>
                                             <label for="passwordInput">Password</label>
-                                            <input class="form-control" id="password-login" placeholder="Password" type="password"></input>
+                                            <input onChange={e => setPassword(e.target.value)}class="form-control" id="password-login" placeholder="Password" type="password"></input>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -93,7 +74,6 @@ function Login() {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

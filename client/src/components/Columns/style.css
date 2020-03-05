@@ -90,6 +90,14 @@ button {
     min-width: 60px;
 }
 
+ul .date-tab {
+    background-color: #777777;
+    display: block;
+    position: absolute;
+    right: 2vw;
+}
+
+
 @media screen and (max-width: 1200px) {
 th {
     font-size: .8em;

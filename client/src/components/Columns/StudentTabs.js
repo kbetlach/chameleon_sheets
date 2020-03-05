@@ -1,5 +1,5 @@
 import React from "react";
-import '../../assets/css/style.css';
+import './style.css';
 
 function StudentTabs(props) {
   return (

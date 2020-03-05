@@ -1,46 +1,48 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import API from "../../utils/API";
+import API from "../../../utils/API";
+import "../CardStyle/cards.css";
 
-function StaffCard() {
+function GuardianCard() {
   const [firstName, setFirstname] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
-    
-    // console.log("first name is " + firstName);
-    // console.log("last name is " + lastName);
-    // console.log("email is " + email);
-
-    API.email({ firstName, lastName, email });
-
+    console.log("first name is " + firstName);
+    console.log("last name is " + lastName);
+    console.log("email is " + email);
+    axios.post("/sendEmail", { firstName, lastName, email })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
       API.saveUser({
-      role: "Teacher",
+      role: "Guardian",
       email: email,
       first_name: firstName,
       last_name: lastName,
-      school: "req.user.school,"
+      //school: req.user.school,
     })
   }
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
-        Add Staff
+        Add Guardian
       </div>
-      <form id="staffForm" onSubmit={handleSubmit} type="submit">
+      <form id="guardianForm" onSubmit={handleSubmit} type="submit">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <input onChange={e => setFirstname(e.target.value)} id="staffFirstName" required="true" placeholder="First Name">
+            <input onChange={e => setFirstname(e.target.value)} id="guardianFirstName" required="true" placeholder="First Name">
             </input>
           </li>
           <li className="list-group-item">
-            <input onChange={e => setLastName(e.target.value)} required="true" id="staffLastName" placeholder="Last Name">
+            <input onChange={e => setLastName(e.target.value)} required="true" id="guardianLastName" placeholder="Last Name">
             </input>
           </li>
           <li className="list-group-item">
-            <input onChange={e => setEmail(e.target.value)} required="true" id="staffEmail" placeholder="Email" type="email">
+            <input onChange={e => setEmail(e.target.value)} required="true" id="guardianEmail" placeholder="Email" type="email">
             </input>
             <br />
             <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>
@@ -48,7 +50,6 @@ function StaffCard() {
         </ul>
       </form>
     </div>
-
   )
 }
-export default StaffCard
+export default GuardianCard

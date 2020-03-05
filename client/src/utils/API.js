@@ -28,5 +28,8 @@ export default {
   },
   createStudent: (data) => {
     return axios.post("/api/student/new", data);
+  },
+  findStudent: (data) => {
+    return axios.get("/api/dayLog/");
   }
 };

@@ -8,6 +8,6 @@ const emailRoute = require('./email')
 router.use("/email", emailRoute);
 router.use("/user", userRoute);
 router.use("/student", studentRoute);
-// router.use("/dayLog", dayLogRoute);
+router.use("/dayLog", dayLogRoute);
 module.exports = router;
 

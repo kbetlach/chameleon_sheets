@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import API from "../../utils/API";
+import API from "../../../utils/API";
+
 
 function StudentCard() {
 
@@ -10,13 +11,10 @@ function StudentCard() {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-
-
-
-    API.createStudent({ firstName, lastName, hours, startTime })
-
+    API.createStudent({ firstName, lastName, hours, startTime });
+    API.findStudent();
   }
+
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>

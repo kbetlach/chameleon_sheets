@@ -17,8 +17,8 @@ router.route("/new")
 
         db.Student.create(student).then(newStudent =>{
             res.json(newStudent);
-        })
-    })
+        });
+    });
 
 
 module.exports = router;

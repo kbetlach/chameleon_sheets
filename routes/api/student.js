@@ -10,7 +10,6 @@ router.route("/new")
                 firstName: req.body.firstName,
                 lastName: req.body.lastName
             },
-            classRoom: req.body.classRoom,
             hours: req.body.hours,
             startTime: req.body.startTime,
             recordedBy: req.body.user

@@ -9,14 +9,13 @@ function StaffCard() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("first name is " + firstName);
-    console.log("last name is " + lastName);
-    console.log("email is " + email);
-    axios.post("/sendEmail", { firstName, lastName, email })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
+    
+    // console.log("first name is " + firstName);
+    // console.log("last name is " + lastName);
+    // console.log("email is " + email);
+
+    API.email({ firstName, lastName, email });
+
       API.saveUser({
       role: "Teacher",
       email: email,

@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const logSchema = new Schema({
-    //Exporting this to another collection//
-    // 24 entries//
+
     date: {
         type: Date,
         Default: Date.Now

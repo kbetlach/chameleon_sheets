@@ -4,6 +4,7 @@ const db = require("../../models")
 var passport = require("../../config/passport");
 
 router.post("/login", passport.authenticate("local"), function(req, res) {
+    console.log("Logging in")
     res.json(req.user)
 });
 
@@ -32,6 +33,7 @@ router.get("/", function(req, res) {
 });
 router.get("/self", function(req, res) {
     db.User.find({id: req.user.id}).then(function(dbUsers) {
+        console.log(dbUsers);
         res.json(dbUsers);
     });
 })

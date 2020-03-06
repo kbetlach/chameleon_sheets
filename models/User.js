@@ -43,8 +43,8 @@ const userSchema = new Schema(
 userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
-userSchema.methods.encryptPassowrd = function(password){ return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null); 
-}
+userSchema.methods.encryptPassword = function(password){ return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null); 
+};
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

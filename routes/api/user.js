@@ -4,7 +4,6 @@ const db = require("../../models")
 var passport = require("../../config/passport");
 
 router.post("/login", passport.authenticate("local"), function(req, res) {
-    console.log("Logging in")
     res.json(req.user)
 });
 

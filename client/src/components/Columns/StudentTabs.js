@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './style.css';
 import StudentSearch from "../StudentSearch/StudentSearch";
 import StudentList from "../../data/students.json"
+import DateTab from "./DateTab";
 
 class StudentTabs extends Component {
   state = {
@@ -61,6 +62,7 @@ class StudentTabs extends Component {
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
       />
+      <DateTab className="date-tab"/>
     </ul>
   );
 }

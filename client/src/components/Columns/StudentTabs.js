@@ -1,8 +1,39 @@
-import React from "react";
+import React, { Component } from "react";
 import './style.css';
+import StudentSearch from "../StudentSearch/StudentSearch";
+import StudentList from "../../data/students.json"
 import DateTab from "./DateTab";
 
-function StudentTabs(props) {
+class StudentTabs extends Component {
+  state = {
+    result: [],
+    search: ""
+  };
+
+  componentDidMount() {
+    this.searchStudent();
+  }
+
+  searchStudent = () => {
+    const searchQuery = this.state.search.trim();
+    const searchResultsFirstName = StudentList.filter((student) => student.firstName === searchQuery);
+    this.setState({ 'result': searchResultsFirstName });
+  };
+
+  handleInputChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.searchStudent();
+  };
+
+  render (props) {
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item nav-student">
@@ -25,9 +56,16 @@ function StudentTabs(props) {
         Student 4
         </a>
       </li>
+      <StudentSearch 
+          search={this.state.search}
+          value={this.state.search}
+          handleInputChange={this.handleInputChange}
+          handleFormSubmit={this.handleFormSubmit}
+      />
       <DateTab className="date-tab"/>
     </ul>
   );
+}
 }
 
 export default StudentTabs;

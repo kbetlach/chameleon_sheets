@@ -15,6 +15,10 @@ export default {
   getUser: function(id) {
     return axios.get("/api/user/" + id);
   },
+  // Gets the user information for currently logged in user
+  getSelf: function() {
+    return axios.get("/api/user/self");
+  },
   // Deletes the user with the given id
   deleteUser: function(id) {
     return axios.delete("/api/user/" + id);

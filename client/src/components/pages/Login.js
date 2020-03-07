@@ -8,12 +8,13 @@ function Login() {
     const [password, setPassword] = useState();
 
     const handleSubmit = e => {
-
+        e.preventDefault();
+        console.log("here");
         API.login({
             email: email,
             password: password
           })
-         .then(window.location.redirect('/main'))
+         .then(console.log("logged in"))
          .catch(function(err){
               console.log(err)
           })
@@ -55,13 +56,13 @@ function Login() {
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form id="login">
+                                <form id="login" onSubmit={handleSubmit}>
                                     <div class="modal-body">
                                         <div class="form-group" style={{textAlign: "left", fontSize: "20px"}}>
                                             <label for="emailInput">Email Address</label>
                                             <input onChange={e => setEmail(e.target.value)} class="form-control" id="email-login" placeholder="Email" type="email"></input>
                                         </div>
-                                        <div class="form-group" onSubmit={handleSubmit} style={{textAlign: "left", fontSize: "20px"}}>
+                                        <div class="form-group" style={{textAlign: "left", fontSize: "20px"}}>
                                             <label for="passwordInput">Password</label>
                                             <input onChange={e => setPassword(e.target.value)}class="form-control" id="password-login" placeholder="Password" type="password"></input>
                                         </div>

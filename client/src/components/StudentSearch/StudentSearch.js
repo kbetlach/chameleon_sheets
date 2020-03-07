@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import StudentList from "../../data/students.json"
+// import StudentList from "../../data/students.json"
+import API from "../../utils/API"
 
 function StudentSearch(props) {
-
+    const StudentList = API.getStudents().then(res => {
+      console.log(res.data[0]._id)
+    })
     const results = StudentList.filter(student => 
         student.firstName.toLowerCase().includes(props.search.toLowerCase()) || student.lastName.toLowerCase().includes(props.search.toLowerCase()));
-   
     return (
           <li className="nav-item add-tab">
           <button className="add-button" type="button" data-target="#studentModal" data-toggle="modal">

@@ -24,6 +24,15 @@ function GridCol({startTime, index}){
         e.preventDefault();
         let lastClick = parseInt(e.currentTarget.dataset.value);
         let thisTime = e.currentTarget.dataset.time
+                let data = {
+                    date: today,
+                    // student: student.Id,
+                    score: [{
+                        time: thisTime,
+                        score: rating,
+                        // recordedBy: user.Id
+                    }]
+                }
         if (rating === lastClick) {
             setRating(0)
             // let data = {
@@ -38,18 +47,9 @@ function GridCol({startTime, index}){
             // axios.update("/api/dayLog", data);
         }
         else if (rating === 0) {
-            setRating(lastClick)
-            let data = {
-                date: today,
-                // student: student.Id,
-                score: [{
-                    time: thisTime,
-                    score: rating,
-                    // recordedBy: user.Id
-                }]
-            }
+            setRating(lastClick);
             API.createLog(data);
-            console.log(data)
+            console.log(data);
         }
         else {
             setRating(lastClick)

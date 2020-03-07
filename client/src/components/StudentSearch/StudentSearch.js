@@ -7,9 +7,8 @@ function StudentSearch(props) {
         student.firstName.toLowerCase().includes(props.search.toLowerCase()) || student.lastName.toLowerCase().includes(props.search.toLowerCase()));
    
     return (
-        <ul className="nav nav-tabs">
-          <li className="nav-item nav-student">
-          <button type="button" data-target="#studentModal" data-toggle="modal">
+          <li className="nav-item add-tab">
+          <button className="add-button" type="button" data-target="#studentModal" data-toggle="modal">
             +
           </button>
     
@@ -66,7 +65,6 @@ function StudentSearch(props) {
                    </div> 
               </div>
             </li>
-          </ul>
                   );
                     
                 }

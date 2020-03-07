@@ -28,7 +28,7 @@ function Wrapper() {
                             index={index}
                         ></GridCol>
                     ))}
-                <Submit></Submit>
+                {/* <Submit></Submit> */}
             </div>
         </div>
     )

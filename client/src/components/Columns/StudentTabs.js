@@ -1,22 +1,29 @@
 import React, { Component } from "react";
 import './style.css';
 import StudentSearch from "../StudentSearch/StudentSearch";
-import StudentList from "../../data/students.json"
+// import StudentList from "../../data/students.json"
 import DateTab from "./DateTab";
+import API from "../../utils/API"
 
 class StudentTabs extends Component {
   state = {
     result: [],
-    search: ""
+    search: "",
+    studentList: []
   };
 
   componentDidMount() {
-    this.searchStudent();
+    API.getStudents().then(res => {
+      this.setState({ 'studentList' : res.data})
+      this.searchStudent();
+      // console.log(StudentList)
+    })
+    // this.searchStudent();
   }
 
   searchStudent = () => {
     const searchQuery = this.state.search.trim();
-    const searchResultsFirstName = StudentList.filter((student) => student.firstName === searchQuery);
+    const searchResultsFirstName = this.state.studentList.filter((student) => student.name.firstName === searchQuery);
     this.setState({ 'result': searchResultsFirstName });
   };
 
@@ -61,6 +68,7 @@ class StudentTabs extends Component {
           value={this.state.search}
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
+          StudentList={this.state.studentList}
       />
       <DateTab className="date-tab"/>
     </ul>

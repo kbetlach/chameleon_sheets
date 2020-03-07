@@ -36,23 +36,28 @@ router.route('/')
     })
 
     .post((req, res) => {
-
+console.log(req.body)
         let log = {
             date: req.body.date,
             student: req.body.student,
             scores: [{
-                time: req.body.scores[0].time,
                 score: req.body.score[0],
-                recodedBy: req.body.scores[0]
             }]
         }
-        db.findOne({ date: log.date, student: log.student }).then(results => {
+        db.Log.findOne({ date: log.date, student: log.student }).then(results => {
             if (results) {
                 db.Log.findOneAndUpdate({ _id: results._id }, { $push: { scores: log.scores } })
                     .then(results => {
                         console.log("Line 53 ", results)
                         res.json(results);
                     })
+            } else {
+                db.Log.create(req.body).then(results =>{
+                    
+                    console.log(results, "( dayLog == line : 57 )");
+                    res.json(results)
+
+                })
             }
         })
     })

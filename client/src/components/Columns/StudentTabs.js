@@ -9,15 +9,16 @@ class StudentTabs extends Component {
   state = {
     result: [],
     search: "",
-    studentList: []
+    studentList: [],
+    currentStudents: [],
+    activeStudent: ""
   };
 
   componentWillMount() {
     API.getStudents().then(res => {
       this.setState({ 'studentList' : res.data})
       this.searchStudent();
-    })
-    // this.searchStudent();
+    });
   }
 
   searchStudent = () => {
@@ -38,6 +39,15 @@ class StudentTabs extends Component {
     event.preventDefault();
     this.searchStudent();
   };
+
+  handleStudentSelect = event => {
+    event.preventDefault();
+    this.setState({
+
+      activeStudent: event.currentTarget.dataset.value
+    })
+    console.log(event.currentTarget.dataset.value)
+  }
 
   render (props) {
   return (
@@ -68,6 +78,7 @@ class StudentTabs extends Component {
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
           StudentList={this.state.studentList}
+          activeStudentChange={this.handleStudentSelect}
       />
       <DateTab className="date-tab"/>
     </ul>

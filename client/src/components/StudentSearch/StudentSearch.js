@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from "react";
 
 function StudentSearch(props) {
-
+console.log(props.StudentList)
   useEffect(() => {
     console.log(props.StudentList, "Student Search on line 14")
   }, [props.StudentList])
@@ -47,7 +47,7 @@ function StudentSearch(props) {
                     <ul className="list-group">
 
                       {results.map(result => (
-                        <li className="list-group-item" key={result.id} data-value={result.id} onClick={props.activeStudentChange}>
+                        <li className="list-group-item" key={result._id} dataValue={result._id} onClick={props.activeStudentChange}>
                           <div className="row">
                             <div className="col-md-12"><b>{result.name.firstName}</b> <b>{result.name.lastName}</b></div>
                           </div>

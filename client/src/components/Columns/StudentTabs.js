@@ -12,11 +12,10 @@ class StudentTabs extends Component {
     studentList: []
   };
 
-  componentDidMount() {
+  componentWillMount() {
     API.getStudents().then(res => {
       this.setState({ 'studentList' : res.data})
       this.searchStudent();
-      // console.log(StudentList)
     })
     // this.searchStudent();
   }

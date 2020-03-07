@@ -7,14 +7,19 @@ import API from "../../utils/API";
 
 function StudentSearch(props) {
 
-  useEffect(() => {
-    console.log(props.studentList)
-  }, [props.studentList])
-  API.getStudents().then(res => {
-    console.log(res.data[0]._id)
-  })
 
-  let results = ''
+console.log(props.studentList)
+
+  useEffect(() => {
+    console.log(props.StudentList, "Student Search on line 14")
+  }, [props.StudentList])
+
+
+  // API.getStudents().then(res => {
+  //   console.log(res.data[0]._id)
+  // })
+
+  let results = props.StudentList
   // const results = StudentList.filter(student =>
   //   student.firstName.toLowerCase().includes(props.search.toLowerCase()) || student.lastName.toLowerCase().includes(props.search.toLowerCase()));
 
@@ -59,7 +64,7 @@ function StudentSearch(props) {
                       {results.map(result => (
                         <li className="list-group-item" key={result.id}>
                           <div className="row">
-                            <div className="col-md-12"><b>{result.firstName}</b> <b>{result.lastName}</b></div>
+                            <div className="col-md-12"><b>{result.name.firstName}</b> <b>{result.name.lastName}</b></div>
                           </div>
                         </li>
                       ))}

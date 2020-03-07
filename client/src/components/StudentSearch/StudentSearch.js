@@ -19,9 +19,9 @@ console.log(props.studentList)
   //   console.log(res.data[0]._id)
   // })
 
-  let results = props.StudentList
-  // const results = StudentList.filter(student =>
-  //   student.firstName.toLowerCase().includes(props.search.toLowerCase()) || student.lastName.toLowerCase().includes(props.search.toLowerCase()));
+  // let results = props.StudentList
+  const results = props.StudentList.filter(student =>
+    student.name.firstName.toLowerCase().includes(props.search.toLowerCase()));
 
 
   return (

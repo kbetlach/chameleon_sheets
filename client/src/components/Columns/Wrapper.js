@@ -1,6 +1,6 @@
 import React from "react";
 import GridCol from "./GridCol"
-import Submit from "./Submit"
+// import Submit from "./Submit"
 import TabWrapper from "./TabWrapper";
 import 'moment-timezone';
 import './style.css'

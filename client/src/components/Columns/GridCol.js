@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import './style.css'
@@ -14,6 +14,22 @@ function GridCol({startTime, index}){
     today = mm + dd + yyyy;
     let time = <Moment parse="HH:mm" format="h:mm" add={{ minutes: (15*index) }}>{startTime}</Moment>
     let tc = "tc";
+    let user = API.getSelf();
+
+
+    useEffect( () => {
+        let data = {
+            date: today,
+            student: "5e63e001df0b86228e5fc68f",
+            scores: [{
+                time: "tc0",
+                score: rating,
+                recordedBy: "5e63da3f1dcb5b1f1ec2bc81"
+            }]
+        }
+        API.createLog(data)
+        console.log(rating + data)
+    },[rating])
     //today shows up as 03072020
     // let user = API.getUser("5e63da3f1dcb5b1f1ec2bc81")
 
@@ -24,47 +40,25 @@ function GridCol({startTime, index}){
         e.preventDefault();
         let lastClick = parseInt(e.currentTarget.dataset.value);
         let thisTime = e.currentTarget.dataset.time
-                let data = {
-                    date: today,
-                    // student: student.Id,
-                    score: [{
-                        time: thisTime,
-                        score: rating,
-                        // recordedBy: user.Id
-                    }]
-                }
+                // let data = {
+                //     date: today,
+                //     // student: student.Id,
+                //     scores: [{
+                //         time: thisTime,
+                //         score: rating,
+                //         // recordedBy: user.Id
+                //     }]
+                // }
+                // console.log(data);
         if (rating === lastClick) {
             setRating(0)
-            // let data = {
-            //     date: today,
-            //     student: student.Id,
-            //     score: [{
-            //         time: thisTime,
-            //         score: rating,
-            //         recordedBy: user.Id
-            //     }]
-            // }
-            // axios.update("/api/dayLog", data);
         }
         else if (rating === 0) {
-            setRating(lastClick);
-            API.createLog(data);
-            console.log(data);
+            setRating(lastClick)
         }
         else {
             setRating(lastClick)
-            // let data = {
-            //     date: today,
-            //     student: student.Id,
-            //     scores: [{
-            //         time: thisTime,
-            //         score: rating,
-            //         recordedBy: user.Id
-            //     }]
-            // }
-            // axios.update("/api/dayLog", data);
         }
-        console.log(e.currentTarget.dataset.time)
     }
     
 

@@ -1,10 +1,9 @@
 import React, { Component, useEffect } from "react";
 
 function StudentSearch(props) {
-console.log(props.StudentList)
-  useEffect(() => {
-    console.log(props.StudentList, "Student Search on line 14")
-  }, [props.StudentList])
+  // useEffect(() => {
+  //   console.log(props.StudentList, "Student Search on line 14")
+  // }, [props.StudentList])
 
   const results = props.StudentList.filter(student =>
     student.name.firstName.toLowerCase().includes(props.search.toLowerCase()) || student.name.lastName.toLowerCase().includes(props.search.toLowerCase()) );
@@ -15,7 +14,7 @@ console.log(props.StudentList)
         +
           </button>
 
-      <div aria-hidden="true" aria-labelledby="studentModalLabel" class="modal" id="studentModal" role="dialog" tabindex="-1">
+      <div aria-hidden="true" aria-labelledby="studentModalLabel" className="modal" id="studentModal" role="dialog" tabindex="-1">
 
         <div className="modal-dialog" role="document">
           <div className="modal-content">
@@ -47,7 +46,7 @@ console.log(props.StudentList)
                     <ul className="list-group">
 
                       {results.map(result => (
-                        <li className="list-group-item" key={result._id} dataValue={result._id} onClick={props.activeStudentChange}>
+                        <li className="list-group-item" key={result._id} data-value={result._id} onClick={props.activeStudentChange}>
                           <div className="row">
                             <div className="col-md-12"><b>{result.name.firstName}</b> <b>{result.name.lastName}</b></div>
                           </div>

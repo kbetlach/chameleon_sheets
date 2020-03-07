@@ -1,89 +1,84 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import './style.css';
 import StudentSearch from "../StudentSearch/StudentSearch";
 // import StudentList from "../../data/students.json"
 import DateTab from "./DateTab";
 import API from "../../utils/API"
 
-class StudentTabs extends Component {
-  state = {
-    result: [],
-    search: "",
-    studentList: [],
-    currentStudents: [],
-    activeStudent: ""
+function StudentTabs() {
+  const [result, setResult] = useState([]);
+  const [search, setSearch] = useState("");
+  const [studentList, setStudentList] = useState([]);
+  const [currentStudents, setCurrentStudents] = useState([]);
+  const [activeStudent, setActiveStudent] = useState("");
+
+  
+  API.getStudents().then(res => {
+    setStudentList(res.data)
+    return;
+    // searchStudent();
+  });
+  
+
+  function searchStudent() {
+    const searchQuery = search.trim();
+    const searchResultsFirstName = studentList.filter((student) => student.name.firstName === searchQuery);
+    setResult(searchResultsFirstName);
   };
 
-  componentWillMount() {
-    API.getStudents().then(res => {
-      this.setState({ 'studentList' : res.data})
-      this.searchStudent();
-    });
-  }
-
-  searchStudent = () => {
-    const searchQuery = this.state.search.trim();
-    const searchResultsFirstName = this.state.studentList.filter((student) => student.name.firstName === searchQuery);
-    this.setState({ 'result': searchResultsFirstName });
-  };
-
-  handleInputChange = event => {
+  function handleInputChange(event) {
     const value = event.target.value;
-    const name = event.target.name;
-    this.setState({
-      [name]: value
-    });
+    // const name = event.target.name;
+    setSearch(value);
   };
 
-  handleFormSubmit = event => {
+  // function handleFormSubmit(event) {
+  //   event.preventDefault();
+  //   searchStudent();
+  // };
+
+  function handleStudentSelect (event) {
     event.preventDefault();
-    this.searchStudent();
-  };
+    setActiveStudent(event.currentTarget.dataset.value);
+      // console.log("This state: " + activeStudent)
+      console.log("Dataset: " + event.currentTarget.dataset.value)
+      console.log(activeStudent)
+    }
 
-  handleStudentSelect = event => {
-    event.preventDefault();
-    this.setState({
-
-      activeStudent: event.currentTarget.dataset.value
-    })
-    console.log(event.currentTarget.dataset.value)
-  }
-
-  render (props) {
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item nav-student">
-        <a href="#" onClick={() => props.handlePageChange("")} className="nav-link">
+        <a href="#" className="nav-link">
           Student 1
         </a>
       </li>
       <li className="nav-item nav-student">
-        <a href="#" onClick={() => props.handlePageChange("")} className="nav-link">
+        <a href="#" className="nav-link">
         Student 2
         </a>
       </li>
       <li className="nav-item nav-student">
-        <a href="#" onClick={() => props.handlePageChange("")} className="nav-link">
+        <a href="#" className="nav-link">
         Student 3
         </a>
       </li>
       <li className="nav-item nav-student">
-        <a href="#" onClick={() => props.handlePageChange("")} className="nav-link">
+        <a href="#" className="nav-link">
         Student 4
         </a>
       </li>
       <StudentSearch 
-          search={this.state.search}
-          value={this.state.search}
-          handleInputChange={this.handleInputChange}
-          handleFormSubmit={this.handleFormSubmit}
-          StudentList={this.state.studentList}
-          activeStudentChange={this.handleStudentSelect}
+          search={search}
+          value={search}
+          handleInputChange={handleInputChange}
+          // handleFormSubmit={handleFormSubmit}
+          StudentList={studentList}
+          activeStudentChange={handleStudentSelect}
       />
       <DateTab className="date-tab"/>
     </ul>
   );
 }
-}
+
 
 export default StudentTabs;

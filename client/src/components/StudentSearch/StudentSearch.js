@@ -1,28 +1,13 @@
 import React, { Component, useEffect } from "react";
-// import StudentList from "../../data/students.json"
-import API from "../../utils/API";
-
-
-
 
 function StudentSearch(props) {
-
-
-console.log(props.studentList)
 
   useEffect(() => {
     console.log(props.StudentList, "Student Search on line 14")
   }, [props.StudentList])
 
-
-  // API.getStudents().then(res => {
-  //   console.log(res.data[0]._id)
-  // })
-
-  // let results = props.StudentList
   const results = props.StudentList.filter(student =>
-    student.name.firstName.toLowerCase().includes(props.search.toLowerCase()));
-
+    student.name.firstName.toLowerCase().includes(props.search.toLowerCase()) || student.name.lastName.toLowerCase().includes(props.search.toLowerCase()) );
 
   return (
     <li className="nav-item add-tab">

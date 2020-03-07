@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import './pages.css';
 import API from '../../utils/API';
+import { Redirect } from "react-router-dom";
 
 function Login() {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
-    const handleSubmit = e => {
+    const [user, setUser] = useState();
+    if (user) {
+        return <Redirect to={"/"} />
+      }
+    const handleSubmit = async e => {
         e.preventDefault();
         console.log("here");
-        API.login({
+        await API.login({
             email: email,
             password: password
           })
@@ -18,6 +22,7 @@ function Login() {
          .catch(function(err){
               console.log(err)
           })
+          setUser(API.getSelf())
     }
 
     return (

@@ -28,7 +28,6 @@ function Signup() {
         <div>
             <div className="container w3-container w3-center w3-animate-opacity">
                 <div className="jumbotron">
-                    </div>
                     <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>
                     <form id="login" onSubmit={handleSubmit}>
                         <h2 style={{color: "white"}}>Welcome to Chameleon Sheets. Please confirm your email and choose a password for access.</h2>

@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const path = require('path');
 const routes = require('./routes')
 require('dotenv').config();
+var session = require("express-session");
+var passport = require("./config/passport");
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -11,6 +13,11 @@ const port = process.env.PORT || 3001;
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+//Setting up session and passport
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

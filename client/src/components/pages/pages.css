@@ -6,7 +6,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background-image: url(../../assets/images/image7.jpg);
+    background-image: url(../../assets/images/image2.jpg);
     background-size: cover; 
     background-position: center;
 }
@@ -53,16 +53,4 @@ h1 {
 .modal{
     position: fixed;
     top: 75px; 
-}
-
-.nav-student {
-    color: white;
-    background-color: darkslategray;
-    /* padding: 5px; */
-    margin-bottom: 1px !important;
-    margin-right: 2px;
-    border-radius: 5px 5px 0 0;
-    font-size: 20px;
-    width: calc(100vw / 8.39);
-    text-align: center;
 }

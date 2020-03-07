@@ -4,6 +4,7 @@ const db = require("../../models")
 var passport = require("../../config/passport");
 
 router.post("/login", passport.authenticate("local"), function(req, res) {
+    console.log("logging in")
     res.json(req.user)
 });
 
@@ -31,13 +32,13 @@ router.get("/", function(req, res) {
     });
 });
 router.get("/self", function(req, res) {
-    db.User.find({id: req.user.id}).then(function(dbUsers) {
+    db.User.findOne({_id: req.user._id}).then(function(dbUsers) {
         console.log(dbUsers);
         res.json(dbUsers);
     });
 })
 router.get("/:id", function(req, res) {
-    db.User.find({id: req.params.id}).then(function(dbUsers) {
+    db.User.findOne({_id: req.params.id}).then(function(dbUsers) {
         res.json(dbUsers);
     });
 })
@@ -51,8 +52,8 @@ router.put("/update_password", function(req, res) {
         encryptedPassword = dbUser.encryptPassword(password)
 
         db.User.findOneAndUpdate({email: email}, {password: encryptedPassword})
-        .then(function() {
-            res.redirect(307, "/api/user/login");
+        .then(function(dbUser) {
+            res.json(dbUser);
         })
         .catch(function(err) {
             res.status(401).json(err);
@@ -74,19 +75,19 @@ router.put("/update_password", function(req, res) {
 // })
 router.put("/", function(req, res) {
     let updateUser = {
-        id: req.body.id,
+        id: req.body._id,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email,
         role: req.body.role,
         school: req.body.school
     }
-    db.User.findOneAndUpdate({id: req.body.id}, updateUser).then(function(result) {
+    db.User.findOneAndUpdate({_id: req.body.id}, updateUser).then(function(result) {
         return res.json(result);
     });
 })
 router.delete("/", function(req, res) {
-    db.User.deleteOne({id: req.body.id}, req.body).then(function(result) {
+    db.User.deleteOne({_id: req.body.id}, req.body).then(function(result) {
         return res.json(result);
     });
 })

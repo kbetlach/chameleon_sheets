@@ -14,21 +14,21 @@ function GridCol({startTime, index}){
     today = mm + dd + yyyy;
     let time = <Moment parse="HH:mm" format="h:mm" add={{ minutes: (15*index) }}>{startTime}</Moment>
     let tc = "tc";
-    let user = API.getSelf();
+    // let user = API.getSelf();
 
 
     useEffect( () => {
-        let data = {
-            date: today,
-            student: "5e63e001df0b86228e5fc68f",
-            scores: [{
-                time: "tc0",
-                score: rating,
-                recordedBy: "5e63da3f1dcb5b1f1ec2bc81"
-            }]
-        }
-        API.createLog(data)
-        console.log(rating + data)
+        // let data = {
+        //     date: today,
+        //     student: "5e63e001df0b86228e5fc68f",
+        //     scores: [{
+        //         time: "tc0",
+        //         score: rating,
+        //         recordedBy: "5e63da3f1dcb5b1f1ec2bc81"
+        //     }]
+        // }
+        // API.createLog(data)
+        console.log(rating)
     },[rating])
     //today shows up as 03072020
     // let user = API.getUser("5e63da3f1dcb5b1f1ec2bc81")

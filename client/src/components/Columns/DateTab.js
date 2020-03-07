@@ -8,7 +8,7 @@ function DateTab(){
     today = mm + '/' + dd;
 
     return (
-        <li className="nav-item nav-student date-tab">
+        <li className="nav-item date-tab">
             <a href="#" className="nav-link">
             {today}
             </a>

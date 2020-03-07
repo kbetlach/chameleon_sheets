@@ -1,37 +1,195 @@
+/* 
+This tells us that each table, table header, table row, and table data cell will have no additional spacing.
+All of the elements inside will be exactly the widths that we assign later (plus borders).
+*/
 table, th, tr, td {
 padding: 0;
 margin: 0;
 border-spacing: 0;
+text-align: center;
 }
 
-th {
-font-size: 1vw;
+/* 
+Tells the tables how to align. This is EXTREMELY important. 
+It will completely break if you remove this. 
+*/
+.floaTable {
+    display: inline-table
 }
 
+/* ON HANDLING BORDERS */
 table {
 border-left: none;
-text-align: center;
 border-bottom: 2px solid black;
 border-top: 2px solid black;
 }
 
-.floaTable {
-display: inline-table
-}
-
 td, th {
-border: 1px solid black;
+    border: 1px solid black;
 }
 
+table:first-of-type{
+    border-left: 2px solid black;
+}
+
+table:last-of-type{
+    border-right: 2px solid black;
+}
+
+/* Table background colors (by odds and evens) */
 table:nth-child(odd) {
 background-color: #eee;
-opacity: 1.1;
 }
 
 table:nth-child(even) {
 background-color: #fff;
 }
 
+/* Cell Widths and Heights */
+/* td currently commented out because it is fully addressed in media queries */
+/* td {
+    width: calc(100vw / 25.5);
+    height: calc(100vw / 25.5);
+    width: 40px;
+    height: 40px;
+} */
+
+th {
+    font-size: 1em;
+    text-size-adjust: 80%;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*
+This is the translucent white container for all of the tables and student tabs.
+Its width will automatically adjust to the table.
+*/
+.table-container {
+    background-color: rgb(238,238,238,.9);
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* The flexbox allows our grid to be vertically centered. */
+.flexbox {
+    position: absolute;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin-top: -76px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Nav Tabs and Student Tabs */
+.tab-wrapper {
+    height: 50px;
+}
+
+.nav-tabs { /* This represents the ul */
+    max-width: 1029px;
+    overflow: auto;
+    white-space: nowrap;
+    display: inline-block !important;
+    
+}
+
+.nav-student { /* This represents the li */
+    color: white;
+    background-color: #181d27;
+    border-radius: 5px 5px 0 0;
+    font-size: 20px;
+    width: 145px;
+    text-align: center;
+    margin: 1px !important;
+    display: inline-block;
+    transition: .3s;
+}
+
+.nav-student a:hover{
+    color:white;
+}
+
+.nav-student:hover, .nav-student:active {
+    background-color: darkslategray;
+}
+
+.date-tab {
+    background-color: #4d5359;
+    display: inline-block;
+    position: absolute;
+    width: 144px;
+    font-size: 20px;
+    color: white;
+    top: 10px;
+    right: 11px;
+    text-align: center;
+    margin: 1px !important;
+    border-radius: 0 5px 0 0;
+    transition: .3s
+}
+
+.date-tab a:hover {
+    border-radius: 0 5px 0 0;
+    color: white;
+}
+
+.date-tab:hover {
+    background-color: slategray;
+}
+
+.nav-link:hover{
+    border-color: transparent !important;
+}
+
+.add-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 48px !important;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    height: 47px;
+    text-align: center;
+}
+
+.add-tab {
+    width: 48px;
+    margin: 0;
+    padding: 0;
+    background-color: #4d5359;
+    border-radius: 5px 5px 5px 0;
+    margin: 1px !important;
+    display: inline-block;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.add-tab:hover {
+    background-color: slategray;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.nav-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+  /* Hide scrollbar for IE and Edge */
+.nav-tabs {
+    -ms-overflow-style: none;
+}
+
+.nav-student:first-of-type{
+    margin-left: 2px !important;
+}
+
+
+/* This is placeholder CSS for a button that we may never use */
 .sub-btn {
 border-radius: 2.5px;
 display: block;
@@ -39,94 +197,200 @@ margin: 0 auto;
 margin-top: 10px;
 }
 
-body {
-background-image: url("../../assets/images/image2.jpg");
-background-size: cover;
-}
-
-td {
-width: calc(100vw / 26) !important;
-height: calc(100vw / 26) !important;
-}
-
-th {
-font-size: 1em;
-text-size-adjust: 80%;
-max-width: calc(100vw / 26) !important;
-overflow: hidden;
-padding-top: 5px;
-padding-bottom: 5px;
-}
-
-.table-container {
-background-color: rgb(238,238,238,.9);
-/* opacity: .95; */
-margin: 0 auto !important;
-padding: 10px;
-border-radius: 10px;
-margin-top: -50px;
-}
-
-.flexbox {
-position: absolute;
-min-height: 100vh;
-min-width: 100vw;
-margin-top: -76px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-}
-
-table:last-of-type{
-border-right: 2px solid black;
-}
-
-table:first-of-type{
-border-left: 2px solid black;
-border-radius: 5px 0px 0px 5px;
-}
-
-button {
-    min-width: 60px;
-}
-
-ul .date-tab {
-    background-color: #777777;
-    display: block;
-    position: absolute;
-    right: 2vw;
-}
+/* MEDIA QUERIES BELOW */
 
 
-@media screen and (max-width: 1200px) {
-th {
-    font-size: .8em;
-}
+@media screen and (max-width:1247px){
+    td {
+        width: 38px;
+        height: 38px;
+    }
+    
+    th {
+        font-size: 1em;
+        text-size-adjust: 80%;
+        max-width: 38px;
+        overflow: hidden;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .nav-student {
+        width: 115px;
+        font-size: 16px;
+    }
+
+    .nav-link:first-of-type{
+        margin-left: 2px;
+    }
+
+    .add-button, .add-tab {
+        font-size: 16px;
+        width: 40px;
+        height: 41px;
+    }
+
+    .add-button {
+        margin-left: -4px;
+    }
+
+    .date-tab {
+        width: 114px;
+        font-size: 16px;
+    }
+
+    .tab-wrapper{
+        height: 44px;
+    }
 }
 
-@media screen and (max-width: 1000px) {
-th {
-    font-size: .7em;
-}
+@media screen and (max-width:1023px){
+    td {
+        width: 28px;
+        height: 28px;
+    }
+    
+    th {
+        font-size: .8em;
+        text-size-adjust: 80%;
+        max-width: 28px;
+        overflow: hidden;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .nav-student{
+        width: 114px;
+    }
+
+    .date-tab {
+        width: 113px;
+    }
 }
 
-@media screen and (max-width: 900px) {
-th {
-    font-size: .5em;
-}
+@media screen and (max-width:767px){
+    .flexbox {
+        position: relative;
+        top: 0;
+        overflow: auto;
+        margin: 0 !important;
+    }
+    .jumbotron {
+        width: auto;
+        margin: 0 auto !important;
+    }
+    .w3-center {
+        width: 100vw !important;
+    }
+    .main-header {
+        max-width: 100vw;
+    }
+    .table-container{
+        overflow: scroll;
+        white-space: nowrap;
+        width: 99vw;
+        display: block;
+        margin: 0 auto !important;
+        position: absolute;
+        top: 5px;
+    }
+    .nav-tabs{
+        width: auto;
+        overflow: scroll;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+    #chameleon{
+        font-size: 60px !important;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    td {
+        width: 38px;
+        height: 38px;
+    }
+    
+    th {
+        font-size: .8em;
+        /* text-size-adjust: 80%; */
+        max-width: 38px;
+        overflow: hidden;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .nav-student{
+        width: 145px;
+    }
+
+    .date-tab {
+        width: 144px;
+        position: initial;
+        display: inline-block;
+    }
+    .floaTable:last-of-type{
+        margin-right: 10px !important;
+    }
 }
 
-@media screen and (max-width: 600px) {
-th {
-    font-size: .5em;
-}
-table {
-    margin-top: 10px;
-}
-td {
-    width: calc(100vw / 13);
-    height: calc(100vw / 13);
-}
+@media screen and (max-width:500px){
+    .flexbox {
+        position: fixed;
+        top: 0;
+        margin: 0 !important;
+    }
+    .table-container{
+        overflow: scroll;
+        white-space: nowrap;
+        width: 99vw;
+        display: block;
+        margin: 0 auto !important;
+        position: initial;
+    }
 }
 
-/* YOU MADE A MESS, FIX THIS SHIT LATER */
+@media screen and (min-width:1248px){
+    td {
+        width: 48px;
+        height: 48px;
+    }
+    
+    th {
+        font-size: 1em;
+        text-size-adjust: 80%;
+        max-width: 48px;
+        overflow: hidden;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+@media screen and (min-width:1600px){
+    td {
+        width: 58px;
+        height: 58px;
+    }
+    
+    th {
+        font-size: 1em;
+        text-size-adjust: 80%;
+        max-width: 58px;
+        overflow: hidden;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .nav-student, .date-tab {
+        width: 175px;
+    }
+
+    .add-button, .add-tab {
+        width: 58px;
+        height: 47px;
+    }
+
+    .add-button {
+        margin-left: 5px;
+    }
+}

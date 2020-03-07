@@ -40,6 +40,12 @@ export default {
     return axios.post("/api/student/new", data);
   },
   findStudent: (data) => {
-    return axios.get("/api/dayLog/");
+    return axios.get("/api/dayLog/", data);
+  },
+  getStudents: () => {
+    return axios.get("/api/student/all");
+  },
+  createLog: (data) => {
+    return axios.post("/api/dayLog/", data)
   }
 };

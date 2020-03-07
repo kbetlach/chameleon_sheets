@@ -12,7 +12,6 @@ function StudentCard() {
   const handleSubmit = e => {
     e.preventDefault();
     API.createStudent({ firstName, lastName, hours, startTime });
-    API.findStudent();
   }
 
   return (

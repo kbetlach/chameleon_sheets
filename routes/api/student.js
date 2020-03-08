@@ -23,7 +23,7 @@ router.route("/new")
 router.route("/all")
     .get((req, res) => {
         db.Student.find({}).then(results => {
-            console.log(results)
+            // console.log(results)
             res.json(results)
         })
     })

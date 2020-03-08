@@ -36,7 +36,7 @@ router.route('/')
     })
 
     .post((req, res) => {
-console.log(req.body)
+// console.log(req.body)
         let log = {
             date: req.body.date,
             student: req.body.student,
@@ -48,13 +48,13 @@ console.log(req.body)
             if (results) {
                 db.Log.findOneAndUpdate({ _id: results._id }, { $push: { scores: log.scores } })
                     .then(results => {
-                        console.log("Line 53 ", results)
+                        // console.log("Line 53 ", results)
                         res.json(results);
                     })
             } else {
                 db.Log.create(req.body).then(results =>{
                     
-                    console.log(results, "( dayLog == line : 57 )");
+                    // console.log(results, "( dayLog == line : 57 )");
                     res.json(results)
 
                 })

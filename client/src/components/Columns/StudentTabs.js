@@ -11,14 +11,7 @@ function StudentTabs() {
   const [studentList, setStudentList] = useState([]);
   const [currentStudents, setCurrentStudents] = useState([]);
   const [activeStudent, setActiveStudent] = useState("");
-
-  
-  API.getStudents().then(res => {
-    setStudentList(res.data)
-    return;
-    // searchStudent();
-  });
-  
+  const [isLoading, setIsLoading] = useState(false);
 
   function searchStudent() {
     const searchQuery = search.trim();
@@ -37,13 +30,24 @@ function StudentTabs() {
   //   searchStudent();
   // };
 
-  function handleStudentSelect (event) {
+  function handleStudentSelect(event) {
     event.preventDefault();
     setActiveStudent(event.currentTarget.dataset.value);
-      // console.log("This state: " + activeStudent)
-      console.log("Dataset: " + event.currentTarget.dataset.value)
-      console.log(activeStudent)
+    console.log("This state: " + activeStudent)
+    console.log("Dataset: " + event.currentTarget.dataset.value)
+    console.log(activeStudent)
+  }
+
+  useEffect(() => {
+
+    async function fetchStudents() {
+      setIsLoading(true);
+        const studentFetch = await API.getStudents()
+        setStudentList(studentFetch.data);
     }
+    fetchStudents();
+    setIsLoading(false)
+  }, [])
 
   return (
     <ul className="nav nav-tabs">
@@ -54,28 +58,28 @@ function StudentTabs() {
       </li>
       <li className="nav-item nav-student">
         <a href="#" className="nav-link">
-        Student 2
+          Student 2
         </a>
       </li>
       <li className="nav-item nav-student">
         <a href="#" className="nav-link">
-        Student 3
+          Student 3
         </a>
       </li>
       <li className="nav-item nav-student">
         <a href="#" className="nav-link">
-        Student 4
+          Student 4
         </a>
       </li>
-      <StudentSearch 
-          search={search}
-          value={search}
-          handleInputChange={handleInputChange}
-          // handleFormSubmit={handleFormSubmit}
-          StudentList={studentList}
-          activeStudentChange={handleStudentSelect}
+      <StudentSearch
+        search={search}
+        value={search}
+        handleInputChange={handleInputChange}
+        // handleFormSubmit={handleFormSubmit}
+        StudentList={studentList}
+        activeStudentChange={handleStudentSelect}
       />
-      <DateTab className="date-tab"/>
+      <DateTab className="date-tab" />
     </ul>
   );
 }

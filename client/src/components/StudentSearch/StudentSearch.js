@@ -1,13 +1,13 @@
 import React, { Component, useEffect } from "react";
-
+// useEffect(() => {
+//   console.log(props.StudentList, "Student Search on line 14")
+// }, [props.StudentList])
 function StudentSearch(props) {
-  // useEffect(() => {
-  //   console.log(props.StudentList, "Student Search on line 14")
-  // }, [props.StudentList])
 
+console.log(props.StudentList)
   const results = props.StudentList.filter(student =>
     student.name.firstName.toLowerCase().includes(props.search.toLowerCase()) || student.name.lastName.toLowerCase().includes(props.search.toLowerCase()) );
-
+// console.log(results)
   return (
     <li className="nav-item add-tab">
       <button className="add-button" type="button" data-target="#studentModal" data-toggle="modal">

@@ -33,10 +33,12 @@ function StudentTabs() {
   function handleStudentSelect(event) {
     event.preventDefault();
     setActiveStudent(event.currentTarget.dataset.value);
-    console.log("This state: " + activeStudent)
     console.log("Dataset: " + event.currentTarget.dataset.value)
-    console.log(activeStudent)
   }
+
+  useEffect(() => {
+    console.log("This state: " + activeStudent)
+  }, [activeStudent])
 
   useEffect(() => {
 

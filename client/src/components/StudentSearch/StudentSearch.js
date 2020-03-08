@@ -43,10 +43,10 @@ console.log(props.StudentList)
                 </div>
                 <div className="form-group" style={{ textAlign: "center", fontSize: "20px", color: "darkslategray" }}>
                   {results.length > 0 ? (
-                    <ul className="list-group">
+                    <ul className="list-group student-selection-ul">
 
                       {results.map(result => (
-                        <li className="list-group-item" key={result._id} data-value={result._id} onClick={props.activeStudentChange}>
+                        <li className="list-group-item student-selection-li" key={result._id} data-value={result._id} onClick={props.activeStudentChange}>
                           <div className="row">
                             <div className="col-md-12"><b>{result.name.firstName}</b> <b>{result.name.lastName}</b></div>
                           </div>

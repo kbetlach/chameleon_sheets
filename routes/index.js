@@ -6,8 +6,10 @@ const apiRoutes = require("./api")
 
 router.use("/api", apiRoutes);
 
-router.use((req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+//This is returning an error in the terminal. The path doesn't exist.
+//Commented until fixed.
+// router.use((req, res) => {
+//     res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 module.exports = router;

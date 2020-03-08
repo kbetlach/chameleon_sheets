@@ -1,44 +1,44 @@
 import React, { useState, useEffect } from "react";
 import './style.css';
 import StudentSearch from "../StudentSearch/StudentSearch";
-// import StudentList from "../../data/students.json"
 import DateTab from "./DateTab";
 import API from "../../utils/API"
 
 function StudentTabs() {
-  const [result, setResult] = useState([]);
   const [search, setSearch] = useState("");
   const [studentList, setStudentList] = useState([]);
   const [currentStudents, setCurrentStudents] = useState([]);
   const [activeStudent, setActiveStudent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  function searchStudent() {
-    const searchQuery = search.trim();
-    const searchResultsFirstName = studentList.filter((student) => student.name.firstName === searchQuery);
-    setResult(searchResultsFirstName);
-  };
-
   function handleInputChange(event) {
     const value = event.target.value;
-    // const name = event.target.name;
     setSearch(value);
   };
-
-  // function handleFormSubmit(event) {
-  //   event.preventDefault();
-  //   searchStudent();
-  // };
 
   function handleStudentSelect(event) {
     event.preventDefault();
     setActiveStudent(event.currentTarget.dataset.value);
-    console.log("Dataset: " + event.currentTarget.dataset.value)
   }
 
   useEffect(() => {
-    console.log("This state: " + activeStudent)
+    async function fetchCurrent() {
+      setIsLoading(true);
+      const currentFetch = await API.findStudent(activeStudent)
+        let activeFirstName = currentFetch.data[0].name.firstName;
+        let activeId = currentFetch.data[0]._id;
+        let newCurrentStudent = { firstName: activeFirstName, id: activeId }
+        setCurrentStudents(currentStudents => [...currentStudents, newCurrentStudent]);
+    }
+      fetchCurrent();
+      setIsLoading(false)
   }, [activeStudent])
+
+
+  useEffect(() => {
+    console.log("===CURRENT===")
+    console.log(...currentStudents);
+  },[currentStudents])
 
   useEffect(() => {
 
@@ -53,7 +53,14 @@ function StudentTabs() {
 
   return (
     <ul className="nav nav-tabs">
-      <li className="nav-item nav-student">
+      {currentStudents.map(student => (
+        <li className="nav-item nav-student" key={student.id}>
+        <a href="#" className="nav-link">
+          {student.firstName}
+        </a>
+      </li>
+      ))}
+      {/* <li className="nav-item nav-student">
         <a href="#" className="nav-link">
           Student 1
         </a>
@@ -72,7 +79,7 @@ function StudentTabs() {
         <a href="#" className="nav-link">
           Student 4
         </a>
-      </li>
+      </li> */}
       <StudentSearch
         search={search}
         value={search}

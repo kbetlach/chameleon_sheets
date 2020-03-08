@@ -54,3 +54,8 @@ h1 {
     position: fixed;
     top: 75px; 
 }
+
+.student-selection-li:hover {
+    cursor: pointer;
+    background-color: #eee;
+}

@@ -14,6 +14,7 @@ function GridCol({startTime, index}){
     today = mm + dd + yyyy;
     let time = <Moment parse="HH:mm" format="h:mm" add={{ minutes: (15*index) }}>{startTime}</Moment>
     let tc = "tc";
+    
     // let user = API.getSelf();
 
 

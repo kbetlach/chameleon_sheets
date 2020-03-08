@@ -26,6 +26,12 @@ router.route("/all")
             // console.log(results)
             res.json(results)
         })
-    })
+    });
+
+router.get("/:id", function(req, res) {
+    db.Student.find({_id: req.params.id}).then(result => {
+        res.json(result);
+    });
+})
 
 module.exports = router;

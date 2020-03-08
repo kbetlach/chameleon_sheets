@@ -20,5 +20,11 @@ router.route("/new")
         });
     });
 
+router.route("/all")
+    .get((req, res) => {
+        db.Student.find({}).then(results => {
+            res.json(results)
+        })
+    })
 
 module.exports = router;

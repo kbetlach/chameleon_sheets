@@ -54,15 +54,3 @@ h1 {
     position: fixed;
     top: 75px; 
 }
-
-.nav-student {
-    color: white;
-    background-color: darkslategray;
-    /* padding: 5px; */
-    margin-bottom: 1px !important;
-    margin-right: 2px;
-    border-radius: 5px 5px 0 0;
-    font-size: 20px;
-    width: calc(100vw / 8.39);
-    text-align: center;
-}

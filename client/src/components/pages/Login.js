@@ -1,21 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './pages.css';
 import API from '../../utils/API';
+import { Redirect } from "react-router-dom";
+import AddUserButton from "../Buttons/AddUserButton/AddUser"
+import GridButton from "../Buttons/GridButton/GridButton"
+import HistoryButton from "../Buttons/HistoryButton/HistoryButton"
 
 function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const handleSubmit = e => {
+    const [user, setUser] = useState();
+    const [isAdmin, setIsAdmin] = useState();
+    async function checkYourself(){
+        let userPlaceholder = await API.getSelf();
+        if(userPlaceholder && (userPlaceholder.data.role === "Admin")){
+            setIsAdmin(true)
+        }
+        else{
+            setIsAdmin(false)
+        }
+        setUser(userPlaceholder.data);
+    }
+    useEffect(() => {
+        checkYourself();
+      },[])
+    const handleSubmit = async e => {
         e.preventDefault();
-        console.log("here");
-        API.login({
+        await API.login({
             email: email,
             password: password
-          })
-         .then(console.log("logged in"))
-         .catch(function(err){
-              console.log(err)
-          })
+        }).then(window.location.reload(false))
     }
     return (
         <div>
@@ -25,7 +39,29 @@ function Login() {
                         CHAMELEON SHEETS
                     </div>
                     <br/>
-                    <button type="button" data-target="#loginModal" data-toggle="modal"
+                    {(user && user.role) ?(<div> {(isAdmin) ? (
+                    <div className="row">
+                        <div className="col-md-4">
+                            <AddUserButton />
+                        </div>
+                        <div className="col-md-4">
+                            <GridButton />
+                        </div>
+                        <div className="col-md-4">
+                            <HistoryButton />
+                        </div>
+                    </div>
+                    ) : (
+                    <div className="row">
+                        <div className="col-md-6">
+                            <GridButton />
+                        </div>
+                        <div className="col-md-6">
+                            <HistoryButton />
+                        </div>
+                    </div>
+                    )} </div>) :(
+                    <div><button type="button" data-target="#loginModal" data-toggle="modal"
                         style={
                             {
                                 width: "150px",
@@ -69,6 +105,8 @@ function Login() {
                             </div>
                         </div>
                     </div>
+                    </div>)}
+                    
                 </div>
             </div>
         </div>

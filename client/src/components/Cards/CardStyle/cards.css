@@ -6,7 +6,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background-image: url(../../../assets/images/image7.jpg);
+    background-image: url(../../../assets/images/image2.jpg);
     background-size: cover; 
     background-position: center;
 }

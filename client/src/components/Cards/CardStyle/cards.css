@@ -38,3 +38,6 @@ body {
     color: white;
     opacity: 1;
 }
+.card{
+    height: 300px; 
+}

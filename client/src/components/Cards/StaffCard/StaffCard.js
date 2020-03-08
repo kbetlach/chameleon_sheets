@@ -8,14 +8,10 @@ function StaffCard() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    
-    // console.log("first name is " + firstName);
-    // console.log("last name is " + lastName);
-    // console.log("email is " + email);
 
     API.email({ firstName, lastName, email });
 
-      API.saveUser({
+    API.saveUser({
       role: "Teacher",
       email: email,
       first_name: firstName,
@@ -41,6 +37,9 @@ function StaffCard() {
           <li className="list-group-item">
             <input onChange={e => setEmail(e.target.value)} required="true" id="staffEmail" placeholder="Email" type="email">
             </input>
+          </li>
+          <li>
+            <br />
             <br />
             <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>
           </li>

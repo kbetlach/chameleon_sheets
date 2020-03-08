@@ -3,10 +3,8 @@ import './pages.css';
 import API from '../../utils/API';
 
 function Login() {
-
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
     const handleSubmit = e => {
         e.preventDefault();
         console.log("here");
@@ -19,7 +17,6 @@ function Login() {
               console.log(err)
           })
     }
-
     return (
         <div>
             <div className="container w3-container w3-center w3-animate-opacity">
@@ -28,7 +25,6 @@ function Login() {
                         CHAMELEON SHEETS
                     </div>
                     <br/>
-
                     <button type="button" data-target="#loginModal" data-toggle="modal"
                         style={
                             {
@@ -45,9 +41,7 @@ function Login() {
                     }>
                         Login
                     </button>
-
                     <div aria-hidden="true" aria-labelledby="loginModalLabel" class="modal fade" id="loginModal" role="dialog" tabindex="-1">
-
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header" style = {{backgroundColor: "darkslategray"}}>
@@ -80,5 +74,4 @@ function Login() {
         </div>
     )
 }
-
 export default Login;

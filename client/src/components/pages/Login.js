@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import AddUserButton from "../Buttons/AddUserButton/AddUser"
 import GridButton from "../Buttons/GridButton/GridButton"
 import HistoryButton from "../Buttons/HistoryButton/HistoryButton"
+import ViewAllUsersButton from "../Buttons/ViewAllUsersButton/ViewAllUsersButton"
 
 function Login() {
     const [email, setEmail] = useState();
@@ -41,13 +42,16 @@ function Login() {
                     <br/>
                     {(user && user.role) ?(<div> {(isAdmin) ? (
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-md-3">
                             <AddUserButton />
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-3">
+                            <ViewAllUsersButton />
+                        </div>
+                        <div className="col-md-3">
                             <GridButton />
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-3">
                             <HistoryButton />
                         </div>
                     </div>

@@ -1,8 +1,22 @@
 import React from "react";
 import toast from 'toasted-notes' 
 import 'toasted-notes/src/styles.css';
+import React, {useState} from "react";
 
 function StudentCard() {
+  const [firstName, setFirstName] = useState();
+  const [hours, setHours] = useState();
+  const [lastname, setLastName] = useState();
+  const [start, setStart] = useState();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(firstName);
+    console.log(lastname);
+    console.log(hours);
+    console.log(start);
+    document.getElementById("studentForm").reset();
+  }
 
   //toast.notify ("Student added successfully!");
 
@@ -11,22 +25,22 @@ function StudentCard() {
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
         Add Student
       </div>
-      <form>
+      <form id="studentForm" onSubmit={handleSubmit} type="submit">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <input placeholder="First Name">
+            <input onChange={e => setFirstName(e.target.value)} placeholder="First Name">
             </input>
           </li>
           <li className="list-group-item">
-            <input placeholder="Last Name">
+            <input onChange={e => setLastName(e.target.value)} placeholder="Last Name">
             </input>
           </li>
           <li className="list-group-item">
-            <input placeholder="Hours">
+            <input onChange={e => setHours(e.target.value)} placeholder="Hours">
             </input>
           </li>
           <li className="list-group-item">
-            <input placeholder="Start">
+            <input onChange={e => setStart(e.target.value)} placeholder="Start">
             </input>
             <br />
             <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>

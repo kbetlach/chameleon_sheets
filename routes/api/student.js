@@ -10,7 +10,6 @@ router.route("/new")
                 firstName: req.body.firstName,
                 lastName: req.body.lastName
             },
-            classRoom: req.body.classRoom,
             hours: req.body.hours,
             startTime: req.body.startTime,
             recordedBy: req.body.user
@@ -18,8 +17,21 @@ router.route("/new")
 
         db.Student.create(student).then(newStudent =>{
             res.json(newStudent);
-        })
-    })
+        });
+    });
 
+router.route("/all")
+    .get((req, res) => {
+        db.Student.find({}).then(results => {
+            // console.log(results)
+            res.json(results)
+        })
+    });
+
+router.get("/:id", function(req, res) {
+    db.Student.find({_id: req.params.id}).then(result => {
+        res.json(result);
+    });
+})
 
 module.exports = router;

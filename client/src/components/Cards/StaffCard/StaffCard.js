@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import axios from 'axios';
 import API from "../../../utils/API";
 import toast from 'toasted-notes' 
 import 'toasted-notes/src/styles.css';
 
 function StaffCard() {
 
-  const [firstName, setFirstname] = useState();
   const [firstName, setFirstName] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();

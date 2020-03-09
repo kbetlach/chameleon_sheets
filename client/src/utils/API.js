@@ -38,5 +38,14 @@ export default {
   },
   createStudent: (data) => {
     return axios.post("/api/student/new", data);
+  },
+  findStudent: (id) => {
+    return axios.get("/api/student/" + id);
+  },
+  getStudents: () => {
+    return axios.get("/api/student/all");
+  },
+  createLog: (data) => {
+    return axios.post("/api/dayLog/", data)
   }
 };

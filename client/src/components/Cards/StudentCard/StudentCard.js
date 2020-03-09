@@ -1,24 +1,27 @@
-import React from "react";
 import toast from 'toasted-notes' 
 import 'toasted-notes/src/styles.css';
 import React, {useState} from "react";
+import API from "../../../utils/API"
 
 function StudentCard() {
   const [firstName, setFirstName] = useState();
   const [hours, setHours] = useState();
-  const [lastname, setLastName] = useState();
+  const [lastName, setLastName] = useState();
   const [start, setStart] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(firstName);
-    console.log(lastname);
-    console.log(hours);
-    console.log(start);
+
+    API.createStudent({ firstName, lastName, hours, start });
+    // console.log(firstName);
+    // console.log(lastname);
+    // console.log(hours);
+    // console.log(start); 
+    toast.notify ("Student added successfully!");
     document.getElementById("studentForm").reset();
   }
 
-  //toast.notify ("Student added successfully!");
+
 
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>

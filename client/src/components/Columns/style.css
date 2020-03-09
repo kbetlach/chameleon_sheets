@@ -91,7 +91,7 @@ Its width will automatically adjust to the table.
 }
 
 .nav-tabs { /* This represents the ul */
-    max-width: 1029px;
+    max-width: 1030px;
     overflow: auto;
     white-space: nowrap;
     display: inline-block !important;
@@ -144,6 +144,15 @@ Its width will automatically adjust to the table.
 
 .nav-link:hover{
     border-color: transparent !important;
+}
+
+.nav-tabs:focus, .nav-link:focus {
+    border: 1px solid darkslategray !important;
+}
+
+.add-button:focus {
+    border: none !important;
+    outline: none !important;
 }
 
 .add-button {
@@ -215,6 +224,10 @@ margin-top: 10px;
         padding-bottom: 5px;
     }
 
+    .nav-tabs {
+        max-width: 823px;
+    }
+
     .nav-student {
         width: 115px;
         font-size: 16px;
@@ -257,6 +270,10 @@ margin-top: 10px;
         overflow: hidden;
         padding-top: 5px;
         padding-bottom: 5px;
+    }
+
+    .nav-tabs {
+        max-width: 584px;
     }
 
     .nav-student{
@@ -348,6 +365,12 @@ margin-top: 10px;
         margin: 0 auto !important;
         position: initial;
     }
+    .modal-backdrop {
+        display: none !important;
+    }
+    .nav-tabs{
+        max-width: 936px;
+    }
 }
 
 @media screen and (min-width:1248px){
@@ -379,6 +402,10 @@ margin-top: 10px;
         overflow: hidden;
         padding-top: 5px;
         padding-bottom: 5px;
+    }
+
+    .nav-tabs {
+        max-width: 1239px;
     }
 
     .nav-student, .date-tab {

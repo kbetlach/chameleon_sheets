@@ -5,7 +5,6 @@ import 'toasted-notes/src/styles.css';
 
 function StaffCard() {
 
-  const [firstName, setFirstname] = useState();
   const [firstName, setFirstName] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();

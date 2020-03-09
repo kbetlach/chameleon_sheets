@@ -31,12 +31,6 @@ function GuardianCard() {
     document.getElementById("guardianForm").reset();
 
   }
-  function clearInput(e) {
-    e.preventDefault()
-    this.firstName.value = ""
-    this.lastName.value = ""
-    this.email.value = ""
-  }
 
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>

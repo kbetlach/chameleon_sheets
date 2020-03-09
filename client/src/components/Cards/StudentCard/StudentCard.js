@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import API from "../../../utils/API";
-
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
+import React, {useState} from "react";
 
 function StudentCard() {
   const [firstName, setFirstName] = useState();
@@ -15,9 +15,12 @@ function StudentCard() {
     // console.log(firstName);
     // console.log(lastname);
     // console.log(hours);
-    // console.log(start);
+    // console.log(start); 
+    toast.notify ("Student added successfully!");
     document.getElementById("studentForm").reset();
   }
+
+
 
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>

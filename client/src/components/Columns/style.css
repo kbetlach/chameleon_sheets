@@ -146,6 +146,15 @@ Its width will automatically adjust to the table.
     border-color: transparent !important;
 }
 
+.nav-tabs:focus, .nav-link:focus {
+    border: 1px solid darkslategray !important;
+}
+
+.add-button:focus {
+    border: none !important;
+    outline: none !important;
+}
+
 .add-button {
     background-color: transparent;
     border: none;

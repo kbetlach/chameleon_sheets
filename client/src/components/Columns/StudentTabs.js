@@ -9,6 +9,7 @@ function StudentTabs() {
   const [studentList, setStudentList] = useState([]);
   const [currentStudents, setCurrentStudents] = useState([]);
   const [activeStudent, setActiveStudent] = useState("");
+  const [activeTab, setActiveTab] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function handleInputChange(event) {
@@ -19,6 +20,12 @@ function StudentTabs() {
   function handleStudentSelect(event) {
     event.preventDefault();
     setActiveStudent(event.currentTarget.dataset.value);
+  }
+
+  function handleTabClick(event) {
+    event.preventDefault();
+    setActiveTab(event.currentTarget.dataset.studentid);
+    console.log("studentId: " + event.currentTarget.dataset.studentid)
   }
 
   useEffect(() => {
@@ -54,7 +61,13 @@ function StudentTabs() {
   return (
     <ul className="nav nav-tabs">
       {currentStudents.map(student => (
-        <li className="nav-item nav-student" key={student.id}>
+        <li 
+          className="nav-item nav-student" 
+          key={student.id} 
+          data-studentid={student.id}
+          onClick={handleTabClick}
+          style={{backgroundColor: activeTab === student.id ? "darkslategray" : "#181d27"}}
+          >
         <a href="#" className="nav-link">
           {student.firstName}
         </a>

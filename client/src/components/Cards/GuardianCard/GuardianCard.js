@@ -25,9 +25,6 @@ function GuardianCard() {
       last_name: lastName,
       //school: req.user.school,
     })
-    setFirstname("");
-    setLastName("");
-    setEmail("");
     document.getElementById("guardianForm").reset();
 
   }

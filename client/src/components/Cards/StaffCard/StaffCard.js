@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import API from "../../../utils/API";
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 
 function StaffCard() {
+
   const [firstName, setFirstname] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    toast.notify ("Staff added successfully!");
 
     API.email({ firstName, lastName, email });
 
@@ -20,7 +25,9 @@ function StaffCard() {
       school: "req.user.school,"
     })
   }
+  
   return (
+
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
         Add Staff

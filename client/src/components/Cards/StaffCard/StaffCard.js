@@ -3,7 +3,7 @@ import axios from 'axios';
 import API from "../../../utils/API";
 
 function StaffCard() {
-  const [firstName, setFirstname] = useState();
+  const [firstName, setFirstName] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();
 
@@ -19,6 +19,7 @@ function StaffCard() {
       last_name: lastName,
       school: "req.user.school,"
     })
+    document.getElementById("staffForm").reset();
   }
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
@@ -28,7 +29,7 @@ function StaffCard() {
       <form id="staffForm" onSubmit={handleSubmit} type="submit">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <input onChange={e => setFirstname(e.target.value)} id="staffFirstName" required="true" placeholder="First Name">
+            <input onChange={e => setFirstName(e.target.value)} id="staffFirstName" required="true" placeholder="First Name">
             </input>
           </li>
           <li className="list-group-item">

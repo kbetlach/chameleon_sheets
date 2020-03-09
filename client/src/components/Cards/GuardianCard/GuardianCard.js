@@ -25,17 +25,8 @@ function GuardianCard() {
       last_name: lastName,
       //school: req.user.school,
     })
-    setFirstname("");
-    setLastName("");
-    setEmail("");
     document.getElementById("guardianForm").reset();
 
-  }
-  function clearInput(e) {
-    e.preventDefault()
-    this.firstName.value = ""
-    this.lastName.value = ""
-    this.email.value = ""
   }
 
   return (

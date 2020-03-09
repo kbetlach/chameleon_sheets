@@ -1,3 +1,6 @@
+import React from "react";
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 import React, {useState} from "react";
 
 function StudentCard() {
@@ -14,6 +17,8 @@ function StudentCard() {
     console.log(start);
     document.getElementById("studentForm").reset();
   }
+
+  //toast.notify ("Student added successfully!");
 
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>

@@ -5,26 +5,18 @@ import API from "../../../utils/API";
 function StudentCard() {
   const [firstName, setFirstName] = useState();
   const [hours, setHours] = useState();
-  const [lastname, setLastName] = useState();
+  const [lastName, setLastName] = useState();
   const [start, setStart] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(firstName);
-    console.log(lastname);
-    console.log(hours);
-    console.log(start);
+
+    API.createStudent({ firstName, lastName, hours, start });
+    // console.log(firstName);
+    // console.log(lastname);
+    // console.log(hours);
+    // console.log(start);
     document.getElementById("studentForm").reset();
-  }
-
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [startTime, setStartTime] = useState();
-  const [hours, setHours] = useState();
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    API.createStudent({ firstName, lastName, hours, startTime });
   }
 
   return (
@@ -47,7 +39,7 @@ function StudentCard() {
             </input>
           </li>
           <li className="list-group-item">
-            <input onChange={e => setStartTime(e.target.value)} placeholder="Start">
+            <input onChange={e => setStart(e.target.value)} placeholder="Start">
             </input>
             <br />
             <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>

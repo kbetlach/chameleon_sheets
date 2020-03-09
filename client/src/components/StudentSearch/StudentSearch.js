@@ -1,7 +1,5 @@
 import React, { Component, useEffect } from "react";
-// useEffect(() => {
-//   console.log(props.StudentList, "Student Search on line 14")
-// }, [props.StudentList])
+
 function StudentSearch(props) {
 
 console.log(props.StudentList)

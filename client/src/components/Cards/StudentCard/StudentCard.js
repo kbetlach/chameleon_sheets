@@ -3,6 +3,19 @@ import API from "../../../utils/API";
 
 
 function StudentCard() {
+  const [firstName, setFirstName] = useState();
+  const [hours, setHours] = useState();
+  const [lastname, setLastName] = useState();
+  const [start, setStart] = useState();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(firstName);
+    console.log(lastname);
+    console.log(hours);
+    console.log(start);
+    document.getElementById("studentForm").reset();
+  }
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();

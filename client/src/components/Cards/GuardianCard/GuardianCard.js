@@ -2,36 +2,39 @@ import React, { useState } from "react";
 import axios from 'axios';
 import API from "../../../utils/API";
 import "../CardStyle/cards.css";
+import StudentList from "../../../data/students.json";
 
 function GuardianCard() {
+
   const [firstName, setFirstname] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();
 
+  const results = StudentList.filter(student =>
+    student.firstName && student.lastName);
+
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("first name is " + firstName);
-    console.log("last name is " + lastName);
-    console.log("email is " + email);
-    axios.post("/sendEmail", { firstName, lastName, email })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-      API.saveUser({
+
+    API.email({ firstName, lastName, email });
+    console.log(firstName);
+    API.saveUser({
       role: "Guardian",
       email: email,
       first_name: firstName,
       last_name: lastName,
       //school: req.user.school,
     })
+    document.getElementById("guardianForm").reset();
+
   }
+
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
         Add Guardian
       </div>
-      <form id="guardianForm" onSubmit={handleSubmit} type="submit">
+      <form  id="guardianForm" onSubmit={handleSubmit}  type="submit">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             <input onChange={e => setFirstname(e.target.value)} id="guardianFirstName" required="true" placeholder="First Name">
@@ -44,11 +47,22 @@ function GuardianCard() {
           <li className="list-group-item">
             <input onChange={e => setEmail(e.target.value)} required="true" id="guardianEmail" placeholder="Email" type="email">
             </input>
+          </li>
+          <li className="list-group-item">
+            <label for="students">Select a student: </label>
+            <select id="students" style={{ backgroundColor: "white", color: "darkslategray", borderRadius: "6px", border: ".5px solid darkslategray", marginLeft: "5px" }}>
+              {results.map(result => (
+                <option>
+                  {result.firstName} {result.lastName}
+                </option>
+              ))
+              }
+            </select>
             <br />
             <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>
           </li>
         </ul>
-      </form>
+      </form >
     </div>
   )
 }

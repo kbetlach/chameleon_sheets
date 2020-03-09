@@ -2,26 +2,23 @@ import React, { useState } from "react";
 import API from "../../../utils/API";
 
 function StaffCard() {
-  const [firstName, setFirstname] = useState();
+  const [firstName, setFirstName] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
-    
-    // console.log("first name is " + firstName);
-    // console.log("last name is " + lastName);
-    // console.log("email is " + email);
 
     API.email({ firstName, lastName, email });
 
-      API.saveUser({
+    API.saveUser({
       role: "Teacher",
       email: email,
       first_name: firstName,
       last_name: lastName,
       school: "req.user.school,"
     })
+    document.getElementById("staffForm").reset();
   }
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
@@ -31,7 +28,7 @@ function StaffCard() {
       <form id="staffForm" onSubmit={handleSubmit} type="submit">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <input onChange={e => setFirstname(e.target.value)} id="staffFirstName" required="true" placeholder="First Name">
+            <input onChange={e => setFirstName(e.target.value)} id="staffFirstName" required="true" placeholder="First Name">
             </input>
           </li>
           <li className="list-group-item">
@@ -41,6 +38,9 @@ function StaffCard() {
           <li className="list-group-item">
             <input onChange={e => setEmail(e.target.value)} required="true" id="staffEmail" placeholder="Email" type="email">
             </input>
+          </li>
+          <li>
+            <br />
             <br />
             <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>
           </li>

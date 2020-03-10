@@ -45,7 +45,7 @@ router.route("/teacherAddStudent")
 .post((req, res) => {
   
     console.log(req.body, req.user._id, "here")
-    db.User.findOneAndUpdate({_id: req.user._id}, {$push: {students: [req.body.userStudents]}})
+    db.User.findOneAndUpdate({_id: req.user._id}, {$push: {students: req.body.userStudents}})
     .then(results=> {
         console.log(results)
         res.json(results);

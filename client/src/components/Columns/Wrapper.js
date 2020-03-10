@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import GridCol from "./GridCol"
+import GridColGuardian from "./GridColGuardian"
 import Submit from "./Submit"
 import TabWrapper from "./TabWrapper";
 import 'moment-timezone';
 import './style.css'
+import API from '../../utils/API';
 
 
 function Wrapper() {
-
+    const [user, setUser] = useState();
+    const [isGuardian, setIsGuardian] = useState();
+    async function checkYourself(){
+        let userPlaceholder = await API.getSelf();
+        if(userPlaceholder && (userPlaceholder.data.role === "Guardian")){
+            setIsGuardian(true)
+        }
+        else{
+            setIsGuardian(false)
+        }
+        setUser(userPlaceholder.data);
+    }
+    useEffect(() => {
+        checkYourself();
+      },[])
     const hours = 6; //This will eventually be user generated
     const columns = (hours * 4); //This MAY eventually be user generated
     const startTime = '08:00'; //This will eventually be user-generated
@@ -19,17 +35,23 @@ function Wrapper() {
     
     return(
         <div class="flexbox">
-            <div class="table-container">
+            {(user && user.role) ?(<div> {(isGuardian) ? (<div class="table-container">
                 <TabWrapper />
                     {columnArray.map((column, index) => (
-                        <GridCol 
+                        <GridColGuardian 
                             key={column}
                             startTime={startTime}
                             index={index}
-                        ></GridCol>
-                    ))}
-                {/* <Submit></Submit> */}
-            </div>
+                        ></GridColGuardian>
+                    ))} </div>):(<div class="table-container">
+                    <TabWrapper />
+                        {columnArray.map((column, index) => (
+                            <GridCol 
+                                key={column}
+                                startTime={startTime}
+                                index={index}
+                            ></GridCol>
+                        ))} </div>)}</div>):(<div class="table-container">You Must Log In To View This Page</div>)}
         </div>
     )
 }

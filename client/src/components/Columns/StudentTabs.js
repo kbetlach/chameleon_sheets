@@ -29,6 +29,12 @@ function StudentTabs(props) {
     console.log("studentId: " + event.currentTarget.dataset.studentid)
   }
 
+  function removeStudentTab(event){
+    event.preventDefault();
+    API.removeStudentTab(event.currentTarget.dataset.studentid)
+    console.log(event.currentTarget.dataset.studentid + " removed from user collection.")
+  }
+
   useEffect(() => {
 
     let obj = {
@@ -127,6 +133,7 @@ function StudentTabs(props) {
           <a href="#" className="nav-link">
             {student.firstName}
           </a>
+          <i class="fas fa-times removeStudent" onClick={removeStudentTab} data-studentid={student.id}></i>
         </li>
       ))}
 

@@ -46,7 +46,10 @@ function GridCol({startTime, index, studentId}){
         e.preventDefault();
         let lastClick = parseInt(e.currentTarget.dataset.value);
         setTimeCode(e.currentTarget.dataset.time)
-        if (rating === lastClick) {
+        if (!studentId) {
+            console.log("Please add a student to begin entering data.")
+        }
+        else if (rating === lastClick) {
             setRating(0)
         }
         else if (rating === 6) {

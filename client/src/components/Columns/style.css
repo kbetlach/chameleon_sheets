@@ -95,7 +95,6 @@ Its width will automatically adjust to the table.
     overflow: auto;
     white-space: nowrap;
     display: inline-block !important;
-    
 }
 
 .nav-student { /* This represents the li */
@@ -108,7 +107,26 @@ Its width will automatically adjust to the table.
     margin: 1px !important;
     display: inline-block;
     transition: .3s;
+    position: relative;
 }
+
+.fa-times{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: slategray;
+    z-index: 999;
+    font-size: .7em;
+}
+
+.fa-times:hover{
+    color: white;
+    cursor: pointer;
+}
+
+/* .fa-times:hover{
+    visibility: visible !important;
+} */
 
 .nav-student a:hover{
     color:white;

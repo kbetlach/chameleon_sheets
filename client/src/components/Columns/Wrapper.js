@@ -33,8 +33,8 @@ function Wrapper() {
     }
     
     return(
-        <div class="flexbox">
-            {(user && user.role) ?(<div> {(isGuardian) ? (<div class="table-container">
+        <div>
+            {(user && user.role) ?(<div class="flexbox"> {(isGuardian) ? (<div class="table-container">
                 <TabWrapper />
                     {columnArray.map((column, index) => (
                         <GridColGuardian 

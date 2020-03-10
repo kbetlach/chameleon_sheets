@@ -15,6 +15,12 @@ export default {
   getUser: function(id) {
     return axios.get("/api/user/" + id);
   },
+  getTeachers: function() {
+    return axios.get("/api/user/teacher");
+  },
+  getGuardians: function() {
+    return axios.get("/api/user/guardian");
+  },
   // Gets the user information for currently logged in user
   getSelf: function() {
     return axios.get("/api/user/self");

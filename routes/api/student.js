@@ -50,6 +50,20 @@ router.route("/teacherAddStudent")
         console.log(results)
         res.json(results);
     }).catch(err => {console.log(err)})
-})
+});
+
+
+router.route("/getUserStudents")
+.get((req, res) => {
+    console.log(req.user._id, "hhhhhhhhhhhhhhhhhhhhh");
+    res.end();
+    // db.User.findOne({_id: req.user._id})
+    //     .then(response => {
+    //         res.json(response)
+    //     })
+    //     .catch(err => { console.log(err, "This errrrrrrrrr") }
+    //     );
+    });
+
 
 module.exports = router;

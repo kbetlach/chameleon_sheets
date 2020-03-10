@@ -50,5 +50,8 @@ export default {
   },
   addStudentToTeacher: (data) => {
     return axios.post("/api/student/teacherAddStudent", data)
+  },
+  getUserStudents: () => {
+    return axios.get("/api/student/getUserStudents")
   }
 };

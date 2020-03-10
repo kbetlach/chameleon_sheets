@@ -34,37 +34,32 @@ function StudentTabs(props) {
     let obj = {
       userStudents: currentStudents
     }
-    if(currentStudents.length > 0){
-         try {
-      API.addStudentToTeacher(obj)
-    } catch(err) {
-      console.log(err)
-    } 
+
+    if (currentStudents.length > 0) {
+      try {
+        API.addStudentToTeacher(obj)
+      } catch (err) { console.log(err) }
     }
 
 
-  },[currentStudents])
+  }, [currentStudents])
 
   useEffect(() => {
     // console.log(activeStudent,"--------------------------")
-    if(activeStudent){
+    if (activeStudent) {
       async function fetchCurrent() {
         setIsLoading(true);
-        try{
+        try {
           const currentFetch = await API.findStudent(activeStudent)
           let activeFirstName = currentFetch.data[0].name.firstName;
           let activeId = currentFetch.data[0]._id;
           let newCurrentStudent = { firstName: activeFirstName, id: activeId }
           setCurrentStudents(currentStudents => [...currentStudents, newCurrentStudent]);
-        } catch(err) {
-          console.log(err);
-        }
-
-
+        } catch (err) { console.log(err); }
       }
-        fetchCurrent();
-        setIsLoading(false)
-    }else {}
+      fetchCurrent();
+      setIsLoading(false)
+    } else { }
 
   }, [activeStudent])
 
@@ -80,54 +75,58 @@ function StudentTabs(props) {
   useEffect(() => {
     console.log("===CURRENT===")
     console.log(...currentStudents);
-  },[currentStudents])
+  }, [currentStudents])
 
   useEffect(() => {
 
     async function fetchStudents() {
       setIsLoading(true);
-        const studentFetch = await API.getStudents()
-        setStudentList(studentFetch.data);
+      const studentFetch = await API.getStudents()
+      setStudentList(studentFetch.data);
     }
+
+
     fetchStudents();
+
     setIsLoading(false)
   }, [])
+
+  useEffect(() => {
+    async function fetchUserStudents() {
+      setIsLoading(true);
+      try{
+          const getCurrentStudents = await API.getUserStudents()    
+          console.log(getCurrentStudents)
+          if (getCurrentStudents.students.length > 0) {
+            setCurrentStudents(getCurrentStudents.students)
+          }
+      } catch (err) {
+        console.log(err)
+      }
+
+
+
+    }
+    fetchUserStudents();
+    setIsLoading(false)
+  },[])
 
   return (
     <ul className="nav nav-tabs">
       {currentStudents.map(student => (
-        <li 
-          className="nav-item nav-student" 
-          key={student.id} 
+        <li
+          className="nav-item nav-student"
+          key={student.id}
           data-studentid={student.id}
           onClick={handleTabClick}
-          style={{backgroundColor: activeTab === student.id ? "darkslategray" : "#181d27"}}
-          >
-        <a href="#" className="nav-link">
-          {student.firstName}
-        </a>
-      </li>
+          style={{ backgroundColor: activeTab === student.id ? "darkslategray" : "#181d27" }}
+        >
+          <a href="#" className="nav-link">
+            {student.firstName}
+          </a>
+        </li>
       ))}
-      {/* <li className="nav-item nav-student">
-        <a href="#" className="nav-link">
-          Student 1
-        </a>
-      </li>
-      <li className="nav-item nav-student">
-        <a href="#" className="nav-link">
-          Student 2
-        </a>
-      </li>
-      <li className="nav-item nav-student">
-        <a href="#" className="nav-link">
-          Student 3
-        </a>
-      </li>
-      <li className="nav-item nav-student">
-        <a href="#" className="nav-link">
-          Student 4
-        </a>
-      </li> */}
+
       <StudentSearch
         search={search}
         value={search}

@@ -48,7 +48,7 @@ function StudentTabs(props) {
   }, [currentStudents])
 
   useEffect(() => {
-    // console.log(activeStudent,"--------------------------")
+    console.log(activeStudent,"--------------------------")
     if (activeStudent) {
       async function fetchCurrent() {
         setIsLoading(true);

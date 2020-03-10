@@ -15,9 +15,9 @@ router.route("/new")
             recordedBy: req.body.user
         }
         console.log(req.user, "req.user -- line 17");
-        db.Student.create(student).then(newStudent =>{
+        db.Student.create(student).then(newStudent => {
             res.json(newStudent);
-        }).catch(err => {console.log(err)})
+        }).catch(err => { console.log(err) })
     });
 
 router.route("/all")
@@ -28,42 +28,42 @@ router.route("/all")
         })
     });
 
-router.route("/byID")
-.get((req, res) => {
-    if(req.body.id){
-            db.Student.find({_id: req.body.id}).then(result => {
-        res.json(result);
-    }).catch(err => {
-        console.log(err)
-    })
-    }else{
-        res.end();
-    }
-
-})
+router.route("/byID/:id")
+    .get((req, res) => {
+        console.log(req.params.id)
+        if (req.params.id) {
+            db.Student.find({ _id: req.params.id }).then(result => {
+                res.json(result);
+            }).catch(err => {
+                console.log(err)
+            })
+        } else {
+            res.end();
+        }
+    });
 
 router.route("/teacherAddStudent")
-.post((req, res) => {
-  
-    console.log(req.body, req.user._id, "here")
-    db.User.findOneAndUpdate({_id: req.user._id}, {$push: {students: req.body.userStudents}})
-    .then(results=> {
-        console.log(results)
-        res.json(results);
-    }).catch(err => {console.log(err)})
-});
+    .post((req, res) => {
+
+        console.log(req.body, req.user._id, "here")
+        db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { students: req.body.userStudents } })
+            .then(results => {
+                console.log(results)
+                res.json(results);
+            }).catch(err => { console.log(err) })
+    });
 
 
 router.route("/getUserStudents")
-.get((req, res) => {
-    console.log(req.user._id, "hhhhhhhhhhhhhhhhhhhhh");
-    db.User.findOne({_id: req.user._id})
-        .then(response => {
-            console.log(response)
-            res.json(response)
-        })
-        .catch(err => { console.log(err, "This errrrrrrrrr") }
-        );
+    .get((req, res) => {
+        console.log(req.user._id, "hhhhhhhhhhhhhhhhhhhhh");
+        db.User.findOne({ _id: req.user._id })
+            .then(response => {
+                console.log(response)
+                res.json(response)
+            })
+            .catch(err => { console.log(err, "This errrrrrrrrr") }
+            );
     });
 
 

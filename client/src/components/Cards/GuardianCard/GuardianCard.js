@@ -3,6 +3,8 @@ import axios from 'axios';
 import API from "../../../utils/API";
 import "../CardStyle/cards.css";
 import StudentList from "../../../data/students.json";
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 
 function GuardianCard() {
 
@@ -16,6 +18,8 @@ function GuardianCard() {
   const handleSubmit = e => {
     e.preventDefault();
 
+    toast.notify ("Guardian added successfully!");
+
     API.email({ firstName, lastName, email });
     console.log(firstName);
     API.saveUser({
@@ -25,17 +29,8 @@ function GuardianCard() {
       last_name: lastName,
       //school: req.user.school,
     })
-    setFirstname("");
-    setLastName("");
-    setEmail("");
     document.getElementById("guardianForm").reset();
 
-  }
-  function clearInput(e) {
-    e.preventDefault()
-    this.firstName.value = ""
-    this.lastName.value = ""
-    this.email.value = ""
   }
 
   return (

@@ -1,43 +1,65 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import './style.css'
 import API from '../../utils/API';
-import axios from "axios";
+// import axios from "axios";
 
 function GridCol({startTime, index}){
-    const [rating, setValue] = useState(0)
+    const [rating, setRating] = useState(0)
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
     today = mm + dd + yyyy;
     let time = <Moment parse="HH:mm" format="h:mm" add={{ minutes: (15*index) }}>{startTime}</Moment>
-    let tc = "tc-";
+    let tc = "tc";
+    
+    // let user = API.getSelf();
+
+
+    useEffect( () => {
+        // let data = {
+        //     date: today,
+        //     student: "5e63e001df0b86228e5fc68f",
+        //     scores: [{
+        //         time: "tc0",
+        //         score: rating,
+        //         recordedBy: "5e63da3f1dcb5b1f1ec2bc81"
+        //     }]
+        // }
+        // API.createLog(data)
+        console.log(rating)
+    },[rating])
+    //today shows up as 03072020
+    // let user = API.getUser("5e63da3f1dcb5b1f1ec2bc81")
+
+    //axios.get("/api/dayLog") POSSIBLE INTERVAL FUNCTION?
+    //We will have to tell the db to put the scores in where the db time field is equal to the column with the matching dataset.time, then set the rating of the column to the score we pulled
 
     function handleCellClick(e){
         e.preventDefault();
         let lastClick = parseInt(e.currentTarget.dataset.value);
+        let thisTime = e.currentTarget.dataset.time
+                // let data = {
+                //     date: today,
+                //     // student: student.Id,
+                //     scores: [{
+                //         time: thisTime,
+                //         score: rating,
+                //         // recordedBy: user.Id
+                //     }]
+                // }
+                // console.log(data);
         if (rating === lastClick) {
-            setValue(0)
-            // let data = {
-            //     date: today,
-            //     student: student.Id,
-            //     scores: [{
-            //         time: {startTime},
-            //         score: rating,
-            //         recordedBy: user.Id
-            //     }]
-            // }
-            // axios.post("/api/dayLog", data);
+            setRating(0)
         }
         else if (rating === 0) {
-            setValue(lastClick)
+            setRating(lastClick)
         }
         else {
-            setValue(lastClick)
+            setRating(lastClick)
         }
-        console.log(e.currentTarget.dataset.time)
     }
     
 

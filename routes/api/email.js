@@ -26,9 +26,8 @@ router.route("/")
         console.log('Email sent: ' + info.response);
       }
     });
-    res.end()
-  
-  })
+    res.end();
+  });
 
   function emailOptions(firstName, lastName, email) {
     console.log("from enail options" + firstName)

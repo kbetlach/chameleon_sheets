@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GridCol from "./GridCol"
 import GridColGuardian from "./GridColGuardian"
-import Submit from "./Submit"
 import TabWrapper from "./TabWrapper";
 import 'moment-timezone';
 import './style.css'

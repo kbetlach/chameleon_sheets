@@ -5,7 +5,7 @@ const logSchema = new Schema({
 
     date: {
         type: Date,
-        Default: Date.Now
+        default: Date.now
     },
     student: {
         type: Schema.Types.ObjectId,

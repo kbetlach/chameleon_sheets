@@ -5,8 +5,9 @@ import './style.css'
 import API from '../../utils/API';
 // import axios from "axios";
 
-function GridCol({startTime, index}){
-    const [rating, setRating] = useState(0)
+function GridCol({startTime, index, studentId}){
+    const [rating, setRating] = useState(0);
+    const [timeCode, setTimeCode] = useState("");
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -19,16 +20,17 @@ function GridCol({startTime, index}){
 
 
     useEffect( () => {
-        // let data = {
-        //     date: today,
-        //     student: "5e63e001df0b86228e5fc68f",
-        //     scores: [{
-        //         time: "tc0",
-        //         score: rating,
-        //         recordedBy: "5e63da3f1dcb5b1f1ec2bc81"
-        //     }]
-        // }
-        // API.createLog(data)
+        let data = {
+            date: today,
+            student: studentId,
+            scores: [{
+                time: timeCode,
+                score: rating
+            }]
+        }
+        console.log("=====DATA====")
+        console.log(data)
+        API.createLog(data)
         console.log(rating)
     },[rating])
     //today shows up as 03072020
@@ -40,17 +42,7 @@ function GridCol({startTime, index}){
     function handleCellClick(e){
         e.preventDefault();
         let lastClick = parseInt(e.currentTarget.dataset.value);
-        let thisTime = e.currentTarget.dataset.time
-                // let data = {
-                //     date: today,
-                //     // student: student.Id,
-                //     scores: [{
-                //         time: thisTime,
-                //         score: rating,
-                //         // recordedBy: user.Id
-                //     }]
-                // }
-                // console.log(data);
+        setTimeCode(e.currentTarget.dataset.time)
         if (rating === lastClick) {
             setRating(0)
         }

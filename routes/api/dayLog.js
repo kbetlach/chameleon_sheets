@@ -36,13 +36,11 @@ router.route('/')
     })
 
     .post((req, res) => {
-// console.log(req.body)
+    console.log(req.body.scores)
         let log = {
             date: req.body.date,
             student: req.body.student,
-            scores: [{
-                score: req.body.score[0],
-            }]
+            scores: [req.body.scores[0]]
         }
         db.Log.findOne({ date: log.date, student: log.student }).then(results => {
             if (results) {

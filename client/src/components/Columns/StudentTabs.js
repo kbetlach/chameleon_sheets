@@ -4,7 +4,7 @@ import StudentSearch from "../StudentSearch/StudentSearch";
 import DateTab from "./DateTab";
 import API from "../../utils/API"
 
-function StudentTabs() {
+function StudentTabs(props) {
   const [search, setSearch] = useState("");
   const [studentList, setStudentList] = useState([]);
   const [currentStudents, setCurrentStudents] = useState([]);
@@ -25,6 +25,7 @@ function StudentTabs() {
   function handleTabClick(event) {
     event.preventDefault();
     setActiveTab(event.currentTarget.dataset.studentid);
+    props.setStudentId(event.currentTarget.dataset.studentid)
     console.log("studentId: " + event.currentTarget.dataset.studentid)
   }
 
@@ -40,6 +41,14 @@ function StudentTabs() {
       fetchCurrent();
       setIsLoading(false)
   }, [activeStudent])
+
+  // useEffect(() => {
+  //   const currentFetch = API.findStudent(activeStudent)
+  //   let activeFirstName = currentFetch.data[0].name.firstName;
+  //   let activeId = currentFetch.data[0]._id;
+  //   let newCurrentStudent = { firstName: activeFirstName, id: activeId }
+  //   setCurrentStudents(currentStudents => [...currentStudents, newCurrentStudent]);
+  // }, [activeStudent])
 
 
   useEffect(() => {

@@ -30,6 +30,10 @@ function StudentTabs(props) {
   }
 
   useEffect(() => {
+    API.addStudentToTeacher(currentStudents)
+  },[currentStudents])
+
+  useEffect(() => {
     async function fetchCurrent() {
       setIsLoading(true);
       const currentFetch = await API.findStudent(activeStudent)

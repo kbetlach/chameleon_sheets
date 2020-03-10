@@ -47,5 +47,8 @@ export default {
   },
   createLog: (data) => {
     return axios.post("/api/dayLog/", data)
+  },
+  addStudentToTeacher: (data) => {
+    return axios.post("/api/student/teacherAddStudent", data)
   }
 };

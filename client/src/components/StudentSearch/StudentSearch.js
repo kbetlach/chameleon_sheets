@@ -2,7 +2,7 @@ import React, { Component, useEffect } from "react";
 
 function StudentSearch(props) {
 
-console.log(props.StudentList)
+// console.log(props.StudentList)
   const results = props.StudentList.filter(student =>
     student.name.firstName.toLowerCase().includes(props.search.toLowerCase()) || student.name.lastName.toLowerCase().includes(props.search.toLowerCase()) );
 // console.log(results)

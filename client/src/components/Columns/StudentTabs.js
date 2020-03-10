@@ -8,8 +8,8 @@ function StudentTabs(props) {
   const [search, setSearch] = useState("");
   const [studentList, setStudentList] = useState([]);
   const [currentStudents, setCurrentStudents] = useState([]);
-  const [activeStudent, setActiveStudent] = useState("");
-  const [activeTab, setActiveTab] = useState("");
+  const [activeStudent, setActiveStudent] = useState();
+  const [activeTab, setActiveTab] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   function handleInputChange(event) {

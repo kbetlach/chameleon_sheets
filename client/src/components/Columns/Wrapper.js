@@ -7,7 +7,7 @@ import './style.css'
 
 
 function Wrapper() {
-    const [studentId, setStudentId] = useState("");
+    const [studentId, setStudentId] = useState();
     const hours = 6; //This will eventually be user generated
     const columns = (hours * 4); //This MAY eventually be user generated
     const startTime = '08:00'; //This will eventually be user-generated

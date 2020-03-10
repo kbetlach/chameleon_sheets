@@ -6,7 +6,7 @@ import API from '../../utils/API';
 // import axios from "axios";
 
 function GridCol({startTime, index, studentId}){
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(6);
     const [timeCode, setTimeCode] = useState("");
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -20,18 +20,21 @@ function GridCol({startTime, index, studentId}){
 
 
     useEffect( () => {
-        let data = {
-            date: today,
-            student: studentId,
-            scores: [{
-                time: timeCode,
-                score: rating
-            }]
+        if (rating === 6) {}
+        else {
+            let data = {
+                date: today,
+                student: studentId,
+                scores: {
+                    time: timeCode,
+                    score: rating
+                }
+            }
+            console.log("=====DATA====")
+            console.log(data)
+            API.createLog(data)
+            console.log(rating)
         }
-        console.log("=====DATA====")
-        console.log(data)
-        API.createLog(data)
-        console.log(rating)
     },[rating])
     //today shows up as 03072020
     // let user = API.getUser("5e63da3f1dcb5b1f1ec2bc81")
@@ -46,7 +49,7 @@ function GridCol({startTime, index, studentId}){
         if (rating === lastClick) {
             setRating(0)
         }
-        else if (rating === 0) {
+        else if (rating === 6) {
             setRating(lastClick)
         }
         else {

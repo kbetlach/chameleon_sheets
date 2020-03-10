@@ -40,7 +40,7 @@ router.route('/')
         let log = {
             date: req.body.date,
             student: req.body.student,
-            scores: [req.body.scores[0]]
+            scores: [req.body.scores]
         }
         db.Log.findOne({ date: log.date, student: log.student }).then(results => {
             if (results) {

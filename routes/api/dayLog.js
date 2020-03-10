@@ -36,7 +36,7 @@ router.route('/')
     })
 
     .post((req, res) => {
-    console.log(req.body.scores)
+        console.log(req.body.scores)
         let log = {
             date: req.body.date,
             student: req.body.student,
@@ -48,16 +48,23 @@ router.route('/')
                     .then(results => {
                         // console.log("Line 53 ", results)
                         res.json(results);
+                    }).catch(err => {
+                        console.log(err)
                     })
             } else {
-                db.Log.create(req.body).then(results =>{
-                    
+                db.Log.create(req.body).then(results => {
+
                     // console.log(results, "( dayLog == line : 57 )");
                     res.json(results)
 
+                }).catch(err => {
+                    console.log(err)
                 })
             }
         })
+            .catch(err => {
+                console.log(err)
+            })
     })
 
 module.exports = router;

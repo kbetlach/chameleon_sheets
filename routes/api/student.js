@@ -17,7 +17,7 @@ router.route("/new")
         console.log(req.user, "req.user -- line 17");
         db.Student.create(student).then(newStudent =>{
             res.json(newStudent);
-        });
+        }).catch(err => {console.log(err)})
     });
 
 router.route("/all")
@@ -29,21 +29,27 @@ router.route("/all")
     });
 
 router.get("/:id", function(req, res) {
-    db.Student.find({_id: req.params.id}).then(result => {
+    if(req.params.id){
+            db.Student.find({_id: req.params.id}).then(result => {
         res.json(result);
-    });
+    }).catch(err => {
+        console.log(err)
+    })
+    }else{
+        res.end();
+    }
+
 })
 
 router.route("/teacherAddStudent")
 .post((req, res) => {
   
     console.log(req.body, req.user._id, "here")
-    res.json("yes")
-    // db.User.findOneAndUpdate({_id: req.user._id}, {students: req.body.userStudents})
-    // .then(results=> {
-    //     console.log(results)
-    //     res.json(results);
-    // })
+    db.User.findOneAndUpdate({_id: req.user._id}, {$push: {students: [req.body.userStudents]}})
+    .then(results=> {
+        console.log(results)
+        res.json(results);
+    }).catch(err => {console.log(err)})
 })
 
 module.exports = router;

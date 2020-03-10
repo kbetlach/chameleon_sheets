@@ -30,7 +30,12 @@ const userSchema = new Schema(
         allowNull: false
     },
     students: [{
-        type: Array
+        firstName: { 
+          type: String 
+        },
+        id: {
+          type: String 
+        }
     }]
     },
   {

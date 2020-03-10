@@ -30,20 +30,42 @@ function StudentTabs(props) {
   }
 
   useEffect(() => {
-    API.addStudentToTeacher(currentStudents)
+
+    let obj = {
+      userStudents: currentStudents
+    }
+    if(currentStudents.length > 0){
+         try {
+      API.addStudentToTeacher(obj)
+    } catch(err) {
+      console.log(err)
+    } 
+    }
+
+
   },[currentStudents])
 
   useEffect(() => {
-    async function fetchCurrent() {
-      setIsLoading(true);
-      const currentFetch = await API.findStudent(activeStudent)
-        let activeFirstName = currentFetch.data[0].name.firstName;
-        let activeId = currentFetch.data[0]._id;
-        let newCurrentStudent = { firstName: activeFirstName, id: activeId }
-        setCurrentStudents(currentStudents => [...currentStudents, newCurrentStudent]);
-    }
-      fetchCurrent();
-      setIsLoading(false)
+    // console.log(activeStudent,"--------------------------")
+    if(activeStudent){
+      async function fetchCurrent() {
+        setIsLoading(true);
+        try{
+          const currentFetch = await API.findStudent(activeStudent)
+          let activeFirstName = currentFetch.data[0].name.firstName;
+          let activeId = currentFetch.data[0]._id;
+          let newCurrentStudent = { firstName: activeFirstName, id: activeId }
+          setCurrentStudents(currentStudents => [...currentStudents, newCurrentStudent]);
+        } catch(err) {
+          console.log(err);
+        }
+
+
+      }
+        fetchCurrent();
+        setIsLoading(false)
+    }else {}
+
   }, [activeStudent])
 
   // useEffect(() => {

@@ -5,7 +5,7 @@ function HistoryButton() {
 
     return (
         <div>
-            <Link to="/admin"
+            <Link to="/history"
                 className={
                     window.location.pathname === "/history"
             }>

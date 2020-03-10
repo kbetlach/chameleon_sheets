@@ -28,9 +28,10 @@ router.route("/all")
         })
     });
 
-router.get("/:id", function(req, res) {
-    if(req.params.id){
-            db.Student.find({_id: req.params.id}).then(result => {
+router.route("/byID")
+.get((req, res) => {
+    if(req.body.id){
+            db.Student.find({_id: req.body.id}).then(result => {
         res.json(result);
     }).catch(err => {
         console.log(err)
@@ -56,13 +57,13 @@ router.route("/teacherAddStudent")
 router.route("/getUserStudents")
 .get((req, res) => {
     console.log(req.user._id, "hhhhhhhhhhhhhhhhhhhhh");
-    res.end();
-    // db.User.findOne({_id: req.user._id})
-    //     .then(response => {
-    //         res.json(response)
-    //     })
-    //     .catch(err => { console.log(err, "This errrrrrrrrr") }
-    //     );
+    db.User.findOne({_id: req.user._id})
+        .then(response => {
+            console.log(response)
+            res.json(response)
+        })
+        .catch(err => { console.log(err, "This errrrrrrrrr") }
+        );
     });
 
 

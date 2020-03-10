@@ -40,7 +40,7 @@ export default {
     return axios.post("/api/student/new", data);
   },
   findStudent: (id) => {
-    return axios.get("/api/student/" + id);
+    return axios.get("/api/student/byID", id);
   },
   getStudents: () => {
     return axios.get("/api/student/all");

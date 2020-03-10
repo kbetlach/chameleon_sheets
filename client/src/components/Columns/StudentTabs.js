@@ -34,14 +34,11 @@ function StudentTabs(props) {
     let obj = {
       userStudents: currentStudents
     }
-
     if (currentStudents.length > 0) {
       try {
         API.addStudentToTeacher(obj)
       } catch (err) { console.log(err) }
     }
-
-
   }, [currentStudents])
 
   useEffect(() => {
@@ -85,31 +82,37 @@ function StudentTabs(props) {
       setStudentList(studentFetch.data);
     }
 
-
-    fetchStudents();
-
-    setIsLoading(false)
-  }, [])
-
-  useEffect(() => {
     async function fetchUserStudents() {
-      setIsLoading(true);
-      try{
-          const getCurrentStudents = await API.getUserStudents()    
-          console.log(getCurrentStudents)
-          if (getCurrentStudents.students.length > 0) {
-            setCurrentStudents(getCurrentStudents.students)
-          }
+      try {
+        const getCurrentStudents = await API.getUserStudents()
+        console.log(getCurrentStudents)
+        if (getCurrentStudents.data.students.length > 0) {
+          setCurrentStudents(getCurrentStudents.data.students)
+        }
       } catch (err) {
         console.log(err)
       }
-
-
-
     }
+
+    fetchStudents();
     fetchUserStudents();
     setIsLoading(false)
-  },[])
+  }, [])
+
+  // useEffect(() => {
+  //   async function fetchUserStudents() {
+  //     try{
+  //         const getCurrentStudents = await API.getUserStudents()    
+  //         console.log(getCurrentStudents)
+  //         if (getCurrentStudents.students.length > 0) {
+  //           setCurrentStudents(getCurrentStudents.students)
+  //         }
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   }
+  //   fetchUserStudents();
+  // },[])
 
   return (
     <ul className="nav nav-tabs">

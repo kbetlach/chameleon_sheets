@@ -29,14 +29,9 @@ const userSchema = new Schema(
         type: String,
         allowNull: false
     },
-    students: [{
-        firstName: { 
-          type: String 
-        },
-        id: {
-          type: String 
-        }
-    }]
+    students: {
+      type: Array
+    }
     },
   {
     toJSON: {

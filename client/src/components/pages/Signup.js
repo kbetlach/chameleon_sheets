@@ -28,7 +28,7 @@ function Signup() {
         <div>
             <div className="container w3-container w3-center w3-animate-opacity">
                 <div className="jumbotron">
-                    <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>
+                    
                     <form id="login" onSubmit={handleSubmit}>
                         <h2 style={{color: "white"}}>Welcome to Chameleon Sheets. Please confirm your email and choose a password for access.</h2>
                     <div className="form-group">
@@ -39,6 +39,7 @@ function Signup() {
                         <label for="passwordInput" style={{color: "white"}}>Password</label>
                         <input onChange={e => setPassword(e.target.value)} className="form-control" id="password-signup" placeholder="Password" type="password"></input>
                     </div>
+                    <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>
                     </form>
                 </div>
             </div>

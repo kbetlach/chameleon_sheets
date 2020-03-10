@@ -4,8 +4,8 @@ export default {
   login: function(userData) {
     return axios.post("/api/user/login", userData);
   },
-  logout: function(userData) {
-    return axios.post("/api/user/logout");
+  logout: function() {
+    return axios.get("/api/user/logout");
   },
   // Gets all users
   getUsers: function() {

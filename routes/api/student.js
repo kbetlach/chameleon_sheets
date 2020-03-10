@@ -14,7 +14,7 @@ router.route("/new")
             startTime: req.body.startTime,
             recordedBy: req.body.user
         }
-
+        console.log(req.user, "req.user -- line 17");
         db.Student.create(student).then(newStudent =>{
             res.json(newStudent);
         });

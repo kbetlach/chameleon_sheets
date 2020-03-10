@@ -7,9 +7,9 @@ import Header from "../Header/Header";
 
 function Admin() {
     return (
-        <div>
+        <div  style={{ margin: "auto", width: "100%"}}>
             <Header />
-            <div className="container container w3-container w3-center w3-animate-opacity" style={{ margin: "auto", width: "75%" }}>
+            <div className="container container w3-container w3-center w3-animate-opacity">
                 <StaffCard />
                 <StudentCard />
                 <GuardianCard />

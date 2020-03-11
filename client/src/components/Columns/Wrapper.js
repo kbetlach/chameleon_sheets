@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GridCol from "./GridCol"
 // import Submit from "./Submit"
 import TabWrapper from "./TabWrapper";
 import 'moment-timezone';
 import './style.css'
+import API from "../../utils/API"
 
 
 function Wrapper() {
@@ -14,6 +15,10 @@ function Wrapper() {
     const columnArray = [];
     const studentFunction = (id) =>{
         setStudentId(id);
+    }
+
+    document.getElementsByClassName("nav-student").onclick = function(){
+        
     }
 
     for (var i = 1; i < columns + 1; i++){

@@ -12,6 +12,12 @@ function StudentTabs(props) {
   const [activeTab, setActiveTab] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  today = mm + dd + yyyy;
+
   function handleInputChange(event) {
     const value = event.target.value;
     setSearch(value);
@@ -34,6 +40,10 @@ function StudentTabs(props) {
     setCurrentStudents(currentStudents.filter(item => item.id !== event.currentTarget.dataset.studentid));
     console.log(event.currentTarget.dataset.studentid + " removed from user collection.")
     console.log(currentStudents);
+    //Trying to set new active student when one is removed
+    //ActiveTab currently undefined?
+    // setActiveTab(currentStudents[0].id)
+    // console.log(activeTab);
   }
 
   useEffect(() => {
@@ -47,6 +57,7 @@ function StudentTabs(props) {
       } catch (err) { console.log(err) }
     }
     console.log(currentStudents);
+    console.log(activeTab);
   }, [currentStudents])
 
   useEffect(() => {
@@ -68,6 +79,22 @@ function StudentTabs(props) {
     } else { }
 
   }, [activeStudent])
+
+  //THIS IS THE GOOD ONE, TRYING IT IN GRIDCOL
+  // useEffect(() => {
+  //   if (activeTab) {
+  //       async function fetchLogs() {
+  //       setIsLoading(true);
+  //       try {
+  //         const logFetch = await API.getLog(activeTab, today)
+  //         console.log(logFetch.data[0].scores, "EJEJEJEJEJ")          
+  //       } catch (err) { console.log(err); }
+  //     }
+  //     fetchLogs();
+  //     setIsLoading(false)
+  //   } else { }
+
+  // }, [activeTab])
 
   // useEffect(() => {
   //   const currentFetch = API.findStudent(activeStudent)

@@ -54,6 +54,9 @@ export default {
   getUserStudents: () => {
     return axios.get("/api/student/getUserStudents")
   },
+  getLog: (id, date) => {
+    return axios.get('/api/dayLog/' + id + '/' + date)
+  }
   // removeStudentTab: (id) => {
   //   return axios.put("/api/student/tabRemove", id)
   // }

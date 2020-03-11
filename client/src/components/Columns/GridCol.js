@@ -6,8 +6,6 @@ import API from '../../utils/API';
 // import axios from "axios";
 
 function GridCol({startTime, index, studentId}){
-    const [rating, setRating] = useState(6);
-    const [timeCode, setTimeCode] = useState("");
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -15,25 +13,50 @@ function GridCol({startTime, index, studentId}){
     today = mm + dd + yyyy;
     let time = <Moment parse="HH:mm" format="h:mm" add={{ minutes: (15*index) }}>{startTime}</Moment>
     let tc = "tc";
+
+    const [rating, setRating] = useState(6);
+    const [timeCode, setTimeCode] = useState("");
+    const [activeDate, setActiveDate] = useState(today);
+    const [isLoading, setIsLoading] = useState(false);
     
     // let user = API.getSelf();
 
+    useEffect(() => {
+        if (studentId) {
+            setRating(6)
+            async function fetchLogs() {
+            setIsLoading(true);
+            try {
+            const logFetch = await API.getLog(studentId, today)
+            console.log(logFetch.data[0].scores, "EJEJEJEJEJ")
+            if (logFetch.data[0].scores[index].time) {
+                if (logFetch.data[0].scores[index].time = index){
+                    setRating(logFetch.data[0].scores[index].score)
+                }
+            }
+            } catch (err) { console.log(err); }
+        }
+        fetchLogs();
+        setIsLoading(false)
+        } else { }
+    
+    }, [studentId])
+
 
     useEffect( () => {
+        console.log("YEET", activeDate);
         if (rating === 6) {}
         else {
             let data = {
-                date: today,
+                date: activeDate,
                 student: studentId,
                 scores: {
-                    time: timeCode,
+                    time: index,
                     score: rating
                 }
             }
-            console.log("=====DATA====")
-            console.log(data)
             API.createLog(data)
-            console.log(rating)
+            console.log(data);
         }
     },[rating])
     //today shows up as 03072020
@@ -59,10 +82,7 @@ function GridCol({startTime, index, studentId}){
             setRating(lastClick)
         }
     }
-    
-
-    
-    return (<table className="floaTable">
+    return (<table className="floaTable" id={"gridcol" + index}>
                 <tbody >
                     <tr className="timeRow">
                         <th>{time}</th>
@@ -73,6 +93,7 @@ function GridCol({startTime, index, studentId}){
                             style={{background: rating === 5 ? "red" : "inherit"}} 
                             data-value={5}
                             data-time={tc + index}
+                            index={index}
                             onClick={handleCellClick}>
                         </td>
                     </tr>
@@ -82,6 +103,7 @@ function GridCol({startTime, index, studentId}){
                             style={{background: rating === 4 ? "orange" : "inherit"}} 
                             data-value={4}
                             data-time={tc + index}
+                            index={index}
                             onClick={handleCellClick}>
                         </td>
                     </tr>
@@ -91,6 +113,7 @@ function GridCol({startTime, index, studentId}){
                             style={{background: rating === 3 ? "yellow" : "inherit"}} 
                             data-value={3} 
                             data-time={tc + index}
+                            index={index}
                             onClick={handleCellClick}>
                         </td>
                     </tr>
@@ -100,6 +123,7 @@ function GridCol({startTime, index, studentId}){
                             style={{background: rating === 2 ? "limegreen" : "inherit"}} 
                             data-value={2} 
                             data-time={tc + index}
+                            index={index}
                             onClick={handleCellClick}>
                         </td>
                     </tr>
@@ -109,6 +133,7 @@ function GridCol({startTime, index, studentId}){
                             style={{background: rating === 1 ? "green" : "inherit"}} 
                             data-value={1} 
                             data-time={tc + index}
+                            index={index}
                             onClick={handleCellClick}>
                         </td>
                     </tr>

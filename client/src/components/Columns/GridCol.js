@@ -28,10 +28,11 @@ function GridCol({startTime, index, studentId}){
             setIsLoading(true);
             try {
             const logFetch = await API.getLog(studentId, today)
-            console.log(logFetch.data[0].scores, "EJEJEJEJEJ")
-            if (logFetch.data[0].scores[index].time) {
-                if (logFetch.data[0].scores[index].time = index){
-                    setRating(logFetch.data[0].scores[index].score)
+            console.log(logFetch.data.scores, "EJEJEJEJEJ")
+            let log = logFetch.data.scores;
+            for (var i = 0; i < log.length; i++){
+                if (log[i].time == index){
+                    setRating(log[i].score)
                 }
             }
             } catch (err) { console.log(err); }
@@ -58,7 +59,7 @@ function GridCol({startTime, index, studentId}){
             API.createLog(data)
             console.log(data);
         }
-    },[rating])
+    },[timeCode])
     //today shows up as 03072020
     // let user = API.getUser("5e63da3f1dcb5b1f1ec2bc81")
 

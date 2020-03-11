@@ -13,7 +13,7 @@ const db = require("../../models")
 router.route("/:id/:date")
     .get((req, res) => {
 
-        db.Log.find({ student: req.params.id, date: req.params.date})
+        db.Log.findOne({ student: req.params.id, date: req.params.date})
             .then(results => {
                 console.log(results, "Made it to line 8");
                 res.json(results)

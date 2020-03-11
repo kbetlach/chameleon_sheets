@@ -11,6 +11,7 @@ function GuardianCard() {
   const [firstName, setFirstname] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();
+  const [student, setStudent] = useState();
 
   const results = StudentList.filter(student =>
     student.firstName && student.lastName);
@@ -20,13 +21,14 @@ function GuardianCard() {
 
     toast.notify ("Guardian added successfully!");
 
-    API.email({ firstName, lastName, email });
+    API.email({ firstName, lastName, email, student });
     console.log(firstName);
     API.saveUser({
       role: "Guardian",
       email: email,
       first_name: firstName,
       last_name: lastName,
+      students: [student]
       //school: req.user.school,
     })
     document.getElementById("guardianForm").reset();
@@ -54,7 +56,7 @@ function GuardianCard() {
           </li>
           <li className="list-group-item">
             <label for="students">Select a student: </label>
-            <select id="students" style={{ backgroundColor: "white", color: "darkslategray", borderRadius: "6px", border: ".5px solid darkslategray", marginLeft: "5px" }}>
+            <select onChange={e => setStudent(e.target.value)} id="students" style={{ backgroundColor: "white", color: "darkslategray", borderRadius: "6px", border: ".5px solid darkslategray", marginLeft: "5px" }}>
               {results.map(result => (
                 <option>
                   {result.firstName} {result.lastName}

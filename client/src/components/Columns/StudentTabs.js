@@ -8,7 +8,7 @@ function StudentTabs(props) {
   const [search, setSearch] = useState("");
   const [studentList, setStudentList] = useState([]);
   const [currentStudents, setCurrentStudents] = useState([]);
-  const [activeStudent, setActiveStudent] = useState();
+  const [activeStudent, setActiveStudent] = useState("");
   const [activeTab, setActiveTab] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,8 +31,9 @@ function StudentTabs(props) {
 
   function removeStudentTab(event){
     event.preventDefault();
-    API.removeStudentTab(event.currentTarget.dataset.studentid)
+    setCurrentStudents(currentStudents.filter(item => item.id !== event.currentTarget.dataset.studentid));
     console.log(event.currentTarget.dataset.studentid + " removed from user collection.")
+    console.log(currentStudents);
   }
 
   useEffect(() => {
@@ -45,15 +46,17 @@ function StudentTabs(props) {
         API.addStudentToTeacher(obj)
       } catch (err) { console.log(err) }
     }
+    console.log(currentStudents);
   }, [currentStudents])
 
   useEffect(() => {
-    console.log(activeStudent,"--------------------------")
+    // console.log(activeStudent,"--------------------------")
     if (activeStudent) {
       async function fetchCurrent() {
         setIsLoading(true);
         try {
           const currentFetch = await API.findStudent(activeStudent)
+          console.log(currentFetch)
           let activeFirstName = currentFetch.data[0].name.firstName;
           let activeId = currentFetch.data[0]._id;
           let newCurrentStudent = { firstName: activeFirstName, id: activeId }
@@ -75,10 +78,10 @@ function StudentTabs(props) {
   // }, [activeStudent])
 
 
-  useEffect(() => {
-    console.log("===CURRENT===")
-    console.log(...currentStudents);
-  }, [currentStudents])
+  // useEffect(() => {
+  //   console.log("===CURRENT===")
+  //   console.log(...currentStudents);
+  // }, [currentStudents])
 
   useEffect(() => {
 
@@ -91,7 +94,7 @@ function StudentTabs(props) {
     async function fetchUserStudents() {
       try {
         const getCurrentStudents = await API.getUserStudents()
-        console.log(getCurrentStudents)
+        console.log(getCurrentStudents.data.students)
         if (getCurrentStudents.data.students.length > 0) {
           setCurrentStudents(getCurrentStudents.data.students)
         }

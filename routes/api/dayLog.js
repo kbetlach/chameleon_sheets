@@ -10,14 +10,16 @@ const db = require("../../models")
 //     comment: "This is only for test purposes"
 // }
 
-router.route('/')
+router.route('/activeStudent/:id/:date')
     .get((req, res) => {
-        // db.Log.findOne({ date: "2020-03-05T18:14:43" } )
-        //     .then(results => {
-        //         console.log(results, "Made it to line 8");
-        //     }).catch(err => {
-        //         console.log(err, "err on 10 in daylog")
-        //     })
+
+        db.Log.findOne({ id: req.params.id, date: req.params.date} )
+            .then(results => {
+                console.log(results, "Made it to line 8");
+                res.json(results)
+            }).catch(err => {
+                console.log(err, "err on 10 in daylog")
+            })
 
         // db.Log.find({ "scores._id" :"5e61419386ec903dfc396b98" }).then(results => {
         //     console.log(results[0].scores)
@@ -34,7 +36,7 @@ router.route('/')
         //     res.json(results);
         // })
     })
-
+router.route("/")
     .post((req, res) => {
         console.log(req.body.scores)
         let log = {
@@ -42,6 +44,7 @@ router.route('/')
             student: req.body.student,
             scores: [req.body.scores]
         }
+
         db.Log.findOne({ date: log.date, student: log.student }).then(results => {
             if (results) {
                 db.Log.findOneAndUpdate({ _id: results._id }, { $push: { scores: log.scores } })

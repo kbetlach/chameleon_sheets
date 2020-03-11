@@ -14,7 +14,7 @@ router.route("/new")
             startTime: req.body.startTime,
             recordedBy: req.body.user
         }
-        console.log(req.user, "req.user -- line 17");
+        // console.log(req.user, "req.user -- line 17");
         db.Student.create(student).then(newStudent => {
             res.json(newStudent);
         }).catch(err => { console.log(err) })
@@ -30,7 +30,7 @@ router.route("/all")
 
 router.route("/byID/:id")
     .get((req, res) => {
-        console.log(req.params.id)
+        // console.log(req.params.id)
         if (req.params.id) {
             db.Student.find({ _id: req.params.id }).then(result => {
                 res.json(result);
@@ -45,9 +45,10 @@ router.route("/byID/:id")
 router.route("/teacherAddStudent")
     .post((req, res) => {
         // console.log(req.body.userStudents);
-        db.User.findByIdAndUpdate({_id: req.user._id}, {students: req.body.userStudents}).then(results => {
+        db.User.findByIdAndUpdate({ _id: req.user._id}, {students: req.body.userStudents}
+            ).then(results => {
             console.log(results)
-        })
+        }).catch(err => { Console.log(err)})
         // console.log(req.body, req.user._id, "here")
         // db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { students: req.body.userStudents } })
         //     .then(results => {
@@ -68,11 +69,11 @@ router.route("/getUserStudents")
             );
     });
 
-router.route("/tabRemove")
-    .put((req,res) => {
-        db.User.findByIdAndUpdate({_id: req.user._id},{"$pull": {students: {id: req.body.id}}}, { safe: true, multi:true }).then(results =>{
-            console.log(results, "line 71")
-        })
-    })
+// router.route("/tabRemove")
+//     .put((req,res) => {
+//         db.User.findByIdAndUpdate({_id: req.user._id},{"$pull": {students: {id: req.body.id}}}, { safe: true, multi:true }).then(results =>{
+//             console.log(results, "line 71")
+//         })
+//     })
 
 module.exports = router;

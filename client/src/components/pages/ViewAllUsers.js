@@ -33,9 +33,6 @@ function ViewAll() {
         if(studentPlaceholder && studentPlaceholder.data){
             setStudents(studentPlaceholder.data)
         }
-        console.log(teacherPlaceholder.data)
-        console.log(guardianPlaceholder.data)
-        console.log(studentPlaceholder.data)
     }
     useEffect(() => {
         getUsers();
@@ -60,7 +57,10 @@ function ViewAll() {
                 </div>) : (<div className="jumbotron">
                 <h1 className="text-center" style={{color: "white", fontSize: "42px", marginBottom: "25px"}}>You must be an admin to view this page</h1>
                 </div>
-)}
+            )}
+            {(teachers && teachers[0]) ? (<div>{teachers[0].role}</div>):(<div>No Teachers</div>)}
+            {(guardians && guardians[0]) ? (<div>{guardians[0].role}</div>):(<div>No Guardians</div>)}
+            {(students && students[0]) ? (<div>{students[0].role}</div>):(<div>No Students</div>)}
         </div>
     )
     }

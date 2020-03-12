@@ -37,6 +37,17 @@ router.get("/self", function(req, res) {
         res.json(dbUsers);
     });
 })
+
+router.get("/teacher", function(req, res) {
+    db.User.find({role: "Teacher"}).then(function(dbUsers) {
+        res.json(dbUsers);
+    });
+})
+router.get("/guardian", function(req, res) {
+    db.User.find({role: "Guardian"}).then(function(dbUsers) {
+        res.json(dbUsers);
+    });
+})
 router.get("/:id", function(req, res) {
     db.User.findOne({_id: req.params.id}).then(function(dbUsers) {
         res.json(dbUsers);
@@ -86,8 +97,9 @@ router.put("/", function(req, res) {
         return res.json(result);
     });
 })
-router.delete("/", function(req, res) {
-    db.User.deleteOne({_id: req.body.id}, req.body).then(function(result) {
+router.post("/delete", function(req, res) {
+    console.log(req.body);
+    db.User.deleteOne({_id: req.body.id}).then(function(result) {
         return res.json(result);
     });
 })

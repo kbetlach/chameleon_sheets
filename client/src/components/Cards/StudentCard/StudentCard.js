@@ -1,22 +1,33 @@
-import React, { useState } from "react";
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
+import React, {useState} from "react";
 import API from "../../../utils/API";
+import "../CardStyle/cards.css";
 
 
 function StudentCard() {
-
   const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [startTime, setStartTime] = useState();
   const [hours, setHours] = useState();
+  const [lastName, setLastName] = useState();
+  const [start, setStart] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
-    API.createStudent({ firstName, lastName, hours, startTime });
+
+    API.createStudent({ firstName, lastName, hours, start });
+    // console.log(firstName);
+    // console.log(lastname);
+    // console.log(hours);
+    // console.log(start); 
+    toast.notify ("Student added successfully!");
+    document.getElementById("studentForm").reset();
   }
 
+
+
   return (
-    <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
-      <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
+    <div id = "studentCard" className="card" style={{ width: "18rem", float: "left", border: "1px solid white",marginTop: "50px", opacity: ".95", height: "320px" }}>
+      <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white", fontSize: "28px", }}>
         Add Student
       </div>
       <form id="studentForm" onSubmit={handleSubmit} type="submit">
@@ -34,7 +45,7 @@ function StudentCard() {
             </input>
           </li>
           <li className="list-group-item">
-            <input onChange={e => setStartTime(e.target.value)} placeholder="Start">
+            <input onChange={e => setStart(e.target.value)} placeholder="Start">
             </input>
             <br />
             <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>

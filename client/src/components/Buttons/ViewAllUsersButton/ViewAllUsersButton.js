@@ -1,13 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-function HistoryButton() {
+function ViewAllUsersButton() {
 
     return (
         <div>
-            <Link to="/history"
+            <Link to="/users"
                 className={
-                    window.location.pathname === "/history"
+                    window.location.pathname === "/users"
             }>
                 <button type="button"
                     style={
@@ -22,11 +22,11 @@ function HistoryButton() {
                             padding: 5
                         }
                 }>
-                    History
+                    View Users
                 </button>
             </Link>
         </div>
     )
 }
 
-export default HistoryButton;
+export default ViewAllUsersButton;

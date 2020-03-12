@@ -26,11 +26,10 @@ const userSchema = new Schema(
         allowNull: false
     },
     school: {
-        type: String,
-        allowNull: false
+        type: String
     },
     students: {
-        type: String
+      type: Array
     }
     },
   {

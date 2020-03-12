@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import API from "../../../utils/API";
 import "../CardStyle/cards.css";
@@ -12,9 +12,23 @@ function GuardianCard() {
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();
   const [student, setStudent] = useState();
+  const [studentData, setStudentData] = useState();
 
-  const results = StudentList.filter(student =>
-    student.firstName && student.lastName);
+
+  async function getStudents(){
+    let studentPlaceholder = await API.getStudents();
+    if(studentPlaceholder && studentPlaceholder.data){
+        setStudentData(studentPlaceholder.data)
+        console.log(studentPlaceholder.data)
+
+    }
+}
+useEffect(() => {
+    getStudents();
+  },[])
+
+  // const results = StudentList.filter(student =>
+  //   student.firstName && student.lastName);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -56,14 +70,15 @@ function GuardianCard() {
           </li>
           <li className="list-group-item">
             <label for="students">Select a student: </label>
-            <select onChange={e => setStudent(e.target.value)} id="students" style={{ backgroundColor: "white", color: "darkslategray", borderRadius: "6px", border: ".5px solid darkslategray", marginLeft: "5px" }}>
-              {results.map(result => (
+            {(studentData && studentData[0]) ? (
+            <select id="students" style={{ backgroundColor: "white", color: "darkslategray", borderRadius: "6px", border: ".5px solid darkslategray", marginLeft: "5px" }}>
+              {studentData.map(result => (
                 <option>
-                  {result.firstName} {result.lastName}
+                  {result.name.firstName} {result.name.lastName}
                 </option>
               ))
               }
-            </select>
+            </select> ): (<select>No Students</select>)}
             <br />
             <input style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} type="submit"></input>
           </li>

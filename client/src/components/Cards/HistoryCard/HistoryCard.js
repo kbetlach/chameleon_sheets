@@ -24,11 +24,6 @@ function HistoryCard(props) {
         setAvgScore(scoreTotal/count);
     }
 }
-useEffect(() => {
-  if (student && student.id) {
-    getLogs(student.id);
-  }
-  },[])
 
   //<i class="fas fa-file-export"></i>
 

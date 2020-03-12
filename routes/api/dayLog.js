@@ -13,12 +13,12 @@ const db = require("../../models")
 router.route("/:id/:date")
     .get((req, res) => {
 
-        db.Log.findOne({ student: req.params.id, date: req.params.date})
+        db.Log.findOne({ student: req.params.id, date: req.params.date })
             .then(results => {
-                console.log(results, "Made it to line 8");
+                // console.log(results, "Made it to line 8");
                 res.json(results)
             }).catch(err => {
-                console.log(err, "err on 10 in daylog")
+                // console.log(err, "err on 10 in daylog")
             })
 
         // db.Log.find({ "scores._id" :"5e61419386ec903dfc396b98" }).then(results => {
@@ -38,22 +38,35 @@ router.route("/:id/:date")
     })
 router.route("/")
     .post((req, res) => {
-        console.log(req.body.scores)
+        console.log(req.body.scores.time, "--------------------------")
         let log = {
+            time: req.body.scores.time,
             date: req.body.date,
             student: req.body.student,
             scores: [req.body.scores]
         }
 
         db.Log.findOne({ date: log.date, student: log.student }).then(results => {
+
             if (results) {
-                db.Log.findOneAndUpdate({ _id: results._id }, { $push: { scores: log.scores } })
-                    .then(results => {
-                        // console.log("Line 53 ", results)
-                        res.json(results);
-                    }).catch(err => {
-                        console.log(err)
-                    })
+                db.Log.findOne({ _id: results._id, "scores.time": log.time }).then(ress => {
+                    console.log(ress, "YESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSs")
+
+                    if (ress) {
+                        console.log("line 55", log.scores[0].score)
+                        db.Log.findOneAndUpdate({ _id: results._id, "scores.time": log.time }, {"$set": { "scores.0.score": log.scores[0].score}}, {new: true}).then(resss => { console.log(resss, "line 56")})
+                    }else{
+
+                        db.Log.findOneAndUpdate({ _id: results._id }, { $push: { scores: log.scores } })
+                            .then(results => {
+                                // console.log("Line 53 ", results)
+                                res.json(results);
+                            }).catch(err => {
+                                console.log(err)
+                            })
+                    }
+                })
+
             } else {
                 db.Log.create(req.body).then(results => {
 

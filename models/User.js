@@ -29,7 +29,7 @@ const userSchema = new Schema(
         type: String
     },
     students: {
-        type: Array
+      type: Array
     }
     },
   {

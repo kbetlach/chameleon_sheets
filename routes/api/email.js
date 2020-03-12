@@ -30,12 +30,12 @@ router.route("/")
   });
 
   function emailOptions(firstName, lastName, email) {
-    console.log("from enail options" + firstName)
+    console.log("from email options " + firstName)
     let emailOptions = {}
     emailOptions.from = 'chameleon.sheets@gmail.com';
     emailOptions.to = email;
     emailOptions.subject = 'Sign up with Chameleon Sheets';
-    emailOptions.html = `<h2> Hello ${firstName} ${lastName}! </h2> <h3> please go to <a> http://localhost:3000/signup/ <a> to complete your profile! </h3>`;
+    emailOptions.html = `<p> Hello ${firstName} ${lastName}! </p> <p> Please go to <a style = "color:blue;"> http://localhost:3000/signup/ </a> to complete your profile! </p>`;
     return emailOptions
   };
 

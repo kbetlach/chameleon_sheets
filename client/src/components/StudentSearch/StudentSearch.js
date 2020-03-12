@@ -2,7 +2,7 @@ import React, { Component, useEffect } from "react";
 
 function StudentSearch(props) {
 
-console.log(props.StudentList)
+// console.log(props.StudentList)
   const results = props.StudentList.filter(student =>
     student.name.firstName.toLowerCase().includes(props.search.toLowerCase()) || student.name.lastName.toLowerCase().includes(props.search.toLowerCase()) );
 // console.log(results)
@@ -17,7 +17,7 @@ console.log(props.StudentList)
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header" style={{ backgroundColor: "darkslategray" }}>
-              <h5 style={{ color: 'white' }} className="modal-title" id="studentModal">Search for a Student:</h5>
+              <h5 style={{ color: 'white' }} className="modal-title" id="studentModalHeader">Search for a Student:</h5>
               <button style={{ color: 'white' }} aria-label="Close" className="close" data-dismiss="modal" type="button">
                 <span aria-hidden="true">&times;</span>
               </button>

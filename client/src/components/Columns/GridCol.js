@@ -15,7 +15,6 @@ function GridCol({startTime, index, studentId}){
     let tc = "tc";
 
     const [rating, setRating] = useState(6);
-    const [timeCode, setTimeCode] = useState("");
     const [activeDate, setActiveDate] = useState(today);
     const [isLoading, setIsLoading] = useState(false);
     const [cellState, setCellState] = useState(0);
@@ -70,7 +69,6 @@ function GridCol({startTime, index, studentId}){
     function handleCellClick(e){
         e.preventDefault();
         let lastClick = parseInt(e.currentTarget.dataset.value);
-        setTimeCode(e.currentTarget.dataset.time)
         if (cellState === 0) {
             setCellState(1)
         }

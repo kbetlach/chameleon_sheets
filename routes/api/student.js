@@ -48,7 +48,8 @@ router.route("/teacherAddStudent")
         db.User.findByIdAndUpdate({ _id: req.user._id}, {students: req.body.userStudents}
             ).then(results => {
             console.log(results)
-        }).catch(err => { Console.log(err)})
+            res.json(results)
+        }).catch(err => { console.log(err)})
         // console.log(req.body, req.user._id, "here")
         // db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { students: req.body.userStudents } })
         //     .then(results => {

@@ -40,21 +40,12 @@ function StudentTabs(props) {
     setCurrentStudents(currentStudents.filter(item => item.id !== event.currentTarget.dataset.studentid));
     console.log(event.currentTarget.dataset.studentid + " removed from user collection.")
     console.log(currentStudents)
-    //Trying to set new active student when one is removed
-    //ActiveTab currently undefined?
-    // setActiveTab(currentStudents[0].id)
-    // console.log(activeTab);
   }
 
   useEffect(() => {
-    if(!activeTab && currentStudents[0]){
-      setActiveTab(currentStudents[0].id)
+    if(!activeTab && currentStudents[0]){ //If there's not an active studentID AND there's a student in the currentStudents array, default to using the ID of the first user in the currentStudents array.
       props.setStudentId(currentStudents[0].id)
-      console.log(activeTab)
-    }
-    else if (!activeTab && !currentStudents){
-      setActiveTab(null)
-      props.setStudentId(null)
+      setActiveTab(currentStudents[0].id)
     }
   }, [currentStudents])
 
@@ -81,8 +72,9 @@ function StudentTabs(props) {
           const currentFetch = await API.findStudent(activeStudent)
           console.log(currentFetch)
           let activeFirstName = currentFetch.data[0].name.firstName;
+          let activeLastName = currentFetch.data[0].name.lastName;
           let activeId = currentFetch.data[0]._id;
-          let newCurrentStudent = { firstName: activeFirstName, id: activeId }
+          let newCurrentStudent = { firstName: activeFirstName, lastName: activeLastName, id: activeId }
           setCurrentStudents(currentStudents => [...currentStudents, newCurrentStudent]);
         } catch (err) { console.log(err); }
       }

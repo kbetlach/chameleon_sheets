@@ -1,7 +1,9 @@
 import toast from 'toasted-notes' 
 import 'toasted-notes/src/styles.css';
 import React, {useState} from "react";
-import API from "../../../utils/API"
+import API from "../../../utils/API";
+import "../CardStyle/cards.css";
+
 
 function StudentCard() {
   const [firstName, setFirstName] = useState();
@@ -24,8 +26,8 @@ function StudentCard() {
 
 
   return (
-    <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
-      <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
+    <div id = "studentCard" className="card" style={{ width: "18rem", float: "left", border: "1px solid white",marginTop: "50px", opacity: ".95", height: "320px" }}>
+      <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white", fontSize: "28px", }}>
         Add Student
       </div>
       <form id="studentForm" onSubmit={handleSubmit} type="submit">

@@ -1,15 +1,6 @@
 const router = require("express").Router();
 const db = require("../../models")
 
-// const fakeLog = {
-//     id: "5e61419386ec903dfc396b97",
-//     scores: [{
-//         time: "815",
-//         score: 5
-//     }],
-//     comment: "This is only for test purposes"
-// }
-
 router.route("/:id/:date")
     .get((req, res) => {
 
@@ -18,7 +9,7 @@ router.route("/:id/:date")
                 // console.log(results, "Made it to line 8");
                 res.json(results)
             }).catch(err => {
-                // console.log(err, "err on 10 in daylog")
+                console.log(err, "err on 10 in daylog")
             })
 
         // db.Log.find({ "scores._id" :"5e61419386ec903dfc396b98" }).then(results => {
@@ -49,14 +40,13 @@ router.route("/")
         db.Log.findOne({ date: log.date, student: log.student }).then(results => {
 
             if (results) {
-                db.Log.findOne({ _id: results._id, "scores.time": log.time }).then(ress => {
-                    console.log(ress, "YESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSs")
+                db.Log.findOne({ _id: results._id, "scores.time": log.time }).then(findDayLogResults => {
+                    // console.log(logUpdateRes, "Line 53 - dayLog")
 
-                    if (ress) {
+                    if (findDayLogResults) {
                         console.log("line 55", log.scores[0].score)
-                        db.Log.findOneAndUpdate({ _id: results._id, "scores.time": log.time }, {"$set": { "scores.0.score": log.scores[0].score}}, {new: true}).then(resss => { console.log(resss, "line 56")})
+                        db.Log.findOneAndUpdate({ _id: results._id, "scores.time": log.time }, {"$set": { "scores.0.score": log.scores[0].score}}, {new: true}).then(logUpdateRes => { console.log(logUpdateRes, "line 56"); res.json(logUpdateRes) })
                     }else{
-
                         db.Log.findOneAndUpdate({ _id: results._id }, { $push: { scores: log.scores } })
                             .then(results => {
                                 // console.log("Line 53 ", results)
@@ -69,18 +59,11 @@ router.route("/")
 
             } else {
                 db.Log.create(req.body).then(results => {
-
                     // console.log(results, "( dayLog == line : 57 )");
                     res.json(results)
-
-                }).catch(err => {
-                    console.log(err)
-                })
+                }).catch(err => { console.log(err) })
             }
-        })
-            .catch(err => {
-                console.log(err)
-            })
+        }).catch(err => { console.log(err) })
     })
 
 module.exports = router;

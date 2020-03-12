@@ -23,21 +23,20 @@ function Login() {
         }
         setUser(userPlaceholder.data);
         if(userPlaceholder && freshLog){
-            window.location.reload(false);
-        }
+                window.location.reload(false);
+            }
     }
     useEffect(() => {
         checkYourself();
       },[])
     const handleSubmit = async e => {
         e.preventDefault();
+        freshLog=true
         await API.login({
             email: email,
             password: password
-        }).then(
-            freshLog=true,
-            checkYourself()
-            )
+        })
+        checkYourself();
     }
     return (
         <div>

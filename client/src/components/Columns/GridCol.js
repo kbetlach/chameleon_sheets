@@ -18,6 +18,7 @@ function GridCol({startTime, index, studentId}){
     const [timeCode, setTimeCode] = useState("");
     const [activeDate, setActiveDate] = useState(today);
     const [isLoading, setIsLoading] = useState(false);
+    const [cellState, setCellState] = useState(0);
     
     // let user = API.getSelf();
 
@@ -59,7 +60,7 @@ function GridCol({startTime, index, studentId}){
             API.createLog(data)
             console.log(data);
         }
-    },[timeCode])
+    },[cellState])
     //today shows up as 03072020
     // let user = API.getUser("5e63da3f1dcb5b1f1ec2bc81")
 
@@ -70,6 +71,12 @@ function GridCol({startTime, index, studentId}){
         e.preventDefault();
         let lastClick = parseInt(e.currentTarget.dataset.value);
         setTimeCode(e.currentTarget.dataset.time)
+        if (cellState === 0) {
+            setCellState(1)
+        }
+        else {
+            setCellState(0)
+        }
         if (!studentId) {
             console.log("Please add a student to begin entering data.")
         }

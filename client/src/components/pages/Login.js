@@ -36,7 +36,7 @@ function Login() {
             email: email,
             password: password
         })
-        setTimeout(checkYourself(), 500)
+        checkYourself();
     }
     return (
         <div>

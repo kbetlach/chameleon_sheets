@@ -25,7 +25,9 @@ function HistoryCard(props) {
     }
 }
 useEffect(() => {
+  if (student && student.id) {
     getLogs(student.id);
+  }
   },[])
 
   //<i class="fas fa-file-export"></i>

@@ -1,6 +1,15 @@
 const router = require("express").Router();
 const db = require("../../models")
 
+
+// const fakeLog = {
+//     id: "5e61419386ec903dfc396b97",
+//     scores: [{
+//         time: "815",
+//         score: 5
+//     }],
+//     comment: "This is only for test purposes"
+// }
 router.route("/allLogs")
     .get((req, res) => {
         db.Log.find({ student: req.body.id })
@@ -11,7 +20,7 @@ router.route("/allLogs")
             })
         })
 
-
+        
 router.route("/:id/:date")
     .get((req, res) => {
 
@@ -55,8 +64,8 @@ router.route("/")
                     // console.log(logUpdateRes, "Line 53 - dayLog")
 
                     if (findDayLogResults) {
-                        console.log("line 55", log.scores[0].score)
-                        db.Log.findOneAndUpdate({ _id: results._id, "scores.time": log.time }, {"$set": { "scores.0.score": log.scores[0].score}}, {new: true}).then(logUpdateRes => { console.log(logUpdateRes, "line 56"); res.json(logUpdateRes) })
+                        console.log("line 55", log.scores)                    
+                        db.Log.findOneAndUpdate({ _id: results._id, "scores.time": log.time }, {"$set": { "scores.$.score": log.scores[0].score}}, {new: true}).then(logUpdateRes => { console.log(logUpdateRes, "line 56"); res.json(logUpdateRes) })
                     }else{
                         db.Log.findOneAndUpdate({ _id: results._id }, { $push: { scores: log.scores } })
                             .then(results => {

@@ -97,11 +97,6 @@ function HistoryCard(props) {
         setAvgScore(scoreTotal/count);
     }
 }
-useEffect(() => {
-  if (student && student.id) {
-    getLogs(student.id);
-  }
-  },[])
 
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>

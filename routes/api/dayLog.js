@@ -1,6 +1,17 @@
 const router = require("express").Router();
 const db = require("../../models")
 
+router.route("/allLogs")
+    .get((req, res) => {
+        db.Log.find({ student: req.body.id })
+            .then(results => {
+                res.json(results)
+            }).catch(err => {
+                console.log(err, "err on 18 in daylog")
+            })
+        })
+
+
 router.route("/:id/:date")
     .get((req, res) => {
 

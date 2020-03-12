@@ -37,6 +37,17 @@ router.get("/self", function(req, res) {
         res.json(dbUsers);
     });
 })
+
+router.get("/teacher", function(req, res) {
+    db.User.find({role: "Teacher"}).then(function(dbUsers) {
+        res.json(dbUsers);
+    });
+})
+router.get("/guardian", function(req, res) {
+    db.User.find({role: "Guardian"}).then(function(dbUsers) {
+        res.json(dbUsers);
+    });
+})
 router.get("/:id", function(req, res) {
     db.User.findOne({_id: req.params.id}).then(function(dbUsers) {
         res.json(dbUsers);

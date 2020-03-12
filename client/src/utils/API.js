@@ -4,8 +4,8 @@ export default {
   login: function(userData) {
     return axios.post("/api/user/login", userData);
   },
-  logout: function(userData) {
-    return axios.post("/api/user/logout");
+  logout: function() {
+    return axios.get("/api/user/logout");
   },
   // Gets all users
   getUsers: function() {
@@ -14,6 +14,12 @@ export default {
   // Gets the user with the given id
   getUser: function(id) {
     return axios.get("/api/user/" + id);
+  },
+  getTeachers: function() {
+    return axios.get("/api/user/teacher");
+  },
+  getGuardians: function() {
+    return axios.get("/api/user/guardian");
   },
   // Gets the user information for currently logged in user
   getSelf: function() {
@@ -61,8 +67,10 @@ export default {
   getUserStudents: () => {
     return axios.get("/api/student/getUserStudents")
   },
-
   getLog: (id, date) => {
     return axios.get('/api/dayLog/' + id + '/' + date)
-  }
+  },
+  getLogs: (id) => {
+    return axios.get("/api/dayLog/allLogs", id)
+  },
 };

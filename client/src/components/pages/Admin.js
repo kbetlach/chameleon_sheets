@@ -30,12 +30,13 @@ function Admin() {
                         <StudentCard />
                         <GuardianCard />
                     </div>
-                </div>) : (<div className="jumbotron">
-                    <h1 className="text-center" style={{ color: "white", fontSize: "42px", marginBottom: "25px" }}>You must be an admin to view this page</h1>
+                    </div>) : (<div className="container">
+                        <div className = "jumbotron">
+                    <div className="text-center" style={{ color: "white", fontSize: "42px", marginBottom: "25px" }}>You must be an admin to view this page</div>
+                </div>
                 </div>
                 )}
         </div>
     )
 }
-
 export default Admin;

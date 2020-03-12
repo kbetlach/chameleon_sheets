@@ -36,8 +36,8 @@ function GuardianCard() {
   }
 
   return (
-    <div id = "guardianCard" className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "40px", marginTop: "50px", opacity: ".95" }}>
-      <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
+    <div id = "guardianCard" className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "40px", marginTop: "50px", opacity: ".95", height: "320px" }}>
+      <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white", fontSize: "28px", }}>
         Add Guardian
       </div>
       <form  id="guardianForm" onSubmit={handleSubmit}  type="submit">

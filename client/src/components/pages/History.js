@@ -25,10 +25,13 @@ function History() {
             <HistoryCard />
             <HistoryCard />
         </div>
-        </div>) : (<div className="jumbotron">
-                <h1 className="text-center" style={{color: "white", fontSize: "42px", marginBottom: "25px"}}>You must be logged in to view this page</h1>
-                </div>)}
-     </div>
+        </div>) : (<div className="container">
+                        <div className = "jumbotron">
+                    <div className="text-center" style={{ color: "white", fontSize: "42px", marginBottom: "25px" }}>You must be logged in to view this page</div>
+                </div>
+                </div>
+                )}
+        </div>
     )
 }
 

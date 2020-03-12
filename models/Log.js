@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const logSchema = new Schema({
 
     date: {
-        type: Date,
-        default: Date.now
+        type: String,
     },
     student: {
         type: Schema.Types.ObjectId,

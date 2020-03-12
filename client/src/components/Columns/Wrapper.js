@@ -8,6 +8,7 @@ import API from '../../utils/API';
 
 
 function Wrapper() {
+    const [studentId, setStudentId] = useState();
     const [user, setUser] = useState();
     const [isGuardian, setIsGuardian] = useState();
     async function checkYourself() {
@@ -27,6 +28,9 @@ function Wrapper() {
     const columns = (hours * 4); //This MAY eventually be user generated
     const startTime = '08:00'; //This will eventually be user-generated
     const columnArray = [];
+    const studentFunction = (id) => {
+        setStudentId(id);
+    }
 
     for (var i = 1; i < columns + 1; i++) {
         columnArray.push("column-" + [i]);
@@ -35,20 +39,22 @@ function Wrapper() {
     return (
         <div>
             {(user && user.role) ? (<div class="flexbox"> {(isGuardian) ? (<div class="table-container">
-                <TabWrapper />
+                <TabWrapper setStudentId={studentFunction} />
                 {columnArray.map((column, index) => (
                     <GridColGuardian
                         key={column}
                         startTime={startTime}
                         index={index}
+                        studentId={studentId}
                     ></GridColGuardian>
                 ))} </div>) : (<div class="table-container">
-                    <TabWrapper />
+                    <TabWrapper setStudentId={studentFunction} />
                     {columnArray.map((column, index) => (
                         <GridCol
                             key={column}
                             startTime={startTime}
                             index={index}
+                            studentId={studentId}
                         ></GridCol>
                     ))} </div>)}</div>) : (<div className="container">
                         <div className="jumbotron">

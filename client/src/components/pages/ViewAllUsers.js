@@ -47,7 +47,7 @@ function ViewAll() {
     }
     return (
         <div>
-            {(true) ? (
+            {(isAdmin) ? (
                 <div style={{ fontFamily: 'Barlow Condensed', margin: "auto", width: "100%" }}>
                     <Header />
                     <div id="viewAllUsers" className="container container w3-container w3-center w3-animate-opacity">

@@ -20,166 +20,118 @@ let studentSeed = [
         ]
     },
     {
-        hours: 6
-    },
-    {
-        startTime: "0800"
-    },
-    {
         name: [
             {
                 firstName: "Pete",
                 lastName: "Zah"
             }
         ]
-    }, {
-        hours: 6
-    }, {
-        startTime: "0800"
-    }, {
+    },
+    {
         name: [
             {
                 firstName: "Brad",
                 lastName: "Gibson"
             }
         ]
-    }, {
-        hours: 6
-    }, {
-        startTime: "0800"
-    }, {
+    },
+    {
         name: [
             {
                 firstName: "Shirley",
                 lastName: "Waterford"
             }
         ]
-    }, {
-        hours: 6
-    }, {
-        startTime: "0800"
-    }, {
+    },
+    {
         name: [
             {
                 firstName: "Joanne",
                 lastName: "Johnson"
             }
         ]
-    }, {
-        hours: 6
-    }, {
-        startTime: "0800"
-    }, {
+    },
+    {
         name: [
             {
                 firstName: "Francisco",
                 lastName: "Perez"
             }
         ]
-    }, {
-        hours: 6
-    }, {
-        startTime: "0800"
-    }, {
+    }, 
+    {
         name: [
             {
                 firstName: "John",
                 lastName: "Rivers"
             }
         ]
-    }, {
-        hours: 6
-    }, {
-        startTime: "0800"
-    }, {
+    },
+    {
+    
         name: [
             {
                 firstName: "Joseph",
                 lastName: "Olson"
             }
         ]
-    }, {
-        hours: 6
-    }, {
-        startTime: "0800"
-    }, {
+    }, 
+    {
         name: [
             {
                 firstName: "Nicole",
                 lastName: "Price"
             }
         ]
-    }, {
-        hours: 6
-    }, {
-        startTime: "0800"
-    }, {
+    },  
+    {
         name: [
             {
-                firstName: "Phil",
-                lastName: "Pipes"
+                firstName: "Dante",
+                lastName: "Roy"
             }
         ]
-    }, {
-        hours: 6
-    }, {
-        startTime: "0800"
-    }, {
+    },
+    {
         name: [
             {
                 firstName: "Chris",
                 lastName: "Gaines"
             }
         ]
-    }, {
-        hours: 3
-    }, {
-        startTime: "1100"
-    }, {
+    },
+    {
         name: [
             {
                 firstName: "Jordan",
                 lastName: "Foley"
             }
         ]
-    }, {
-        hours: 4
-    }, {
-        startTime: "1000"
-    }, {
+    },
+    {
         name: [
             {
                 firstName: "Meera",
                 lastName: "Aguilar"
             }
         ]
-    }, {
-        hours: 5
-    }, {
-        startTime: "0900"
-    }, {
+    },
+    {
         name: [
             {
                 firstName: "Drew",
                 lastName: "Myers"
             }
         ]
-    }, {
-        hours: 5
-    }, {
-        startTime: "0900"
-    }, {
+    },
+    {
         name: [
             {
                 firstName: "Chelsea",
                 lastName: "Rowland"
             }
         ]
-    }, {
-        hours: 4
-    }, {
-        startTime: "1000"
-    },
+    }
 ]
 
 // ADMIN AND TEACHERS
@@ -200,9 +152,6 @@ let userSeed = [
     {
         last_name: "Strater"
     }, 
-    {
-        school: "Oak School"
-    },
     //TEACHERS
     {
         role: "Teacher"
@@ -220,9 +169,6 @@ let userSeed = [
         last_name: "O'Ryan"
     }, 
     {
-        school: "Oak School"
-    },
-    {
         role: "Teacher"
     },
     {
@@ -237,9 +183,6 @@ let userSeed = [
     {
         last_name: "Nolan"
     }, 
-    {
-        school: "Oak School"
-    },
     {
         role: "Teacher"
     },
@@ -256,9 +199,6 @@ let userSeed = [
         last_name: "Rawlings"
     }, 
     {
-        school: "Oak School"
-    },
-    {
         role: "Teacher"
     },
     {
@@ -274,9 +214,6 @@ let userSeed = [
         last_name: "Lowry"
     }, 
     {
-        school: "Oak School"
-    },
-    {
         role: "Teacher"
     },
     {
@@ -290,10 +227,278 @@ let userSeed = [
     }, 
     {
         last_name: "Bray"
+    },
+    //GUARDIAN SEEDS
+    {
+        role: "Guardian"
+    },
+    {
+        email: "rich@email.com"
+    },
+    {
+        password: "rich"
+    },
+    {
+        first_name: "Rich"
     }, 
     {
-        school: "Oak School"
+        last_name: "Pipes"
     },
+    {
+        students: [0]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "charles@email.com"
+    },
+    {
+        password: "charles"
+    },
+    {
+        first_name: "Charles"
+    }, 
+    {
+        last_name: "Zah"
+    },
+    {
+        students: [1]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "george@email.com"
+    },
+    {
+        password: "george"
+    },
+    {
+        first_name: "George"
+    }, 
+    {
+        last_name: "Gibson"
+    },
+    {
+        students: [2]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "sandra@email.com"
+    },
+    {
+        password: "sandra"
+    },
+    {
+        first_name: "Sandra"
+    }, 
+    {
+        last_name: "Waterford"
+    },
+    {
+        students: [3]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "terry@email.com"
+    },
+    {
+        password: "terry"
+    },
+    {
+        first_name: "Terry"
+    }, 
+    {
+        last_name: "Johnson"
+    },
+    {
+        students: [4]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "juan@email.com"
+    },
+    {
+        password: "juan"
+    },
+    {
+        first_name: "Juan"
+    }, 
+    {
+        last_name: "Perez"
+    },
+    {
+        students: [5]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "theresa@email.com"
+    },
+    {
+        password: "theresa"
+    },
+    {
+        first_name: "Theresa"
+    }, 
+    {
+        last_name: "Rivers"
+    },
+    {
+        students: [6]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "chuck@email.com"
+    },
+    {
+        password: "chuck"
+    },
+    {
+        first_name: "Chuck"
+    }, 
+    {
+        last_name: "Olson"
+    },
+    {
+        students: [7]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "jim@email.com"
+    },
+    {
+        password: "jim"
+    },
+    {
+        first_name: "Jim"
+    }, 
+    {
+        last_name: "Price"
+    },
+    {
+        students: [8]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "graham@email.com"
+    },
+    {
+        password: "graham"
+    },
+    {
+        first_name: "Graham"
+    }, 
+    {
+        last_name: "Roy"
+    },
+    {
+        students: [9]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "ashley@email.com"
+    },
+    {
+        password: "ashley"
+    },
+    {
+        first_name: "Ashley"
+    }, 
+    {
+        last_name: "Gaines"
+    },
+    {
+        students: [10]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "shelby@email.com"
+    },
+    {
+        password: "shelby"
+    },
+    {
+        first_name: "Shelby"
+    }, 
+    {
+        last_name: "Foley"
+    },
+    {
+        students: [11]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "calder@email.com"
+    },
+    {
+        password: "calder"
+    },
+    {
+        first_name: "Calder"
+    }, 
+    {
+        last_name: "Aguilar"
+    },
+    {
+        students: [12]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "jack@email.com"
+    },
+    {
+        password: "jack"
+    },
+    {
+        first_name: "Jack"
+    }, 
+    {
+        last_name: "Myers"
+    },
+    {
+        students: [13]
+    },
+    {
+        role: "Guardian"
+    },
+    {
+        email: "sheena@email.com"
+    },
+    {
+        password: "sheena"
+    },
+    {
+        first_name: "Sheena"
+    }, 
+    {
+        last_name: "Rowland"
+    },
+    {
+        students: [14]
+    }
 ]
 
 // db.chameleondb.deletemany({})

@@ -54,5 +54,8 @@ export default {
   },
   createLog: (data) => {
     return axios.post("/api/dayLog/", data)
-  }
+  },
+  getLogs: (id) => {
+    return axios.get("/api/dayLog/allLogs", id)
+  },
 };

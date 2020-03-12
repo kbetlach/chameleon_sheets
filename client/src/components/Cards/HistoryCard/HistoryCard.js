@@ -28,6 +28,8 @@ useEffect(() => {
     getLogs(student.id);
   },[])
 
+  //<i class="fas fa-file-export"></i>
+
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>

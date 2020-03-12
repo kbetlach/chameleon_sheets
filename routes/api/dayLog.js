@@ -9,7 +9,15 @@ const db = require("../../models")
 //     }],
 //     comment: "This is only for test purposes"
 // }
-
+router.route("/allLogs")
+    .get((req, res) => {
+        db.Log.find({ student: req.body.id })
+            .then(results => {
+                res.json(results)
+            }).catch(err => {
+                console.log(err, "err on 18 in daylog")
+            })
+        })
 router.route('/')
     .get((req, res) => {
         // db.Log.findOne({ date: "2020-03-05T18:14:43" } )

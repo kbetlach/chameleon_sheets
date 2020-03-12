@@ -6,6 +6,8 @@ import AddUserButton from "../Buttons/AddUserButton/AddUser"
 import GridButton from "../Buttons/GridButton/GridButton"
 import HistoryButton from "../Buttons/HistoryButton/HistoryButton"
 import ViewAllUsersButton from "../Buttons/ViewAllUsersButton/ViewAllUsersButton"
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 
 function Login() {
     const [email, setEmail] = useState();
@@ -22,6 +24,7 @@ function Login() {
             setIsAdmin(false)
         }
         setUser(userPlaceholder.data);
+        console.log(freshLog);
         if(userPlaceholder && freshLog){
                 window.location.reload(false);
             }
@@ -31,13 +34,16 @@ function Login() {
       },[])
     const handleSubmit = async e => {
         e.preventDefault();
-        freshLog=true
+        if (freshLog=true) {
+            toast.notify ("Invalid login credentials. Please try again.")
+        }
         await API.login({
             email: email,
             password: password
         })
         checkYourself();
     }
+    
     return (
         <div>
             <div className="container w3-container w3-center w3-animate-opacity">

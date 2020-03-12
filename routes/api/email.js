@@ -35,7 +35,7 @@ router.route("/")
     emailOptions.from = 'chameleon.sheets@gmail.com';
     emailOptions.to = email;
     emailOptions.subject = 'Sign up with Chameleon Sheets';
-    emailOptions.html = `<p> Hello ${firstName} ${lastName}! </p> <p> Please go to <a style = "color:blue;"> http://localhost:3000/signup/ </a> to complete your profile! </p>`;
+    emailOptions.html = `<p> Hello ${firstName} ${lastName}! <br> Please click this <a href= "http://localhost:3000/signup/"> link </a> to complete your profile! </p> <p> Thanks, <br> Your friends at Chameleon Cooperative </p>`;
     return emailOptions
   };
 

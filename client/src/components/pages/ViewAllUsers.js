@@ -43,7 +43,6 @@ function ViewAll() {
     }, [])
     var handleDelete = function handleDeleteUser(id){
         API.deleteUser({id: id});
-
     }
     return (
         <div>
@@ -62,7 +61,7 @@ function ViewAll() {
                                         <ul className="list-group list-group-flush" style={{ overflowY: "scroll", maxHeight: "320px", fontSize: "19px" }}>
                                             {teachers.map(result => (
                                                 <li className="list-group-item">
-                                                    <div className="col-md-12 scroll">{result.first_name} {result.last_name} <i style = {{marginLeft: "15px", cursor: "pointer"}}class="fas fa-trash-alt"></i></div>
+                                                    <div className="col-md-12 scroll">{result.first_name} {result.last_name} <i onClick = {()=>handleDelete(result._id)} style = {{marginLeft: "15px", cursor: "pointer"}}class="fas fa-trash-alt"></i></div>
                                                 </li>
                                             ))}
                                         </ul>
@@ -78,7 +77,7 @@ function ViewAll() {
                                         <ul className="list-group list-group-flush" style={{ overflowY: "scroll", maxHeight: "320px", fontSize: "19px" }}>
                                             {students.map(result => (
                                                 <li className="list-group-item">
-                                                    <div className="col-md-12 scroll">{result.name.firstName} {result.name.lastName} <i style = {{marginLeft: "15px", cursor: "pointer"}}class="fas fa-trash-alt"></i></div>
+                                                    <div className="col-md-12 scroll">{result.name.firstName} {result.name.lastName} <i onClick = {()=>handleDelete(result._id)} style = {{marginLeft: "15px", cursor: "pointer"}}class="fas fa-trash-alt"></i></div>
                                                 </li>
                                             ))}
                                         </ul>

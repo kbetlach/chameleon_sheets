@@ -17,7 +17,7 @@ function StudentSearch(props) {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header" style={{ backgroundColor: "darkslategray" }}>
-              <h5 style={{ color: 'white' }} className="modal-title" id="studentModal">Search for a Student:</h5>
+              <h5 style={{ color: 'white' }} className="modal-title" id="studentModalHeader">Search for a Student:</h5>
               <button style={{ color: 'white' }} aria-label="Close" className="close" data-dismiss="modal" type="button">
                 <span aria-hidden="true">&times;</span>
               </button>

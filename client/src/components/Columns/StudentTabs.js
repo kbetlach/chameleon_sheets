@@ -39,12 +39,24 @@ function StudentTabs(props) {
     event.preventDefault();
     setCurrentStudents(currentStudents.filter(item => item.id !== event.currentTarget.dataset.studentid));
     console.log(event.currentTarget.dataset.studentid + " removed from user collection.")
-    console.log(currentStudents);
+    console.log(currentStudents)
     //Trying to set new active student when one is removed
     //ActiveTab currently undefined?
     // setActiveTab(currentStudents[0].id)
     // console.log(activeTab);
   }
+
+  useEffect(() => {
+    if(!activeTab && currentStudents[0]){
+      setActiveTab(currentStudents[0].id)
+      props.setStudentId(currentStudents[0].id)
+      console.log(activeTab)
+    }
+    else if (!activeTab && !currentStudents){
+      setActiveTab(null)
+      props.setStudentId(null)
+    }
+  }, [currentStudents])
 
   useEffect(() => {
 

@@ -28,7 +28,7 @@ function GridCol({startTime, index, studentId}){
             setIsLoading(true);
             try {
             const logFetch = await API.getLog(studentId, today)
-            console.log(logFetch.data.scores, "EJEJEJEJEJ")
+            // console.log(logFetch.data.scores, "EJEJEJEJEJ")
             let log = logFetch.data.scores;
             for (var i = 0; i < log.length; i++){
                 if (log[i].time == index){

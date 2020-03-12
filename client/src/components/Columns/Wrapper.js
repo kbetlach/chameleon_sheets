@@ -32,10 +32,6 @@ function Wrapper() {
         setStudentId(id);
     }
 
-    document.getElementsByClassName("nav-student").onclick = function () {
-
-    }
-
     for (var i = 1; i < columns + 1; i++) {
         columnArray.push("column-" + [i]);
     }
@@ -60,7 +56,12 @@ function Wrapper() {
                             index={index}
                             studentId={studentId}
                         ></GridCol>
-                    ))} </div>)}</div>) : (<div class="table-container">You Must Log In To View This Page</div>)}
+                    ))} </div>)}</div>) : (<div className="container">
+                        <div className="jumbotron">
+                            <div className="text-center" style={{ color: "white", fontSize: "42px", marginBottom: "25px" }}>You must be logged in to view this page</div>
+                        </div>
+                    </div>
+                )}
         </div>
     )
 }

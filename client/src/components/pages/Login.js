@@ -12,6 +12,7 @@ function Login() {
     const [password, setPassword] = useState();
     const [user, setUser] = useState();
     const [isAdmin, setIsAdmin] = useState();
+    let freshLog = false
     async function checkYourself(){
         let userPlaceholder = await API.getSelf();
         if(userPlaceholder && (userPlaceholder.data.role === "Admin")){
@@ -21,6 +22,9 @@ function Login() {
             setIsAdmin(false)
         }
         setUser(userPlaceholder.data);
+        if(userPlaceholder && freshLog){
+            window.location.reload(false);
+        }
     }
     useEffect(() => {
         checkYourself();
@@ -30,7 +34,10 @@ function Login() {
         await API.login({
             email: email,
             password: password
-        }).then(window.location.reload(false))
+        }).then(
+            freshLog=true,
+            checkYourself()
+            )
     }
     return (
         <div>

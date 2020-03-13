@@ -10,16 +10,17 @@ function StaffCard() {
   const [firstName, setFirstName] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();
+  const [role, setRole] = useState("Teacher");
 
   const handleSubmit = e => {
     e.preventDefault();
 
     toast.notify ("Staff added successfully!");
 
-    API.email({ firstName, lastName, email });
-
+    API.email({ firstName, lastName, email, role });
+console.log(role)
     API.saveUser({
-      role: "Teacher",
+      role: role,
       email: email,
       first_name: firstName,
       last_name: lastName,

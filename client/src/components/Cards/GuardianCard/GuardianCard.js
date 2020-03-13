@@ -11,6 +11,7 @@ function GuardianCard() {
   const [firstName, setFirstname] = useState();
   const [email, setEmail] = useState();
   const [lastName, setLastName] = useState();
+  const [role, setRole] = useState("Guardian");
   const [student, setStudent] = useState();
   const [studentData, setStudentData] = useState();
 
@@ -35,16 +36,20 @@ useEffect(() => {
 
     toast.notify ("Guardian added successfully!");
 
-    API.email({ firstName, lastName, email, student });
+    API.email({ firstName, lastName, email, student, role });
     console.log(firstName);
+    console.log(role);
     API.saveUser({
-      role: "Guardian",
+      role: role,
       email: email,
       first_name: firstName,
       last_name: lastName,
       students: [student]
       //school: req.user.school,
+      
     })
+    console.log(student)
+
     document.getElementById("guardianForm").reset();
 
   }
@@ -54,7 +59,7 @@ useEffect(() => {
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white", fontSize: "28px", }}>
         Add Guardian
       </div>
-      <form  id="guardianForm" onSubmit={handleSubmit}  type="submit">
+      <form id="guardianForm" onSubmit={handleSubmit} onSubmit ={e => setStudent(e.name.firstName && e.name.lastName)}  type="submit">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             <input onChange={e => setFirstname(e.target.value)} id="guardianFirstName" required="true" placeholder="First Name">

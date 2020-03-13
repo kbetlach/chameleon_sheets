@@ -68,7 +68,6 @@ function Wrapper() {
         {"time": 21, score:"6"},
         {"time": 22, score:"6"},
         {"time": 23, score:"6"},
-
     ]
 
     function compare(a, b) {

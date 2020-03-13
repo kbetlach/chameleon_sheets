@@ -24,23 +24,21 @@ function Login() {
             setIsAdmin(false)
         }
         setUser(userPlaceholder.data);
-        console.log(freshLog);
         if(userPlaceholder && freshLog){
                 window.location.reload(false);
-            }
+        }
     }
     useEffect(() => {
         checkYourself();
       },[])
     const handleSubmit = async e => {
         e.preventDefault();
-        if (freshLog=true) {
-            toast.notify ("Invalid login credentials. Please try again.")
-        }
+        freshLog=true
+        console.log(freshLog)
         await API.login({
             email: email,
             password: password
-        })
+        }).catch(() => toast.notify ("Invalid login credentials. Please try again."))
         checkYourself();
     }
     

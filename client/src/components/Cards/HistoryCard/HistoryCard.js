@@ -79,15 +79,16 @@ function HistoryCard(props) {
   const [avgScore, setAvgScore] = useState();
   let scoreTotal;
   let count;
-  let student=props.student;
+  let student=props.value;
   async function getLogs(id){
     scoreTotal = 0;
     count = 0;
     let logPlaceholder = await API.getLogs(id);
+    console.log(id);
     if(logPlaceholder && logPlaceholder.data){
         setLogs(logPlaceholder.data)
-        for(let i = 0; i < logPlaceholder.data.length(); i++){
-          for (let j = 0; j < logPlaceholder.data[i].scores.length(); j++){
+        for(let i = 0; i < logPlaceholder.data.length; i++){
+          for (let j = 0; j < logPlaceholder.data[i].scores.length; j++){
             if((logPlaceholder.data[i].scores[j].score > 0) && (logPlaceholder.data[i].scores[j].score <6)){
               scoreTotal =+ logPlaceholder.data[i].scores[j].score
               count++
@@ -97,7 +98,11 @@ function HistoryCard(props) {
         setAvgScore(scoreTotal/count);
     }
 }
-
+useEffect(() => {
+  if(student && student._id) {
+    getLogs({id: student._id})
+  }
+},[])
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>

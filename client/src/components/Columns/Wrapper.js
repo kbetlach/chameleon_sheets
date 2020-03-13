@@ -41,10 +41,37 @@ function Wrapper() {
     const studentFunction = (id) => {
         setStudentId(id);
     }
+    const ghostLog = [
+        {"time": 0, score:"6"},
+        {"time": 1, score:"6"},
+        {"time": 2, score:"6"},
+        {"time": 3, score:"6"},
+        {"time": 4, score:"6"},
+        {"time": 5, score:"6"},
+        {"time": 6, score:"6"},
+        {"time": 7, score:"6"},
+        {"time": 8, score:"6"},
+        {"time": 9, score:"6"},
+        {"time": 10, score:"6"},
+        {"time": 11, score:"6"},
+        {"time": 12, score:"6"},
+        {"time": 13, score:"6"},
+        {"time": 14, score:"6"},
+        {"time": 15, score:"6"},
+        {"time": 16, score:"6"},
+        {"time": 17, score:"6"},
+        {"time": 18, score:"6"},
+        {"time": 19, score:"6"},
+        {"time": 20, score:"6"},
+        {"time": 21, score:"6"},
+        {"time": 22, score:"6"},
+        {"time": 23, score:"6"},
+
+    ]
 
     function compare(a, b) {
         let comparison = 0;
-        if (a.time.toFixed() > b.time) {
+        if (a.time > b.time) {
             comparison = 1;
         } else if (a.time < b.time) {
             comparison = -1;
@@ -58,9 +85,12 @@ function Wrapper() {
                 setIsLoading(true);
                 try {
                 const logFetch = await API.getLog(studentId, today)
-                let log = logFetch.data.scores;
-                setSortedLog(log.sort(compare));
-                console.log("Sorted Log: ", sortedLog);
+                if (logFetch.data !== null) {
+                    let log = logFetch.data.scores;
+                    setSortedLog(log.sort(compare));
+                    console.log("Sorted Log: ", sortedLog);
+                }
+                else {setSortedLog(ghostLog)}
                 } catch (err) { console.log(err); }
             }
             fetchLogs();

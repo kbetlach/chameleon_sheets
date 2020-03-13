@@ -12,7 +12,7 @@ const logSchema = new Schema({
     },
     scores: [{
         time: {
-            type: String
+            type: Number
         },
         score: {
             type: Number,

@@ -84,13 +84,12 @@ function HistoryCard(props) {
     scoreTotal = 0;
     count = 0;
     let logPlaceholder = await API.getLogs(id);
-    console.log(id);
     if(logPlaceholder && logPlaceholder.data){
         setLogs(logPlaceholder.data)
         for(let i = 0; i < logPlaceholder.data.length; i++){
           for (let j = 0; j < logPlaceholder.data[i].scores.length; j++){
             if((logPlaceholder.data[i].scores[j].score > 0) && (logPlaceholder.data[i].scores[j].score <6)){
-              scoreTotal =+ logPlaceholder.data[i].scores[j].score
+              scoreTotal += logPlaceholder.data[i].scores[j].score
               count++
             }
           }
@@ -111,7 +110,7 @@ useEffect(() => {
       <form>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-          {(avgScore) ? (<div>Average score:  {avgScore}</div>):(<div>No scores available</div>)}
+          {(avgScore) ? (<div>Average score:  {avgScore.toFixed(2)}</div>):(<div>No scores available</div>)}
           </li>
           <li className="list-group-item">
             <br />

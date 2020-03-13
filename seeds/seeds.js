@@ -2,135 +2,118 @@ const mongoose = require("mongoose");
 const db = require("../models");
 // const data = require("data");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/webpackplugin", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/chameleondb", {
     useNewUrlParser: true,
-    useFIndAndModify: false,
     useUnifiedTopology: true,
     useCreateIndex: true
 });
 
 // STUDENTS
-let studentSeed = [
-    {
-        name: [
+let studentSeed = [ 
+        {
+        name: 
             {
                 firstName: "Phil",
                 lastName: "Pipes"
             }
-        ]
-    },
-    {
-        name: [
+        },
+        {
+        name:
             {
                 firstName: "Pete",
                 lastName: "Zah"
             }
-        ]
-    },
-    {
-        name: [
+        },
+        {
+        name:
             {
                 firstName: "Brad",
                 lastName: "Gibson"
             }
-        ]
-    },
-    {
-        name: [
+        },
+        {
+        name:
             {
                 firstName: "Shirley",
                 lastName: "Waterford"
             }
-        ]
-    },
-    {
-        name: [
+        },
+        {
+        name: 
             {
                 firstName: "Joanne",
                 lastName: "Johnson"
             }
-        ]
-    },
-    {
-        name: [
+        },
+        {
+        name:
             {
                 firstName: "Francisco",
                 lastName: "Perez"
             }
-        ]
-    }, 
-    {
-        name: [
+        },
+        { 
+        name:
             {
                 firstName: "John",
                 lastName: "Rivers"
             }
-        ]
-    },
-    {
-    
-        name: [
+        },
+        {
+        name: 
             {
                 firstName: "Joseph",
                 lastName: "Olson"
             }
-        ]
-    }, 
-    {
-        name: [
+        },
+        {
+        name:
             {
                 firstName: "Nicole",
                 lastName: "Price"
             }
-        ]
-    },  
-    {
-        name: [
+        },
+        {  
+        name:
             {
                 firstName: "Dante",
                 lastName: "Roy"
             }
-        ]
-    },
-    {
-        name: [
+        },
+        {
+        name:
             {
                 firstName: "Chris",
                 lastName: "Gaines"
             }
-        ]
-    },
-    {
-        name: [
+        },
+        {
+        name: 
             {
                 firstName: "Jordan",
                 lastName: "Foley"
             }
-        ]
-    },
-    {
-        name: [
+        },
+        {
+        name:
             {
                 firstName: "Meera",
                 lastName: "Aguilar"
             }
-        ]
-    },
-    {
-        name: [
+        },
+        {
+        name:
             {
                 firstName: "Drew",
                 lastName: "Myers"
             }
-        ]
-    },
-    {
-        name: [
+        },
+            {
+        name:
             {
                 firstName: "Chelsea",
                 lastName: "Rowland"
             }
-        ]
     }
 ]
 
@@ -501,8 +484,8 @@ let userSeed = [
     }
 ]
 
- db.chameleondb.deleteMany({})
- .then(() => db.chameleondb.collection.insertMany(studentSeed))
+ db.Student.deleteMany({})
+ .then(() => db.Student.collection.insertMany(studentSeed))
  .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
@@ -512,8 +495,8 @@ let userSeed = [
     process.exit(1);
  });
 
- db.chameleondb.deleteMany({})
- .then(() => db.chameleondb.collection.insertMany(userSeed))
+ db.User.deleteMany({})
+ .then(() => db.User.collection.insertMany(userSeed))
  .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);

@@ -501,7 +501,7 @@ let userSeed = [
     }
 ]
 
- db.chameleondb.deletemany({})
+ db.chameleondb.deleteMany({})
  .then(() => db.chameleondb.collection.insertMany(studentSeed))
  .then(data => {
     console.log(data.result.n + " records inserted!");
@@ -512,7 +512,7 @@ let userSeed = [
     process.exit(1);
  });
 
- db.chameleondb.deletemany({})
+ db.chameleondb.deleteMany({})
  .then(() => db.chameleondb.collection.insertMany(userSeed))
  .then(data => {
     console.log(data.result.n + " records inserted!");

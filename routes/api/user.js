@@ -33,7 +33,6 @@ router.get("/", function(req, res) {
 });
 router.get("/self", function(req, res) {
     db.User.findOne({_id: req.user._id}).then(function(dbUsers) {
-        console.log(dbUsers);
         res.json(dbUsers);
     });
 })

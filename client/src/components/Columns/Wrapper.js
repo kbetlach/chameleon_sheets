@@ -8,17 +8,19 @@ import API from '../../utils/API';
 
 
 function Wrapper() {
-    const [studentId, setStudentId] = useState();
-    const [user, setUser] = useState();
-    const [isGuardian, setIsGuardian] = useState();
-    const [sortedLog, setSortedLog] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
     today = mm + dd + yyyy;
+    
+    const [studentId, setStudentId] = useState();
+    const [date, setDate] = useState(today);
+    const [user, setUser] = useState();
+    const [isGuardian, setIsGuardian] = useState();
+    const [sortedLog, setSortedLog] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
 
     async function checkYourself() {
         let userPlaceholder = await API.getSelf();
@@ -84,7 +86,7 @@ function Wrapper() {
                 async function fetchLogs() {
                 setIsLoading(true);
                 try {
-                const logFetch = await API.getLog(studentId, today)
+                const logFetch = await API.getLog(studentId, date)
                 if (logFetch.data !== null) {
                     let log = logFetch.data.scores;
                     setSortedLog(log.sort(compare));

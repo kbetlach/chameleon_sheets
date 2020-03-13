@@ -11,9 +11,11 @@ const db = require("../../models")
 //     comment: "This is only for test purposes"
 // }
 router.route("/allLogs")
-    .get((req, res) => {
+    .post((req, res) => {
+        console.log(req.body)
         db.Log.find({ student: req.body.id })
             .then(results => {
+                console.log(results)
                 res.json(results)
             }).catch(err => {
                 console.log(err, "err on 18 in daylog")

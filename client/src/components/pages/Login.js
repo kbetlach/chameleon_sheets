@@ -6,6 +6,8 @@ import AddUserButton from "../Buttons/AddUserButton/AddUser"
 import GridButton from "../Buttons/GridButton/GridButton"
 import HistoryButton from "../Buttons/HistoryButton/HistoryButton"
 import ViewAllUsersButton from "../Buttons/ViewAllUsersButton/ViewAllUsersButton"
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 
 function Login() {
     const [email, setEmail] = useState();
@@ -24,7 +26,7 @@ function Login() {
         setUser(userPlaceholder.data);
         if(userPlaceholder && freshLog){
                 window.location.reload(false);
-            }
+        }
     }
     useEffect(() => {
         checkYourself();
@@ -32,12 +34,14 @@ function Login() {
     const handleSubmit = async e => {
         e.preventDefault();
         freshLog=true
+        console.log(freshLog)
         await API.login({
             email: email,
             password: password
-        })
+        }).catch(() => toast.notify ("Invalid login credentials. Please try again."))
         checkYourself();
     }
+    
     return (
         <div>
             <div className="container w3-container w3-center w3-animate-opacity">

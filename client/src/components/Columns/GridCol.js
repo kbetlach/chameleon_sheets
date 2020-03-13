@@ -5,7 +5,7 @@ import './style.css'
 import API from '../../utils/API';
 // import axios from "axios";
 
-function GridCol({startTime, index, studentId}){
+function GridCol({startTime, index, studentId, sortedLog}){
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -22,26 +22,37 @@ function GridCol({startTime, index, studentId}){
     // let user = API.getSelf();
 
     useEffect(() => {
-        if (studentId) {
-            setRating(6)
-            async function fetchLogs() {
-            setIsLoading(true);
-            try {
-            const logFetch = await API.getLog(studentId, today)
-            // console.log(logFetch.data.scores, "EJEJEJEJEJ")
-            let log = logFetch.data.scores;
-            for (var i = 0; i < log.length; i++){
-                if (log[i].time == index){
-                    setRating(log[i].score)
+        setRating(6)
+        if (sortedLog.length > 0) {
+            for (var i = 0; i < sortedLog.length; i++){
+                if (sortedLog[i].time == index) {
+                    setRating(sortedLog[i].score);
                 }
             }
-            } catch (err) { console.log(err); }
         }
-        fetchLogs();
-        setIsLoading(false)
-        } else { }
+    }, [sortedLog])
+
+    // useEffect(() => {
+    //     if (studentId) {
+    //         setRating(6)
+    //         async function fetchLogs() {
+    //         setIsLoading(true);
+    //         try {
+    //         const logFetch = await API.getLog(studentId, today)
+    //         // console.log(logFetch.data.scores, "EJEJEJEJEJ")
+    //         let log = logFetch.data.scores;
+    //         for (var i = 0; i < log.length; i++){
+    //             if (log[i].time == index){
+    //                 setRating(log[i].score)
+    //             }
+    //         }
+    //         } catch (err) { console.log(err); }
+    //     }
+    //     fetchLogs();
+    //     setIsLoading(false)
+    //     } else { }
     
-    }, [studentId])
+    // }, [studentId])
 
 
     useEffect( () => {

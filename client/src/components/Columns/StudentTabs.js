@@ -3,6 +3,8 @@ import './style.css';
 import StudentSearch from "../StudentSearch/StudentSearch";
 import DateTab from "./DateTab";
 import API from "../../utils/API"
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 
 function StudentTabs(props) {
   const [search, setSearch] = useState("");
@@ -26,6 +28,8 @@ function StudentTabs(props) {
   function handleStudentSelect(event) {
     event.preventDefault();
     setActiveStudent(event.currentTarget.dataset.value);
+    setActiveTab(event.currentTarget.dataset.value);
+    props.setStudentId(event.currentTarget.dataset.value)
   }
 
   function handleTabClick(event) {
@@ -39,11 +43,12 @@ function StudentTabs(props) {
     event.preventDefault();
     setCurrentStudents(currentStudents.filter(item => item.id !== event.currentTarget.dataset.studentid));
     console.log(event.currentTarget.dataset.studentid + " removed from user collection.")
-    console.log(currentStudents)
+    console.log("Current Students: ", currentStudents)
+    window.location.reload(false)
   }
 
   useEffect(() => {
-    if(!activeTab && currentStudents[0]){ //If there's not an active studentID AND there's a student in the currentStudents array, default to using the ID of the first user in the currentStudents array.
+    if(!activeTab && currentStudents.length>0){ //If there's not an active studentID AND there's a student in the currentStudents array, default to using the ID of the first user in the currentStudents array.
       props.setStudentId(currentStudents[0].id)
       setActiveTab(currentStudents[0].id)
     }
@@ -64,7 +69,6 @@ function StudentTabs(props) {
   }, [currentStudents])
 
   useEffect(() => {
-    // console.log(activeStudent,"--------------------------")
     if (activeStudent) {
       async function fetchCurrent() {
         setIsLoading(true);
@@ -83,36 +87,6 @@ function StudentTabs(props) {
     } else { }
 
   }, [activeStudent])
-
-  //THIS IS THE GOOD ONE, TRYING IT IN GRIDCOL
-  // useEffect(() => {
-  //   if (activeTab) {
-  //       async function fetchLogs() {
-  //       setIsLoading(true);
-  //       try {
-  //         const logFetch = await API.getLog(activeTab, today)
-  //         console.log(logFetch.data[0].scores, "EJEJEJEJEJ")          
-  //       } catch (err) { console.log(err); }
-  //     }
-  //     fetchLogs();
-  //     setIsLoading(false)
-  //   } else { }
-
-  // }, [activeTab])
-
-  // useEffect(() => {
-  //   const currentFetch = API.findStudent(activeStudent)
-  //   let activeFirstName = currentFetch.data[0].name.firstName;
-  //   let activeId = currentFetch.data[0]._id;
-  //   let newCurrentStudent = { firstName: activeFirstName, id: activeId }
-  //   setCurrentStudents(currentStudents => [...currentStudents, newCurrentStudent]);
-  // }, [activeStudent])
-
-
-  // useEffect(() => {
-  //   console.log("===CURRENT===")
-  //   console.log(...currentStudents);
-  // }, [currentStudents])
 
   useEffect(() => {
 
@@ -138,21 +112,6 @@ function StudentTabs(props) {
     fetchUserStudents();
     setIsLoading(false)
   }, [])
-
-  // useEffect(() => {
-  //   async function fetchUserStudents() {
-  //     try{
-  //         const getCurrentStudents = await API.getUserStudents()    
-  //         console.log(getCurrentStudents)
-  //         if (getCurrentStudents.students.length > 0) {
-  //           setCurrentStudents(getCurrentStudents.students)
-  //         }
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  //   fetchUserStudents();
-  // },[])
 
   return (
     <ul className="nav nav-tabs">

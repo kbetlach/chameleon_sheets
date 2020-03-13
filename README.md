@@ -4,12 +4,12 @@ Deployed link: (https://chameleon-sheets.herokuapp.com/)
 
 Contributors (GitHub usernames in parentheses):
 
-Frontend Team
+- Frontend Team
     - Kyle Betlach (kbetlach)
     - Jacob Rosenbaum (JacobRosenbaum)
     - Brennan Spicer (brennancodes)
 
-Backend Team
+- Backend Team
     - James Botham (Jkbotham)
     - Ben Honken (BenHonken)
 

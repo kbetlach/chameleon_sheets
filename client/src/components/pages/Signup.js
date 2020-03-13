@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import './pages.css';
 import API from '../../utils/API';
 import { Redirect } from "react-router-dom";
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 
 function Signup() {
 
@@ -16,7 +18,7 @@ function Signup() {
         await API.createPassword({
             email: email,
             password: password
-          })
+          }).catch(() => toast.notify ("Invalid email. Please try again."))
         await API.login({
             email: email,
             password: password

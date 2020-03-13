@@ -72,7 +72,7 @@ export default {
   getLog: (id, date) => {
     return axios.get('/api/dayLog/' + id + '/' + date)
   },
-  getLogs: (id) => {
-    return axios.get("/api/dayLog/allLogs", id)
+  getLogs: (data) => {
+    return axios.post("/api/dayLog/allLogs", data)
   },
 };

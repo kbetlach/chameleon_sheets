@@ -25,7 +25,7 @@ function GridCol({startTime, index, studentId, sortedLog}){
         setRating(6)
         if (sortedLog.length > 0) {
             for (var i = 0; i < sortedLog.length; i++){
-                if (sortedLog[i].time == index) {
+                if (sortedLog[i].time === index) {
                     setRating(sortedLog[i].score);
                 }
             }

@@ -5,56 +5,24 @@ import 'moment-timezone';
 
 function HistoryCard(props) {
 
- var studentName = "";
- var percentage1 = ""
- var percentage2 = ""
- var percentage3 = ""
- var percentage4 = ""
- var percentage5 = ""
- var today = new Date();
- var dd = String(today.getDate()).padStart(2, '0');
- var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
- var yyyy = today.getFullYear();
- today = mm + "/" + dd + "/" + yyyy;
- let ones = 0;
- let twos = 0;
- let threes = 0;
- let fours = 0;
- let fives = 0;
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+today = mm + "/" + dd + "/" + yyyy;
+let ones = 0;
+let twos = 0;
+let threes = 0;
+let fours = 0;
+let fives = 0;
 
- if (data = 1) {
-   ones ++;
- }
- else if (data = 2) {
-   twos ++
- }
- else if (data = 3) {
-   threes ++
- }
- else if (data = 4) {
-   fours ++
- }
- else if (data = 5) {
-   fives ++
- }
+const [percentage1, setPercentage1] = useState(0);
+const [percentage2, setPercentage2] = useState(0);
+const [percentage3, setPercentage3] = useState(0);
+const [percentage4, setPercentage4] = useState(0);
+const [percentage5, setPercentage5] = useState(0);
 
-//let onePct = (ones / array.length);
-//let twoPct = (twos / array.length);
-//let threePct = (threes / array.length);
-//let fourPct = (fours / array.length);
-//let fivePct = (fives / array.length);
 
- var data = [
-   {
-     Student: studentName,
-     percentAt1: percentage1,
-     percentAt2: percentage2,
-     percentAt3: percentage3,
-     percentAt4: percentage4,
-     percentAt5: percentage5,
-   }
- ]
- 
  const options = {
    fieldSeparator: ',',
    quoteStrings: '"',
@@ -71,6 +39,35 @@ function HistoryCard(props) {
  
  const exportCSV = (e) => {
    e.preventDefault();
+   var data = [
+    {
+      Student: student.name.firstName + " " + student.name.lastName,
+      Date: today,
+      percentAt1: percentage1,
+      percentAt2: percentage2,
+      percentAt3: percentage3,
+      percentAt4: percentage4,
+      percentAt5: percentage5,
+    },
+    {
+      Student: "",
+      Date: "03/14/2020",
+      percentAt1: 87.5,
+      percentAt2: 4.17,
+      percentAt3: 8.33,
+      percentAt4: 0,
+      percentAt5: 0,
+    },
+    {
+      Student: "",
+      Date: "03/15/2020",
+      percentAt1: 75,
+      percentAt2: 8.33,
+      percentAt3: 8.33,
+      percentAt4: 4.17,
+      percentAt5: 4.17,
+    }
+  ]
    const csvExporter = new ExportToCsv(options);
    csvExporter.generateCsv(data);
  }
@@ -84,18 +81,27 @@ function HistoryCard(props) {
     scoreTotal = 0;
     count = 0;
     let logPlaceholder = await API.getLogs(id);
-    console.log(id);
     if(logPlaceholder && logPlaceholder.data){
         setLogs(logPlaceholder.data)
         for(let i = 0; i < logPlaceholder.data.length; i++){
           for (let j = 0; j < logPlaceholder.data[i].scores.length; j++){
+            if(logPlaceholder.data[i].scores[j].score == 1){ ones++; }
+            if(logPlaceholder.data[i].scores[j].score == 2){ twos++; }
+            if(logPlaceholder.data[i].scores[j].score == 3){ threes++; }
+            if(logPlaceholder.data[i].scores[j].score == 4){ fours++; }
+            if(logPlaceholder.data[i].scores[j].score == 5){ fives++; }
             if((logPlaceholder.data[i].scores[j].score > 0) && (logPlaceholder.data[i].scores[j].score <6)){
-              scoreTotal =+ logPlaceholder.data[i].scores[j].score
+              scoreTotal += logPlaceholder.data[i].scores[j].score
               count++
             }
           }
         }
         setAvgScore(scoreTotal/count);
+        setPercentage1((ones/count)*100); 
+        setPercentage2((twos/count)*100); 
+        setPercentage3((threes/count)*100); 
+        setPercentage4((fours/count)*100); 
+        setPercentage5((fives/count)*100); 
     }
 }
 useEffect(() => {
@@ -111,8 +117,23 @@ useEffect(() => {
       <form>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-          {(avgScore) ? (<div>Average score:  {avgScore}</div>):(<div>No scores available</div>)}
+          {(avgScore) ? (<div>Average score:  {avgScore.toFixed(2)}</div>):(<div>No scores available</div>)}
           </li>
+          {/* <li className="list-group-item">
+          {(percentage1) ? (<div>1:  {percentage1.toFixed(2)+"%"}</div>):(<div>0.00%</div>)}
+          </li>
+          <li className="list-group-item">
+          {(percentage2) ? (<div>2:  {percentage2.toFixed(2)+"%"}</div>):(<div>0.00%</div>)}
+          </li>
+          <li className="list-group-item">
+          {(percentage3) ? (<div>3:  {percentage3.toFixed(2)+"%"}</div>):(<div>0.00%</div>)}
+          </li>
+          <li className="list-group-item">
+          {(percentage4) ? (<div>4:  {percentage4.toFixed(2)+"%"}</div>):(<div>0.00%</div>)}
+          </li>
+          <li className="list-group-item">
+          {(percentage5) ? (<div>5:  {percentage5.toFixed(2)+"%"}</div>):(<div>0.00%</div>)}
+          </li> */}
           <li className="list-group-item">
             <br />
             <button onClick={exportCSV} style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} id="CSV" type="submit">

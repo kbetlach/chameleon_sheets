@@ -82,13 +82,13 @@ useEffect(() => {
           </div>
             ) : (
           <div className="row">
-              <li className="nav-link col-md-4">
+              <li className="nav-link col-sm-4">
                     <GridButton />
               </li>
-              <li className="nav-link col-md-4">
+              <li className="nav-link col-sm-4">
                     <HistoryButton />
                 </li>
-              <li className="nav-link col-md-4">
+              <li className="nav-link col-sm-4">
                 <button onClick={handleClick} style={styles.logoutStyle} id="logout">Logout</button>
             </li>   
           </div>

@@ -22,7 +22,7 @@ function ViewAllUsersButton() {
                             padding: 5
                         }
                 }>
-                    View Users
+                    View
                 </button>
             </Link>
         </div>

@@ -43,11 +43,11 @@ const [percentage5, setPercentage5] = useState(0);
     {
       Student: student.name.firstName + " " + student.name.lastName,
       Date: today,
-      percentAt1: percentage1,
-      percentAt2: percentage2,
-      percentAt3: percentage3,
-      percentAt4: percentage4,
-      percentAt5: percentage5,
+      percentAt1: percentage1.toFixed(2),
+      percentAt2: percentage2.toFixed(2),
+      percentAt3: percentage3.toFixed(2),
+      percentAt4: percentage4.toFixed(2),
+      percentAt5: percentage5.toFixed(2)
     },
     {
       Student: "",
@@ -117,7 +117,13 @@ useEffect(() => {
       <form>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-          {(avgScore) ? (<div>Average score:  {avgScore.toFixed(2)}</div>):(<div>No scores available</div>)}
+            <div className="row">
+              <div className="col-md-3 text-left">DATE</div>
+              <div className="col-md-7 text-left">{(avgScore) ? (<div>Average score:  {avgScore.toFixed(2)}</div>):(<div>No scores available</div>)}</div>
+              <div className="col-md-2"><button onClick={exportCSV} style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} id="CSV" type="submit">
+              <i class="fas fa-file-export"></i></button>
+            </div>
+          </div>
           </li>
           {/* <li className="list-group-item">
           {(percentage1) ? (<div>1:  {percentage1.toFixed(2)+"%"}</div>):(<div>0.00%</div>)}
@@ -134,12 +140,6 @@ useEffect(() => {
           <li className="list-group-item">
           {(percentage5) ? (<div>5:  {percentage5.toFixed(2)+"%"}</div>):(<div>0.00%</div>)}
           </li> */}
-          <li className="list-group-item">
-            <br />
-            <button onClick={exportCSV} style={{ marginTop: "20px", backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} id="CSV" type="submit">
-            <i class="fas fa-file-export"></i>
-            </button>
-          </li>
         </ul>
       </form>
     </div>

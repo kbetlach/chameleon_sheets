@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import GridCol from "./GridCol"
 import GridColGuardian from "./GridColGuardian"
 import TabWrapper from "./TabWrapper";
+import Calendar from 'react-calendar'
 import 'moment-timezone';
 import './style.css'
 import API from '../../utils/API';

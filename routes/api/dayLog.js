@@ -44,10 +44,10 @@ router.route("/")
                         .then(findDayLogResults => {
                             // console.log(logUpdateRes, "Line 53 - dayLog")
                             if (findDayLogResults) {
-                                console.log("line 55", log.scores)
+                                // console.log("line 55", log.scores)
                                 db.Log.findOneAndUpdate({ _id: results._id, "scores.time": log.time }, { "$set": { "scores.$.score": log.scores[0].score } }, { new: true })
                                     .then(logUpdateRes => { 
-                                        console.log(logUpdateRes, "line 56"); 
+                                        // console.log(logUpdateRes, "line 56"); 
                                         res.json(logUpdateRes) 
                                     });
                             } else {
@@ -56,6 +56,7 @@ router.route("/")
                                         // console.log("Line 53 ", results)
                                         res.json(results);
                                     }).catch(err => {
+                                        res.json(err);
                                         console.log(err);
                                     });
                             }
@@ -66,11 +67,13 @@ router.route("/")
                             // console.log(results, "( dayLog == line : 57 )");
                             res.json(results)
                         }).catch(err => { 
+                            res.json(err);
                             onsole.log(err);
                         });
                 }
             }).catch(err => {
-                console.log(err)
+                res.json(err);
+                console.log(err);
             });
     });
 

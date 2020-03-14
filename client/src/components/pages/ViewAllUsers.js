@@ -9,6 +9,8 @@ function ViewAll() {
     const [teachers, setTeachers] = useState();
     const [students, setStudents] = useState();
     const [guardians, setGuardians] = useState();
+    const [varState, setVarState] = useState(0);
+
     async function checkYourself() {
         let userPlaceholder = await API.getSelf();
         if (userPlaceholder && (userPlaceholder.data.role === "Admin")) {
@@ -21,6 +23,15 @@ function ViewAll() {
     useEffect(() => {
         checkYourself();
     }, [])
+
+
+    function changeState() {
+        if(varState === 0){
+            setVarState(1);
+        }else{
+            setVarState(0);
+        }
+    }
     async function getUsers() {
         let teacherPlaceholder = await API.getTeachers();
         if (teacherPlaceholder && teacherPlaceholder.data) {
@@ -34,16 +45,25 @@ function ViewAll() {
         if (studentPlaceholder && studentPlaceholder.data) {
             setStudents(studentPlaceholder.data)
         }
-        console.log(teacherPlaceholder.data)
-        console.log(studentPlaceholder.data)
-        console.log(guardianPlaceholder.data)
+        // console.log(teacherPlaceholder.data)
+        // console.log(studentPlaceholder.data)
+        // console.log(guardianPlaceholder.data)
     }
     useEffect(() => {
         getUsers();
-    }, [])
-    var handleDelete = function handleDeleteUser(id){
-        window.location.reload(false); API.deleteUser({id: id})
+    }, [varState])
+
+    var handleDelete = function handleDeleteUser(id) {
+        // window.location.reload(false);
+        API.deleteUser({ id: id });
+        changeState();
     }
+
+    function handleDeleteStudent(id) {
+        API.deleteStudent({ id: id });
+        changeState();
+    }
+
     return (
         <div>
             {(isAdmin) ? (
@@ -61,7 +81,7 @@ function ViewAll() {
                                         <ul className="list-group list-group-flush" style={{ overflowY: "scroll", maxHeight: "320px", fontSize: "19px" }}>
                                             {teachers.map(result => (
                                                 <li className="list-group-item">
-                                                    <div className="col-md-12 scroll">{result.first_name} {result.last_name} <i onClick = {()=>handleDelete(result._id)} style = {{marginLeft: "15px", cursor: "pointer"}}class="fas fa-trash-alt"></i></div>
+                                                    <div className="col-md-12 scroll">{result.first_name} {result.last_name} <i onClick={() => handleDelete(result._id)} style={{ marginLeft: "15px", cursor: "pointer" }} class="fas fa-trash-alt"></i></div>
                                                 </li>
                                             ))}
                                         </ul>
@@ -77,7 +97,7 @@ function ViewAll() {
                                         <ul className="list-group list-group-flush" style={{ overflowY: "scroll", maxHeight: "320px", fontSize: "19px" }}>
                                             {students.map(result => (
                                                 <li className="list-group-item">
-                                                    <div className="col-md-12 scroll">{result.name.firstName} {result.name.lastName} <i onClick = {()=>handleDelete(result._id)} style = {{marginLeft: "15px", cursor: "pointer"}}class="fas fa-trash-alt"></i></div>
+                                                    <div className="col-md-12 scroll">{result.name.firstName} {result.name.lastName} <i onClick={() => handleDeleteStudent(result._id)} style={{ marginLeft: "15px", cursor: "pointer" }} class="fas fa-trash-alt"></i></div>
                                                 </li>
                                             ))}
                                         </ul>
@@ -93,7 +113,7 @@ function ViewAll() {
                                         <ul className="list-group list-group-flush" style={{ overflowY: "scroll", maxHeight: "320px", fontSize: "19px" }}>
                                             {guardians.map(result => (
                                                 <li className="list-group-item">
-                                                    <div className="col-md-12 scroll">{result.first_name} {result.last_name} <i onClick = {()=>handleDelete(result._id)} style = {{marginLeft: "15px", cursor: "pointer"}}class="fas fa-trash-alt"></i></div>
+                                                    <div className="col-md-12 scroll">{result.first_name} {result.last_name} <i onClick={() => handleDelete(result._id)} style={{ marginLeft: "15px", cursor: "pointer" }} class="fas fa-trash-alt"></i></div>
                                                 </li>
                                             ))}
                                         </ul>
@@ -102,10 +122,10 @@ function ViewAll() {
                             </div>
                         </div>
                     </div>
-                    </div>) : (<div className="container">
-                        <div className = "jumbotron">
-                    <div className="text-center" style={{ color: "white", fontSize: "42px", marginBottom: "25px" }}>You must be an admin to view this page</div>
-                </div>
+                </div>) : (<div className="container">
+                    <div className="jumbotron">
+                        <div className="text-center" style={{ color: "white", fontSize: "42px", marginBottom: "25px" }}>You must be an admin to view this page</div>
+                    </div>
                 </div>
                 )}
         </div>

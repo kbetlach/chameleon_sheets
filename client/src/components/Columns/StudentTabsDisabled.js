@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './style.css';
-import StudentSearch from "../StudentSearch/StudentSearch";
 import DateTab from "./DateTab";
 import API from "../../utils/API"
 import toast from 'toasted-notes' 
@@ -126,18 +125,8 @@ function StudentTabs(props) {
           <a href="#" className="nav-link">
             {student.firstName}
           </a>
-          <i class="fas fa-times removeStudent" onClick={removeStudentTab} data-studentid={student.id}></i>
         </li>
       ))}
-
-      <StudentSearch
-        search={search}
-        value={search}
-        handleInputChange={handleInputChange}
-        // handleFormSubmit={handleFormSubmit}
-        StudentList={studentList}
-        activeStudentChange={handleStudentSelect}
-      />
       <DateTab className="date-tab" setDate={props.setDate}/>
     </ul>
   );

@@ -66,7 +66,7 @@ function ViewAll() {
 
     return (
         <div>
-            {(isAdmin) ? (
+            {(true) ? (
                 <div style={{ fontFamily: 'Barlow Condensed', margin: "auto", width: "100%" }}>
                     <Header />
                     <div id="viewAllUsers" className="container container w3-container w3-center w3-animate-opacity">
@@ -106,7 +106,7 @@ function ViewAll() {
                             </div>
                             <div className="col-md-4" style={{ color: "darkslategray", fontSize: "28px", textDecoration: "underline" }}>
                                 {(guardians && guardians[0]) ? (<div>
-                                    <div id="teacherCard" className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginRight: "40px", marginTop: "30px", opacity: ".95", overflowY: "scroll", maxHeight: "300px" }}>
+                                    <div id="teacherCard" className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginRight: "40px", marginTop: "30px", opacity: ".95"}}>
                                         <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
                                             Guardians
                             </div>

@@ -10,11 +10,13 @@ router.route("/")
     const email = req.body.email;
     const role = req.body.role;
     const student = req.body.student;
+
     console.log(student)
     console.log(lastName);
     console.log(firstName);
     console.log(email);
     console.log(role)
+
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -22,14 +24,18 @@ router.route("/")
         pass: 'ChameleonSheets11$'
       }
     });
+
     const userOptions = emailOptions(firstName, lastName, email, role, student)
+
     transporter.sendMail(userOptions, function (error, info) {
+
       if (error) {
         console.log(error);
       } else {
         console.log('Email sent: ' + info.response);
       }
     });
+    
     res.end();
   });
 

@@ -3,9 +3,10 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 import './style.css'
 import API from '../../utils/API';
-// import axios from "axios";
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 
-function GridCol({startTime, index, studentId, sortedLog}){
+function GridCol({startTime, index, studentId, sortedLog, date}){
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -32,35 +33,13 @@ function GridCol({startTime, index, studentId, sortedLog}){
         }
     }, [sortedLog])
 
-    // useEffect(() => {
-    //     if (studentId) {
-    //         setRating(6)
-    //         async function fetchLogs() {
-    //         setIsLoading(true);
-    //         try {
-    //         const logFetch = await API.getLog(studentId, today)
-    //         // console.log(logFetch.data.scores, "EJEJEJEJEJ")
-    //         let log = logFetch.data.scores;
-    //         for (var i = 0; i < log.length; i++){
-    //             if (log[i].time == index){
-    //                 setRating(log[i].score)
-    //             }
-    //         }
-    //         } catch (err) { console.log(err); }
-    //     }
-    //     fetchLogs();
-    //     setIsLoading(false)
-    //     } else { }
-    
-    // }, [studentId])
-
 
     useEffect( () => {
-        console.log("YEET", activeDate);
+
         if (rating === 6) {}
         else {
             let data = {
-                date: activeDate,
+                date: date,
                 student: studentId,
                 scores: {
                     time: index,
@@ -68,7 +47,6 @@ function GridCol({startTime, index, studentId, sortedLog}){
                 }
             }
             API.createLog(data)
-            console.log(data);
         }
     },[cellState])
     //today shows up as 03072020
@@ -87,6 +65,7 @@ function GridCol({startTime, index, studentId, sortedLog}){
             setCellState(0)
         }
         if (!studentId) {
+            toast.notify("Please add a student to begin entering data.")
             console.log("Please add a student to begin entering data.")
         }
         else if (rating === lastClick) {

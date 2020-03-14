@@ -7,24 +7,36 @@ import API from '../../utils/API';
 function History() {
     const [user, setUser] = useState();
     const [students, setStudents] = useState();
+    // const [guardianStudents, setGuardianStudents] = useState();
+    // let isGuardian
     async function checkYourself(){
         let userPlaceholder = await API.getSelf();
         if(userPlaceholder){
             setUser(userPlaceholder.data)
+            setStudents(userPlaceholder.data.students)
         }
     }
     useEffect(() => {
         checkYourself();
       },[])
-    async function getStudents(){
-        let studentPlaceholder = await API.getStudents();
-        if(studentPlaceholder && studentPlaceholder.data){
-            setStudents(studentPlaceholder.data)
-        }
-    }
-    useEffect(() => {
-        getStudents();
-      },[])
+    // async function getStudents(){
+    //     let studentPlaceholder = await API.getStudents();
+    //     if(studentPlaceholder && studentPlaceholder.data){
+    //         setStudents(studentPlaceholder.data)
+    //     }
+    // }
+    // useEffect(() => {
+    //     getStudents();
+    //   },[])
+    // async function getGuardianStudents(){
+    //     let Placeholder = await API.getStudents();
+    //     if(studentPlaceholder && studentPlaceholder.data){
+    //         setStudents(studentPlaceholder.data)
+    //     }
+    // }
+    // useEffect(() => {
+    //     getStudents();
+    //   },[])
     return (
     <div>
         {(user) ? (

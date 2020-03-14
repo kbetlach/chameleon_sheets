@@ -164,7 +164,6 @@ let userSeed = [
     {
         role: "Admin",
         email: "admin@admin.com",
-        passowrd: "admin",
         first_name: "admin",
         last_name: "admin"
     },

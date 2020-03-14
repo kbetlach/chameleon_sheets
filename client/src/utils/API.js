@@ -75,4 +75,7 @@ export default {
   getLogs: (data) => {
     return axios.post("/api/dayLog/allLogs", data)
   },
+  deleteStudent: (id) => {
+    return axios.post("/api/student/deleteStudent", id);
+  }
 };

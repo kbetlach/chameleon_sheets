@@ -17,8 +17,9 @@ router.route("/new")
         // console.log(req.user, "req.user -- line 17");
         db.Student.create(student).then(newStudent => {
             res.json(newStudent);
-        }).catch(err => { 
-            console.log(err); 
+        }).catch(err => {
+            res.json(err);
+            console.log(err);
         });
     });
 
@@ -27,7 +28,11 @@ router.route("/all")
         db.Student.find({}).then(results => {
             // console.log(results)
             res.json(results);
-        });
+        })
+            .catch(err => {
+                res.json(err);
+                console.log(err);
+            });
     });
 
 router.route("/byID/:id")
@@ -37,6 +42,7 @@ router.route("/byID/:id")
             db.Student.find({ _id: req.params.id }).then(result => {
                 res.json(result);
             }).catch(err => {
+                res.json(err);
                 console.log(err);
             });
         } else {
@@ -47,11 +53,12 @@ router.route("/byID/:id")
 router.route("/teacherAddStudent")
     .post((req, res) => {
         // console.log(req.body.userStudents);
-        db.User.findByIdAndUpdate({ _id: req.user._id}, {students: req.body.userStudents}
-            ).then(results => {
+        db.User.findByIdAndUpdate({ _id: req.user._id }, { students: req.body.userStudents }
+        ).then(results => {
             // console.log(results)
             res.json(results);
-        }).catch(err => { 
+        }).catch(err => {
+            res.json(err);
             console.log(err);
         });
     });
@@ -64,9 +71,24 @@ router.route("/getUserStudents")
                 // console.log(response)
                 res.json(response);
             })
-            .catch(err => { 
+            .catch(err => {
+                res.json(err);
                 console.log(err, "This err line 67 student.js");
-             });
+            });
     });
+
+router.route("/deleteStudent")
+    .post((req, res) => {
+        db.Student.deleteOne({ _id: req.body.id })
+            .then(results => {
+                // console.log(results);
+                res.json(results);
+            })
+            .catch(err => {
+                // console.log(err);
+                res.json(err);
+            });
+    });
+
 
 module.exports = router;

@@ -41,7 +41,7 @@ const [percentage5, setPercentage5] = useState(0);
    e.preventDefault();
    var data = [
     {
-      //Student: student.name.firstName + " " + student.name.lastName,
+      Student: student.firstName + " " + student.lastName,
       Date: today,
       percentAt1: percentage1.toFixed(2),
       percentAt2: percentage2.toFixed(2),

@@ -59,7 +59,7 @@ useEffect(() => {
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white", fontSize: "28px", }}>
         Add Guardian
       </div>
-      <form id="guardianForm" onSubmit={handleSubmit} onSubmit ={e => setStudent(e.name.firstName && e.name.lastName)}  type="submit">
+      <form id="guardianForm" onSubmit={handleSubmit}  type="submit">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             <input onChange={e => setFirstname(e.target.value)} id="guardianFirstName" required="true" placeholder="First Name">

@@ -27,6 +27,8 @@ Brennan realized his school was going through tons of paper, and creating a digi
 
 ## Application Use
 
+PLEASE NOTE: Users cannot register straight off of the landing page. Since there is sensitive information about students in the data grid, the application is set so admins have the sole power adding users. The admin is able to send an email (through Nodemailer), where the user receives a hyper link to complete their registration. Once complete, the user can log in like normal.
+
 The application has three user roles - Admin, Teacher, and Guardian. The teacher role has access to the behavior grid and history page, where student scores are available by date. The admin role has the ability to create students, teachers, and guardians, as well as delete them. The admin can also view the behavior grid and history pages. Guardians are linked to the single student or students they are the guardian of so they can view the grid and history, but they do not have the ability to edit anything.
 
 Teachers have the ability to add any student in the database to their grid with the use of a plus button modal which displays all students available. Clicking any student adds that name to their navtab, and clicking between students will dynamically load that students behavior chart for the day. Using Moment.js, the application always knows what day it is and displays it appropriately. 

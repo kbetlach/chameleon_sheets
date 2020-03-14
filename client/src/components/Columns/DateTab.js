@@ -13,14 +13,16 @@ function DateTab(props){
     var dd = String(todayDate.getDate()).padStart(2, '0');
     var mm = String(todayDate.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = todayDate.getFullYear();
-    todayDate = mm + "-" + dd + "-" + yyyy;
+    todayDate = yyyy + "-" + mm + "-" + dd;
 
-    const [tempDate, setTempDate] = useState(today)
+    const [tempDate, setTempDate] = useState(todayDate)
     const [displayedDate, setDisplayedDate] = useState(today)
+    const [canUpdate, setCanUpdate] = useState(false)
 
     function handleDateSelect(e){
         e.preventDefault();
         setTempDate(e.target.value)
+        setCanUpdate(true)
     }
 
     useEffect(()=>{
@@ -28,13 +30,12 @@ function DateTab(props){
         let slicedMonth = tempDate.slice(5,7)
         let slicedDay = tempDate.slice(8,10)
         let newConstructedDate = slicedMonth + slicedDay + slicedYear
-        console.log("Full date: " + newConstructedDate)
-        props.setDate(newConstructedDate);
-        setDisplayedDate(slicedMonth + "/" + slicedDay)
-        // console.log("day: " + day)
-        // console.log("month: " + month)
-        // console.log("year: " + year)
+        if (canUpdate === true) {
+            props.setDate(newConstructedDate);
+            setDisplayedDate(slicedMonth + "/" + slicedDay)
+        }
     },[tempDate])
+    
 
 
 
@@ -56,7 +57,7 @@ function DateTab(props){
             </div>
             <div class="modal-body">
             <form>
-                <label for="date">Select Date:</label>
+                <label for="date"></label>
                 <input type="date" id="dateInput" name="dateInput" onChange={handleDateSelect}/>
             </form>
             </div>

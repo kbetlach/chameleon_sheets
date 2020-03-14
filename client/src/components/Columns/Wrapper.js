@@ -45,6 +45,7 @@ function Wrapper() {
     }
     const dateFunction = (date) => {
         setDate(date)
+        console.log("DATE UPDATED: ", date)
     }
 
     const ghostLog = [
@@ -119,6 +120,7 @@ function Wrapper() {
                         index={index}
                         studentId={studentId}
                         sortedLog={sortedLog}
+                        date={date}
                     ></GridColGuardian>
                 ))} </div>) : (<div class="table-container">
                     <TabWrapper setStudentId={studentFunction} setDate={dateFunction} />
@@ -129,6 +131,7 @@ function Wrapper() {
                             index={index}
                             studentId={studentId}
                             sortedLog={sortedLog}
+                            date={date}
                         ></GridCol>
                     ))} </div>)}</div>) : (<div className="container">
                         <div className="jumbotron">

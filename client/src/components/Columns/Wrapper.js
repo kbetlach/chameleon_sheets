@@ -112,7 +112,7 @@ function Wrapper() {
     return (
         <div>
             {(user && user.role) ? (<div class="flexbox"> {(isGuardian) ? (<div class="table-container">
-                <TabWrapper setStudentId={studentFunction} setDate={dateFunction} />
+                <TabWrapper setStudentId={studentFunction} setDate={dateFunction} disabled={true}/>
                 {columnArray.map((column, index) => (
                     <GridColGuardian
                         key={column}

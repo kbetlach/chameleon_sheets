@@ -40,11 +40,11 @@ function emailOptions(firstName, lastName, email, role, student) {
   emailOptions.to = email;
   emailOptions.subject = 'Sign up with Chameleon Sheets';
   if (role === "Teacher") {
-    emailOptions.html = `<p> Hello ${firstName} ${lastName}! <br> Welcome to the team! Please click this <a href= "http://localhost:3000/signup/"> link </a> to complete your profile! </p> <p> Thanks, <br> your friends at Chameleon Cooperative </p>`;
+    emailOptions.html = `<p> Hello ${firstName} ${lastName}! <br> Welcome to the team! Please click this <a href= "https://chameleon-sheets.herokuapp.com/signup"> link </a> to complete your profile! </p> <p> Thanks, <br> your friends at Chameleon Cooperative </p>`;
     
   }
   else {
-    emailOptions.html = `<p> Hello ${firstName} ${lastName}! <br> We're delighted to have your student at our school! Please click this <a href= "http://localhost:3000/signup/"> link </a> to complete your profile! </p> <p> Thanks, <br> your friends at Chameleon Cooperative </p>`;
+    emailOptions.html = `<p> Hello ${firstName} ${lastName}! <br> We're delighted to have your student at our school! Please click this <a href= "https://chameleon-sheets.herokuapp.com/signup"> link </a> to complete your profile! </p> <p> Thanks, <br> your friends at Chameleon Cooperative </p>`;
   
   }
   return emailOptions

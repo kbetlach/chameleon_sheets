@@ -5,7 +5,7 @@ import StudentTabs from "./StudentTabs";
 function TabWrapper(props){
     return (
         <div className="tab-wrapper">
-            <StudentTabs setStudentId={props.setStudentId} setActiveTab={props.setActiveTab} />
+            <StudentTabs setStudentId={props.setStudentId} setActiveTab={props.setActiveTab} setDate={props.setDate}/>
         </div>
     )
 }

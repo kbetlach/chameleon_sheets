@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import GridCol from "./GridCol"
 import GridColGuardian from "./GridColGuardian"
 import TabWrapper from "./TabWrapper";
-import Calendar from 'react-calendar'
 import 'moment-timezone';
 import './style.css'
 import API from '../../utils/API';
@@ -44,6 +43,10 @@ function Wrapper() {
     const studentFunction = (id) => {
         setStudentId(id);
     }
+    const dateFunction = (date) => {
+        setDate(date)
+    }
+
     const ghostLog = [
         {"time": 0, score:"6"},
         {"time": 1, score:"6"},
@@ -99,7 +102,7 @@ function Wrapper() {
             setIsLoading(false)
             } else { }
         
-        }, [studentId])
+        }, [studentId, date])
 
     for (var i = 1; i < columns + 1; i++) {
         columnArray.push("column-" + [i]);
@@ -108,7 +111,7 @@ function Wrapper() {
     return (
         <div>
             {(user && user.role) ? (<div class="flexbox"> {(isGuardian) ? (<div class="table-container">
-                <TabWrapper setStudentId={studentFunction} />
+                <TabWrapper setStudentId={studentFunction} setDate={dateFunction} />
                 {columnArray.map((column, index) => (
                     <GridColGuardian
                         key={column}
@@ -118,7 +121,7 @@ function Wrapper() {
                         sortedLog={sortedLog}
                     ></GridColGuardian>
                 ))} </div>) : (<div class="table-container">
-                    <TabWrapper setStudentId={studentFunction} />
+                    <TabWrapper setStudentId={studentFunction} setDate={dateFunction} />
                     {columnArray.map((column, index) => (
                         <GridCol
                             key={column}

@@ -28,6 +28,7 @@ function studentSelect (e) {
     let name = student.name.firstName + " " + student.name.lastName
     return name == e.currentTarget.value
   })
+  // console.log(filtered)
   setStudent(filtered[0]._id);
 }
 
@@ -59,7 +60,7 @@ useEffect(() => {
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white", fontSize: "28px", }}>
         Add Guardian
       </div>
-      <form id="guardianForm" onSubmit={e => setStudent(e.name.firstName && e.name.lastName)}  onSubmit={handleSubmit} type="submit">
+      <form id="guardianForm" onSubmit={handleSubmit} type="submit">
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             <input onChange={e => {setFirstname(e.target.value); console.log(e.target.value)}} name="firstName" id="guardianFirstName" required="true" placeholder="First Name">

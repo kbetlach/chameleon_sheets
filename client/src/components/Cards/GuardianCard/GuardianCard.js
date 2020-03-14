@@ -28,7 +28,7 @@ function studentSelect (e) {
     let name = student.name.firstName + " " + student.name.lastName
     return name == e.currentTarget.value
   })
-  console.log(filtered)
+  // console.log(filtered)
   setStudent(filtered[0]._id);
 }
 

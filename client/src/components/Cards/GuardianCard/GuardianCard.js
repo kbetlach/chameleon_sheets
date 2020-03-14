@@ -29,7 +29,12 @@ function studentSelect (e) {
     return name == e.currentTarget.value
   })
   // console.log(filtered)
-  setStudent(filtered[0]._id);
+  let studentDataSave = {
+    firstName: filtered[0].name.firstName,
+    lastName: filtered[0].name.lastName,
+    id: filtered[0]._id
+  }
+  setStudent(studentDataSave);
 }
 
 useEffect(() => {

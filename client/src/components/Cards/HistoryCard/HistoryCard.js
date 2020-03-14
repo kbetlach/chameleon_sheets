@@ -85,11 +85,11 @@ const [percentage5, setPercentage5] = useState(0);
         setLogs(logPlaceholder.data)
         for(let i = 0; i < logPlaceholder.data.length; i++){
           for (let j = 0; j < logPlaceholder.data[i].scores.length; j++){
-            if(logPlaceholder.data[i].scores[j].score == 1){ ones++; }
-            if(logPlaceholder.data[i].scores[j].score == 2){ twos++; }
-            if(logPlaceholder.data[i].scores[j].score == 3){ threes++; }
-            if(logPlaceholder.data[i].scores[j].score == 4){ fours++; }
-            if(logPlaceholder.data[i].scores[j].score == 5){ fives++; }
+            if(logPlaceholder.data[i].scores[j].score === 1){ ones++; }
+            if(logPlaceholder.data[i].scores[j].score === 2){ twos++; }
+            if(logPlaceholder.data[i].scores[j].score === 3){ threes++; }
+            if(logPlaceholder.data[i].scores[j].score === 4){ fours++; }
+            if(logPlaceholder.data[i].scores[j].score === 5){ fives++; }
             if((logPlaceholder.data[i].scores[j].score > 0) && (logPlaceholder.data[i].scores[j].score <6)){
               scoreTotal += logPlaceholder.data[i].scores[j].score
               count++

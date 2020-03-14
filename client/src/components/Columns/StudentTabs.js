@@ -138,7 +138,7 @@ function StudentTabs(props) {
         StudentList={studentList}
         activeStudentChange={handleStudentSelect}
       />
-      <DateTab className="date-tab" />
+      <DateTab className="date-tab" setDate={props.setDate}/>
     </ul>
   );
 }

@@ -32,6 +32,7 @@ export default {
   },
   // Saves a user to the database
   saveUser: function(userData) {
+    console.log("from saveUser " + userData)
     return axios.post("/api/user/", userData);
   }, 
   updateUser: function(userData) {
@@ -74,4 +75,7 @@ export default {
   getLogs: (data) => {
     return axios.post("/api/dayLog/allLogs", data)
   },
+  deleteStudent: (id) => {
+    return axios.post("/api/student/deleteStudent", id);
+  }
 };

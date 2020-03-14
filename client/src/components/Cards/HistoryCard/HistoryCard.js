@@ -105,14 +105,14 @@ const [percentage5, setPercentage5] = useState(0);
     }
 }
 useEffect(() => {
-  if(student && student._id) {
-    getLogs({id: student._id})
+  if(student && student.id) {
+    getLogs({id: student.id})
   }
 },[])
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
-      {(student && student.name) ? (<div>{student.name.firstName} {student.name.lastName}</div>):(<div>No Name</div>)}
+      {(student && student.firstName) ? (<div>{student.firstName} {student.lastName}</div>):(<div>No Name</div>)}
       </div>
       <form>
         <ul className="list-group list-group-flush">

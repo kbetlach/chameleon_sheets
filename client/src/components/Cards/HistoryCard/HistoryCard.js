@@ -41,7 +41,7 @@ const [percentage5, setPercentage5] = useState(0);
    e.preventDefault();
    var data = [
     {
-      Student: student.name.firstName + " " + student.name.lastName,
+      //Student: student.name.firstName + " " + student.name.lastName,
       Date: today,
       percentAt1: percentage1.toFixed(2),
       percentAt2: percentage2.toFixed(2),
@@ -111,7 +111,7 @@ useEffect(() => {
 },[])
   return (
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
-      <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
+      <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white", fontSize: "28px" }}>
       {(student && student.firstName) ? (<div>{student.firstName} {student.lastName}</div>):(<div>No Name</div>)}
       </div>
       <form>

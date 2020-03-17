@@ -18,11 +18,11 @@ function Signup() {
         await API.createPassword({
             email: email,
             password: password
-          })
+          }).catch(() => toast.notify ("Invalid email. Please try again."))
         await API.login({
             email: email,
             password: password
-        }).catch(() => toast.notify ("Invalid email. Please try again."))
+        }).then(<Redirect to={"/"} />)
         setUser(API.getSelf())
     }
 

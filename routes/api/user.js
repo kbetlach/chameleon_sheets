@@ -56,8 +56,9 @@ router.put("/update_password", function(req, res) {
 
     var email =  req.body.email;
     var password =  req.body.password;
+    var key = req.body.key;
 
-    db.User.findOne({email:email, password: { $exists: false}})
+    db.User.findOne({email:email, key:key, password: { $exists: false}})
     .then(function(dbUser) {
         encryptedPassword = dbUser.encryptPassword(password)
 

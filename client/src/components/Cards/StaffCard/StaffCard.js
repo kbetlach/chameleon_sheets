@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import API from "../../../utils/API";
+import keyGen from "../../../utils/keyGen";
 import toast from 'toasted-notes' 
 import 'toasted-notes/src/styles.css';
 import "../CardStyle/cards.css";
@@ -14,17 +15,19 @@ function StaffCard() {
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    var key = keyGen.generate()
+    console.log(key)
     toast.notify ("Staff added successfully!");
 
-    API.email({ firstName, lastName, email, role });
+    API.email({ firstName, lastName, email, role, key });
 console.log(role)
     API.saveUser({
       role: role,
       email: email,
       first_name: firstName,
       last_name: lastName,
-      school: "req.user.school,"
+      school: "req.user.school,",
+      key: key
     })
     document.getElementById("staffForm").reset();
   }

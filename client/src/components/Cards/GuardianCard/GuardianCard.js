@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
+import keyGen from "../../../utils/keyGen";
 import "../CardStyle/cards.css";
 import toast from 'toasted-notes' 
 import 'toasted-notes/src/styles.css';
@@ -45,15 +46,16 @@ useEffect(() => {
 
     e.preventDefault();
     toast.notify("Guardian added successfully!");
-
-    API.email({ firstName, lastName, email, student, role });
+    var key = keyGen.generate();
+    API.email({ firstName, lastName, email, student, role, key });
 
     API.saveUser({
       role: role,
       email: email,
       first_name: firstName,
       last_name: lastName,
-      students: [student]    
+      students: [student],
+      key: key
     });
 
     // console.log(student);

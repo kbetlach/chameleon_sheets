@@ -16,7 +16,6 @@ function StaffCard() {
   const handleSubmit = e => {
     e.preventDefault();
     var key = keyGen.generate()
-    console.log(key)
     toast.notify ("Staff added successfully!");
 
     API.email({ firstName, lastName, email, role, key });

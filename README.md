@@ -2,6 +2,11 @@
 
 Deployed link: (https://chameleon-sheets.herokuapp.com/)
 
+Demo Video: (https://youtu.be/2pRWXtuPae4). Please watch our demo video for a brief overview of what our application does!
+- Video script and recording made by Brennan, as well as the background music!
+
+While the application doesn't allow users to freely create accounts and test the app themselves in an effort to protect student information, we would be happy to provide a more technical demo to anyone interested! Please reach out to us at chameleon.sheets@gmail.com!
+
 Contributors (GitHub usernames in parentheses):
 
 - Frontend Team

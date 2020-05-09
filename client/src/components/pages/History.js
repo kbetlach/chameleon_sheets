@@ -22,15 +22,7 @@ function History() {
     // async function getStudents(){
     //     let studentPlaceholder = await API.getStudents();
     //     if(studentPlaceholder && studentPlaceholder.data){
-    //         setStudents(studentPlaceholder.data)
-    //     }
-    // }
-    // useEffect(() => {
-    //     getStudents();
-    //   },[])
-    // async function getGuardianStudents(){
-    //     let Placeholder = await API.getStudents();
-    //     if(studentPlaceholder && studentPlaceholder.data){
+    //         // console.log("STUDPLACE", studentPlaceholder.data)
     //         setStudents(studentPlaceholder.data)
     //     }
     // }

@@ -189,4 +189,4 @@ useEffect(() => {
     </div>
   )
 }
-export default HistoryCard
+export default HistoryCard;

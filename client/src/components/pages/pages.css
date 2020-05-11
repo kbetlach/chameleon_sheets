@@ -20,19 +20,6 @@ body {
     border-radius: 25px;
 }
 
-.card-footer {
-    margin-top: 150px;
-    flex-shrink: 0;
-    width: 100%;
-    text-align: center;
-    border-top: 8px solid white;
-    background-color: darkslategray;
-    color: #ffffff;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-}
-
 h1 {
     text-decoration: underline;
     font-family: 'Barlow Condensed';

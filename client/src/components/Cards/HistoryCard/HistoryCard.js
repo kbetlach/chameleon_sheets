@@ -110,7 +110,7 @@ useEffect(() => {
   }
 },[])
   return (
-    <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
+    <div className="card overflow-auto" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginBottom: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white", fontSize: "28px" }}>
       {(student && student.firstName) ? (<div>{student.firstName} {student.lastName}</div>):(<div>No Name</div>)}
       </div>

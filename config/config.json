@@ -2,14 +2,14 @@
     "development": {
         "username": "root",
         "password": null,
-        "database": "chameleondb",
+        "database": "bschameleondb",
         "host": "localhost",
         "dialect": "mongoose"
     },
     "test": {
         "username": "root",
         "password": null,
-        "database": "chameleondb",
+        "database": "bschameleondb",
         "host": "localhost",
         "dialect": "mongoose",
         "logging": false

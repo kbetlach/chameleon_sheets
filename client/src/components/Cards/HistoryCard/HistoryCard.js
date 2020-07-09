@@ -79,7 +79,7 @@ let fives = 0;
         percentAt3: percentage3.toFixed(2),
         percentAt4: percentage4.toFixed(2),
         percentAt5: percentage5.toFixed(2),
-        dailyAvg: avgScore
+        dailyAvg: parseFloat(avgScore.toFixed(2))
       });
       count = 0;
       scoreTotal = 0;
@@ -109,7 +109,7 @@ useEffect(()=>{
 const options = {
   fieldSeparator: ',',
   quoteStrings: '"',
-  filename: "Student Data Summary",
+  filename: student.firstName + "Data",
   decimalSeparator: '.',
   showLabels: true,
   showTitle: true,
@@ -131,11 +131,18 @@ useEffect(() => {
     getLogs({id: student.id})
   }
 },[])
+
   return (
-    <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginTop: "50px", opacity: ".95" }}>
+    <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginBottom: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
-      {(student && student.id) ? (<div>{student.firstName} {student.lastName}</div>):(<div>No Name</div>)}
+        <div className="row">
+          <div className="col-md-2"><button style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }}><i className="fas fa-chart-area"></i></button></div>
+          <div className="col-md-8">{(student && student.id) ? (<div>{student.firstName} {student.lastName}</div>):(<div>No Name</div>)}</div>
+          <div className="col-md-2"><button onClick={exportCSV} style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white"}}><i className="fas fa-cloud-download-alt"></i></button></div>
+        </div>
+      
       </div>
+      <div className="card-block overflow-auto">
       <form>
         <ul className="list-group list-group-flush">
           {dataArray.map((data) => (
@@ -143,7 +150,7 @@ useEffect(() => {
             <div className="row">
               <div className="col-md-3 text-left">{data.date.slice(0,4)}</div>
               <div className="col-md-7 text-left">{(data.dailyAvg) ? (<div>Average score:  {data.dailyAvg.toFixed(2)}</div>):(<div>No scores available</div>)}</div>
-              <div className="col-md-2"><button onClick={exportCSV} style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} className="CSV" type="submit">
+              <div className="col-md-2"><button onClick={exportCSV} data-date={data.date.slice(0,4)} style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} className="CSV" type="submit">
               <i className="fas fa-file-export"></i></button>
             </div>
           </div>
@@ -151,6 +158,7 @@ useEffect(() => {
           ))}
         </ul>
       </form>
+      </div>
     </div>
   )
 }

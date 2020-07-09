@@ -20,25 +20,24 @@ body {
     border-radius: 25px;
 }
 
-.card-footer {
-    margin-top: 150px;
-    flex-shrink: 0;
-    width: 100%;
-    text-align: center;
-    border-top: 8px solid white;
-    background-color: darkslategray;
-    color: #ffffff;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-}
-
 #chameleon {
     font-size: 85px;
     text-align: center;
     color: white;
     opacity: 1;
 }
+
+/* Spaces out buttons on card header and export buttons on each list item better */
+.card .col-md-2 {
+    padding: 0 !important;
+    margin: 0;
+}
+
+/* Offsets history card date a little bit to better center it with above button */
+.card .col-md-3 {
+    padding-left: 10px;
+}
+
 
 .card {
     height: 320px;

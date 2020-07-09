@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const db = require("../models");
 // const data = require("data");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/chameleondb", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/bschameleondb", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
@@ -167,7 +167,30 @@ let userSeed = [
         email: "admin@admin.com",
         password: "$2b$10$2BgRbOamAtmcdT4lUIOloOKeGBuvOYSeISEjKDwvfOvdgICyxAqES",
         first_name: "admin",
-        last_name: "admin"
+        last_name: "admin",
+        students:
+        [
+            {
+                "firstName" : "Phil",
+                "lastName" : "Pipes",
+                "id" : "5ea8f9fa74e5970fb513e2e4"
+            },
+            {
+                "firstName" : "Pete",
+                "lastName" : "Zah",
+                "id" : "5ea8f9fa74e5970fb513e2e5"
+            },
+            {
+                "firstName" : "Brad",
+                "lastName" : "Gibson",
+                "id" : "5ea8f9fa74e5970fb513e2e6"
+            },
+            {
+                "firstName" : "Shirley",
+                "lastName" : "Waterford",
+                "id" : "5ea8f9fa74e5970fb513e2e7"
+            }
+        ]
     },
     //GUARDIAN SEEDS
     {

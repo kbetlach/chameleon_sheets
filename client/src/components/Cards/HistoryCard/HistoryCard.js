@@ -18,7 +18,9 @@ let fives = 0;
 
   const [logs, setLogs] = useState();
   const [dataArray, setDataArray] = useState([]);
+  const [analysisArray, setAnalysisArray] = useState([]);
 
+  //Variables for IndexedArray
   let scoreTotal;
   let count;
   let avgScore;
@@ -28,6 +30,33 @@ let fives = 0;
   let percentage3;
   let percentage4;
   let percentage5;
+
+  //Variables for AnalysisArray
+  let cum0 = [];
+  let cum1 = [];
+  let cum2 = [];
+  let cum3 = [];
+  let cum4 = [];
+  let cum5 = [];
+  let cum6 = [];
+  let cum7 = [];
+  let cum8 = [];
+  let cum9 = [];
+  let cum10 = [];
+  let cum11 = [];
+  let cum12 = [];
+  let cum13 = [];
+  let cum14 = [];
+  let cum15 = [];
+  let cum16 = [];
+  let cum17 = [];
+  let cum18 = [];
+  let cum19 = [];
+  let cum20 = [];
+  let cum21 = [];
+  let cum22 = [];
+  let cum23 = [];
+
   let student=props.value;
   async function getLogs(id){
     scoreTotal = 0;
@@ -42,17 +71,120 @@ let fives = 0;
       this.data = [];
       this.index = {};
     };
+
+    var IndexedAnalysis = function(key) {
+      this.key = key || 'id';
+      this.data = [];
+      this.index = {};
+    };
     
     IndexedArray.prototype.addOrReplace = function(object) {
       var id = object[this.key],
-          index = this.index[id];
-      
+      index = this.index[id];
       if(index === undefined) {
           index = this.data.length;
           this.index[id] = index;
       }
       this.data[index] = object;
     };
+
+    IndexedAnalysis.prototype.addOrReplace = function(object) {
+      var id = object[this.key],
+      index = this.index[id];
+      if(index === undefined) {
+        index = this.data.length;
+        this.index[id] = index;
+      }
+      this.data[index] = object;
+    }
+
+    var indexedAnalysis = new IndexedAnalysis('date');
+    for (var i = 0; i < logPlaceholder.data.length; i++){
+      for (let j = 0; j < logPlaceholder.data[i].scores.length; j++){
+        if((logPlaceholder.data[i].scores[j].score > 0) && (logPlaceholder.data[i].scores[j].score <6)){
+          if(logPlaceholder.data[i].scores[j].time === 0){ cum0.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 1){ cum1.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 2){ cum2.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 3){ cum3.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 4){ cum4.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 5){ cum5.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 6){ cum6.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 7){ cum7.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 8){ cum8.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 9){ cum9.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 10){ cum10.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 11){ cum11.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 12){ cum12.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 13){ cum13.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 14){ cum14.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 15){ cum15.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 16){ cum16.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 17){ cum17.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 18){ cum18.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 19){ cum19.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 20){ cum20.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 21){ cum21.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 22){ cum22.push(logPlaceholder.data[i].scores[j].score) }
+          else if(logPlaceholder.data[i].scores[j].time === 23){ cum23.push(logPlaceholder.data[i].scores[j].score) }
+        }
+      }
+      var c0 = cum0.reduce((a, b) => a + b, 0)/(cum0.length);
+      var c1 = cum1.reduce((a, b) => a + b, 0)/(cum1.length);
+      var c2 = cum2.reduce((a, b) => a + b, 0)/(cum2.length);
+      var c3 = cum3.reduce((a, b) => a + b, 0)/(cum3.length);
+      var c4 = cum4.reduce((a, b) => a + b, 0)/(cum4.length);
+      var c5 = cum5.reduce((a, b) => a + b, 0)/(cum5.length);
+      var c6 = cum6.reduce((a, b) => a + b, 0)/(cum6.length);
+      var c7 = cum7.reduce((a, b) => a + b, 0)/(cum7.length);
+      var c8 = cum8.reduce((a, b) => a + b, 0)/(cum8.length);
+      var c9 = cum9.reduce((a, b) => a + b, 0)/(cum9.length);
+      var c10 = cum10.reduce((a, b) => a + b, 0)/(cum10.length);
+      var c11 = cum11.reduce((a, b) => a + b, 0)/(cum11.length);
+      var c12 = cum12.reduce((a, b) => a + b, 0)/(cum12.length);
+      var c13 = cum13.reduce((a, b) => a + b, 0)/(cum13.length);
+      var c14 = cum14.reduce((a, b) => a + b, 0)/(cum14.length);
+      var c15 = cum15.reduce((a, b) => a + b, 0)/(cum15.length);
+      var c16 = cum16.reduce((a, b) => a + b, 0)/(cum16.length);
+      var c17 = cum17.reduce((a, b) => a + b, 0)/(cum17.length);
+      var c18 = cum18.reduce((a, b) => a + b, 0)/(cum18.length);
+      var c19 = cum19.reduce((a, b) => a + b, 0)/(cum19.length);
+      var c20 = cum20.reduce((a, b) => a + b, 0)/(cum20.length);
+      var c21 = cum21.reduce((a, b) => a + b, 0)/(cum21.length);
+      var c22 = cum22.reduce((a, b) => a + b, 0)/(cum22.length);
+      var c23 = cum23.reduce((a, b) => a + b, 0)/(cum23.length);
+
+      indexedAnalysis.addOrReplace({
+        Student: student.firstName + " " + student.lastName, 
+        t0: c0.toFixed(2),
+        t1: c1.toFixed(2),
+        t2: c2.toFixed(2),
+        t3: c3.toFixed(2),
+        t4: c4.toFixed(2),
+        t5: c5.toFixed(2),
+        t6: c6.toFixed(2),
+        t7: c7.toFixed(2),
+        t8: c8.toFixed(2),
+        t9: c9.toFixed(2),
+        t10: c10.toFixed(2),
+        t11: c11.toFixed(2),
+        t12: c12.toFixed(2),
+        t13: c13.toFixed(2),
+        t14: c14.toFixed(2),
+        t15: c15.toFixed(2),
+        t16: c16.toFixed(2),
+        t17: c17.toFixed(2),
+        t18: c18.toFixed(2),
+        t19: c19.toFixed(2),
+        t20: c20.toFixed(2),
+        t21: c21.toFixed(2),
+        t22: c22.toFixed(2),
+        t23: c23.toFixed(2)
+      })
+    }
+    for (var q = 0; q < indexedAnalysis.data.length; q++){
+      indexedAnalysis.data.sort((a, b) => parseFloat(b.time) - parseFloat(a.time));
+      setAnalysisArray(analysisArray => [...analysisArray, indexedAnalysis.data[q]])
+    }
     
     var indexedArray = new IndexedArray('date');
     for (var i = 0; i < logPlaceholder.data.length; i++){
@@ -103,17 +235,39 @@ let fives = 0;
       indexedArray.data.sort((a, b) => parseFloat(b.date) - parseFloat(a.date));
       setDataArray(dataArray => [...dataArray, indexedArray.data[q]])
     }
-  }    
+  }
 }
+useEffect(()=>{
+  console.log("placeholderdata", logs);
+},[logs]);
+
 useEffect(()=>{
   console.log("USEFX", dataArray);
   // dataArray.sort((a, b) => parseFloat(b.date) - parseFloat(a.date));
 },[dataArray])
 
+useEffect(()=>{
+  console.log("analysis", analysisArray);
+}, [analysisArray])
+
 const options = {
   fieldSeparator: ',',
   quoteStrings: '"',
   filename: student.firstName + "Data",
+  decimalSeparator: '.',
+  showLabels: true,
+  showTitle: true,
+  title: today,
+  useTextFile: false,
+  useBom: true,
+  useKeysAsHeaders: true,
+  // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+};
+
+const analysis = {
+  fieldSeparator: ',',
+  quoteStrings: '"',
+  filename: student.firstName + "Hourly Analysis",
   decimalSeparator: '.',
   showLabels: true,
   showTitle: true,
@@ -130,6 +284,12 @@ const exportCSV = (e) => {
   csvExporter.generateCsv(dataArray);
 }
 
+const exportAnalysis = (e) => {
+  e.preventDefault();
+  const analysisExporter = new ExportToCsv(analysis);
+  analysisExporter.generateCsv(analysisArray);
+}
+
 useEffect(() => {
   if(student && student.id) {
     getLogs({id: student.id})
@@ -140,7 +300,7 @@ useEffect(() => {
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginBottom: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
         <div className="row">
-          <div className="col-md-2"><button style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }}>
+          <div className="col-md-2"><button className="analysisCSV" title="Export Hourly Breakdown" onClick={exportAnalysis} style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }}>
             <i className="fas fa-chart-area"></i></button>
           </div>
           <div className="col-md-8">{(student && student.id) ? (<div>{student.firstName} {student.lastName}</div>):(<div>No Name</div>)}</div>

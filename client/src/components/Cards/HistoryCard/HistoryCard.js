@@ -22,6 +22,7 @@ let fives = 0;
   let scoreTotal;
   let count;
   let avgScore;
+  let hiScore;
   let percentage1;
   let percentage2;
   let percentage3;
@@ -31,6 +32,7 @@ let fives = 0;
   async function getLogs(id){
     scoreTotal = 0;
     count = 0;
+    hiScore = 0;
     let logPlaceholder = await API.getLogs(id);
     if(logPlaceholder && logPlaceholder.data){
     setLogs(logPlaceholder.data)
@@ -59,11 +61,11 @@ let fives = 0;
             scoreTotal += logPlaceholder.data[i].scores[j].score;
             count++;
             avgScore = (scoreTotal/count)
-            if(logPlaceholder.data[i].scores[j].score === 1){ ones++; }
-            else if(logPlaceholder.data[i].scores[j].score === 2){ twos++; }
-            else if(logPlaceholder.data[i].scores[j].score === 3){ threes++; }
-            else if(logPlaceholder.data[i].scores[j].score === 4){ fours++; }
-            else if(logPlaceholder.data[i].scores[j].score === 5){ fives++; }
+            if(logPlaceholder.data[i].scores[j].score === 1){ ones++; if(hiScore < 1){hiScore=1}; }
+            else if(logPlaceholder.data[i].scores[j].score === 2){ twos++; if(hiScore < 2){hiScore=2}; }
+            else if(logPlaceholder.data[i].scores[j].score === 3){ threes++; if(hiScore < 3){hiScore=3}; }
+            else if(logPlaceholder.data[i].scores[j].score === 4){ fours++; if(hiScore < 4){hiScore=4}; }
+            else if(logPlaceholder.data[i].scores[j].score === 5){ fives++; if(hiScore < 5){hiScore=5}; }
             percentage1 = ((ones/count)*100); 
             percentage2 = ((twos/count)*100); 
             percentage3 = ((threes/count)*100); 
@@ -79,11 +81,13 @@ let fives = 0;
         percentAt3: percentage3.toFixed(2),
         percentAt4: percentage4.toFixed(2),
         percentAt5: percentage5.toFixed(2),
-        dailyAvg: parseFloat(avgScore.toFixed(2))
+        dailyAvg: parseFloat(avgScore.toFixed(2)),
+        dailyHigh: hiScore
       });
       count = 0;
       scoreTotal = 0;
       avgScore = 0;
+      hiScore = 0;
       ones = 0;
       twos = 0;
       threes = 0;
@@ -136,9 +140,13 @@ useEffect(() => {
     <div className="card" style={{ width: "18rem", float: "left", border: "1px solid white", marginLeft: "50px", marginBottom: "50px", opacity: ".95" }}>
       <div className="card-header" style={{ backgroundColor: "darkslategray", color: "white" }}>
         <div className="row">
-          <div className="col-md-2"><button style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }}><i className="fas fa-chart-area"></i></button></div>
+          <div className="col-md-2"><button style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }}>
+            <i className="fas fa-chart-area"></i></button>
+          </div>
           <div className="col-md-8">{(student && student.id) ? (<div>{student.firstName} {student.lastName}</div>):(<div>No Name</div>)}</div>
-          <div className="col-md-2"><button onClick={exportCSV} style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white"}}><i className="fas fa-cloud-download-alt"></i></button></div>
+          <div className="col-md-2"><button className="exportCSVButton" title="Download CSV" onClick={exportCSV} style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white"}}>
+            <i className="fas fa-cloud-download-alt"></i></button>
+          </div>
         </div>
       
       </div>
@@ -149,11 +157,12 @@ useEffect(() => {
           <li className="list-group-item">
             <div className="row">
               <div className="col-md-3 text-left">{data.date.slice(0,4)}</div>
-              <div className="col-md-7 text-left">{(data.dailyAvg) ? (<div>Average score:  {data.dailyAvg.toFixed(2)}</div>):(<div>No scores available</div>)}</div>
-              <div className="col-md-2"><button onClick={exportCSV} data-date={data.date.slice(0,4)} style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} className="CSV" type="submit">
-              <i className="fas fa-file-export"></i></button>
+              <div className="col-md-4 text-left">{(data.dailyAvg) ? (<div>Avg:  {data.dailyAvg.toFixed(2)}</div>):(<div>No Data</div>)}</div>
+              <div className="col-md-3 text-left">{(data.dailyAvg) ? (<div>Max:  {data.dailyHigh}</div>):(<div>No Data</div>)}</div>
+              <div className="col-md-2"><button className="goToDate" onClick={exportCSV} data-date={data.date.slice(0,4)} style={{backgroundColor: "darkslategray", color: "white", borderRadius: "6px", border: ".5px solid white" }} className="CSV" type="submit">
+                <i className="fas fa-arrow-circle-right"></i></button>
+              </div>
             </div>
-          </div>
           </li>
           ))}
         </ul>
